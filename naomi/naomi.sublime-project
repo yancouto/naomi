@@ -1,0 +1,67 @@
+{
+	"build_systems":
+	[
+		{
+			"cmd":
+			[
+				"lime.bat",
+				"test",
+				"flash"
+			],
+			"name": "HaxeFlixel with Flash",
+			"working_dir": "${project_path}"
+		},
+		{
+			"cmd":
+			[
+				"lime.bat",
+				"test",
+				"neko"
+			],
+			"name": "HaxeFlixel with Neko",
+			"working_dir": "${project_path}"
+		},
+		{
+			"cmd":
+			[
+				"lime.bat",
+				"test",
+				"html5"
+			],
+			"name": "HaxeFlixel with HTML5",
+			"working_dir": "${project_path}"
+		}
+	],
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"name": "naomi",
+			"path": "C:/Users/Yan/Documents/GitHub/naomi/naomi"
+		},
+		{
+			"follow_symlinks": true,
+			"name": "Flixel",
+			"path": "C:/HaxeToolkit/haxe/lib/flixel/3,0,4/"
+		},
+		{
+			"follow_symlinks": true,
+			"name": "Flixel Addons",
+			"path": "C:/HaxeToolkit/haxe/lib/flixel-addons/1,0,1/"
+		},
+		{
+			"follow_symlinks": true,
+			"name": "Haxe",
+			"path": "C:/HaxeToolkit/haxe/std"
+		}
+	],
+	"settings":
+	{
+		"rulers":
+		[
+			95
+		],
+		"tab_size": 4,
+		"translate_tabs_to_spaces": false
+	}
+}
