@@ -4,8 +4,7 @@ import flash.Lib;
 import flixel.FlxGame;
 import flixel.FlxState;
 
-class GameClass extends FlxGame
-{
+class GameClass extends FlxGame {
 	var gameWidth:Int = 800; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var gameHeight:Int = 600; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var initialState:Class<FlxState> = MenuState; // The FlxState the game starts with.
@@ -17,8 +16,7 @@ class GameClass extends FlxGame
 	/**
 	 * You can pretty much ignore this logic and edit the variables above.
 	 */
-	public function new()
-	{
+	public function new() {
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
 
