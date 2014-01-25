@@ -30,9 +30,10 @@ class LevelDemo extends PlayState {
 		add(map.nonCollidableTiles);
 		add(map.collidableTiles);
 
-		var temp :Enemy = new Rat(400, 230);
+		var temp :Enemy = new Rat(400, 300);
 		enemies.add(temp);
-		enemies.add(new Rat(600, 230));
+		enemies.add(new Heavy(450, 300));
+		enemies.add(new Rogue(350, 300));
 
 		player = new Player();
 		player.possess(temp);
@@ -41,6 +42,7 @@ class LevelDemo extends PlayState {
 		add(enemies);
 		
 		Reg.playState = this;
+		Reg.floor = map.objectMap.get("floor");
 		super.create();
 	}
 	
