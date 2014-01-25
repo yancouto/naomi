@@ -10,8 +10,7 @@ import flixel.util.FlxMath;
 /**
  * A FlxState which can be used for the game's menu.
  */
-class MenuState extends FlxState
-{
+class MenuState extends FlxState {
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -24,6 +23,8 @@ class MenuState extends FlxState
 		#end
 
 		add(new FlxText(100, 100, 300, "Click Anywhere To Play", 20));
+
+		//FlxG.sound.playMusic("assets/music/stars beneath the roof.mp3", .2);
 		
 		super.create();
 	}
@@ -34,6 +35,7 @@ class MenuState extends FlxState
 	 */
 	override public function destroy() : Void {
 		super.destroy();
+		//FlxG.sound.music.fadeOut(1);
 	}
 
 	/**

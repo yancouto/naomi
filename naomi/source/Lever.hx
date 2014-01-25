@@ -19,14 +19,4 @@ class Lever extends base.Interactible {
 		on = !on;
 		animation.play(Std.string(on));
 	}
-
-	override public function draw() : Void {
-		super.draw();
-		trace('#yolo');
-	}
-
-	override public function update() : Void {
-		super.update();
-		trace('#swag');
-	}
 }

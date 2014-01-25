@@ -60,8 +60,6 @@ class PlayState extends State {
 		interactibles = new FlxTypedGroup <Interactible>();
 
 		if(map.objectMap.get("levers") != null) {
-			trace("loading stuff!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
 			for(o in map.objectMap.get("levers").members)
 				interactibles.add(new Lever(o.x, o.y));
 			map.objectMap.set("levers", null);
@@ -73,8 +71,6 @@ class PlayState extends State {
 			map.objectMap.set("buttons", null);
 			add(Button.buttons);
 		}
-
-		trace("loading stuff!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		
 		add(interactibles);
 		

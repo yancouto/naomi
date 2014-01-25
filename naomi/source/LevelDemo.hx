@@ -25,7 +25,7 @@ class LevelDemo extends PlayState {
 		#if !FLX_NO_MOUSE
 		FlxG.mouse.show();
 		#end
-
+		//FlxG.sound.playMusic("assets/music/castles in the underground.mp3", .5);
 		
 	}
 	
