@@ -10,6 +10,7 @@ import flixel.group.FlxTypedGroup;
 import base.Enemy;
 import base.Player;
 import base.PlayState;
+import base.Interactible;
 
 class LevelDemo extends PlayState {
 
@@ -26,7 +27,7 @@ class LevelDemo extends PlayState {
 
 		enemies = new EnemyGroup();
 
-		map = new TileMap("assets/data/test_map2.tmx");
+		map = new TileMap("assets/data/test_map3.tmx");
 		add(map.nonCollidableTiles);
 		add(map.collidableTiles);
 		add(map.glassTiles);
@@ -41,6 +42,14 @@ class LevelDemo extends PlayState {
 		add(player);
 
 		add(enemies);
+
+		interactibles = new FlxTypedGroup <Interactible>();
+
+		if(map.objectMap.get("levers") != null) {
+			for(o in map.objectMap.get("levers").members)
+				interactibles.add(new Lever(o.x, o.y));
+			map.objectMap.set("levers", null);
+		}
 		
 		Reg.playState = this;
 		Reg.floor = map.objectMap.get("floor");

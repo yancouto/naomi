@@ -8,4 +8,5 @@ class PlayState extends State {
 	public var map : TileMap;
 	public var enemies : EnemyGroup;
 	public var player : Player;
+	public var interactibles : FlxTypedGroup<Interactible>;
 }

@@ -54,12 +54,18 @@ class Player extends FlxBasic {
 			return;
 		}
 		if(controlled == null) return;
+		
 		if(FlxG.keyboard.anyPressed(['A', 'LEFT']))
 			controlled.walkLeft();
 		else if(FlxG.keyboard.anyPressed(['D', 'RIGHT']))
 			controlled.walkRight();
+		
 		if(FlxG.keyboard.anyJustPressed(['W', 'UP']))
 			controlled.jump();
+
+		if(FlxG.keyboard.justPressed('E')) {
+			FlxG.overlap(Reg.playState.interactibles, this, Interactible.doInteraction);
+		}
 
 		if(FlxG.mouse.justPressed) {
 			soulShot = new SoulShot(controlled.x, controlled.y);
@@ -90,7 +96,7 @@ private class SoulShot extends FlxSprite {
 
 	public function new(x : Float, y : Float) {
 		super(x, y);
-		makeGraphic(16, 16, 0xff00aa55);
+		loadGraphic("assets/images/soul.png", false);
 		velocity.set(FlxG.mouse.x - x, FlxG.mouse.y - y).normalize().mult(base_speed);
 		var map = Reg.playState.map.objectMap;
 		mirrorUp = map.get("mirrorUp");
