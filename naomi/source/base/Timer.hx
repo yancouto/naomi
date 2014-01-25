@@ -47,6 +47,10 @@ class Timer {
 		timers = timers.filter(isAlive);
 	}
 
+	public static function destroy() : Void {
+		timers = new List <Timer>();
+	}
+
 	static function __init__()
 		timers = new List <Timer>();
 

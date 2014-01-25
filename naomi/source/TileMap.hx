@@ -6,6 +6,7 @@ import flixel.FlxObject;
 import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.tile.FlxTilemap;
+import flixel.FlxG;
 
 typedef ObjectGroup = FlxTypedGroup<FlxObject>;
 
@@ -24,13 +25,18 @@ class TileMap {
 		nonCollidableTiles = new ObjectGroup();
 		collidableTiles = new ObjectGroup();
 		glassTiles = new ObjectGroup();
+		FlxG.worldBounds.set(0, 0, tiledMap.width * tiledMap.tileWidth, tiledMap.height * tiledMap.tileHeight);
 		for(layer in tiledMap.layers) {
 			var tileSetName : String = layer.properties.get("tileset");
 			var tileSet : TiledTileSet = tiledMap.getTileSet(tileSetName);
 			var map = new FlxTilemap();
 			map.widthInTiles = tiledMap.width;
 			map.heightInTiles = tiledMap.height;
-			map.loadMap(layer.tileArray, "assets/tilesets/" + tileSetName + ".png", tileSet.tileWidth, tileSet.tileHeight, FlxTilemap.OFF, tileSet.firstGID);
+			map.loadMap(layer.tileArray, "assets/tilesets/" + tileSetName + ".png", tileSet.tileWidth, tileSet.tileHeight, FlxTilemap.OFF, tileSet.firstGID, 1, 1);
+			if(layer.properties.contains("parallax")) {
+				var v : Float = Std.parseFloat(layer.properties.get("parallax"));
+				map.scrollFactor.set(v, v);
+			}
 			if(StringTools.startsWith(layer.name, "glass"))
 				glassTiles.add(map);
 			else if(layer.properties.contains("nocollides"))

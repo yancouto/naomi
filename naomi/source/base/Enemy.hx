@@ -50,7 +50,14 @@ class Enemy extends FlxSprite {
 			idle = true;
 			animation.play("idle");
 		}
+		if(jumps > 0 && jumpCount == 0 && velocity.y != 8)
+			jumpCount = 1;
 		if(jumps > 0 && jumpCount > 0 && velocity.y == 8 /* MAGIC NUMBER */ && overlaps(Reg.floor)) 
 			jumpCount = 0;
+	}
+
+	override public function kill() : Void {
+		super.kill();
+		FlxG.resetState();
 	}
 }

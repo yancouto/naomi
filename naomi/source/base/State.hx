@@ -14,6 +14,11 @@ class State extends FlxState {
 		#end
 	}
 
+	override public function destroy() : Void {
+		Timer.destroy();
+		super.destroy();
+	}
+
 	public override function update() {
 		Timer.updateTimers(FlxG.elapsed);
 		super.update();
