@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="blocks" tilewidth="64" tileheight="64">
+  <image source="test_tilemap.png" width="256" height="256"/>
+ </tileset>
+ <layer name="background" width="20" height="20">
+  <properties>
+   <property name="nocollides" value="true"/>
+   <property name="tileset" value="blocks"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYKAtYCUTj5pHG/NGwSgYBaOAWgAAEJ0BXw==
+  </data>
+ </layer>
+ <layer name="foreground" width="20" height="20">
+  <properties>
+   <property name="tileset" value="blocks"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYEAAFiBmIhOzMGACmBgzFjlCgJrmMRNhHjpG148ujs88Qm6hlnnY3A0zE5d5jGRiYvw2CkbBKBhZAABEVQCi
+  </data>
+ </layer>
+</map>
