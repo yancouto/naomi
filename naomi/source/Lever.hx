@@ -2,9 +2,10 @@ package;
 
 import flixel.FlxSprite;
 import base.Enemy;
+import base.Circuitry;
 
-class Lever extends base.Interactible {
-	public var on : Bool;
+class Lever extends base.Interactible implements Circuitry {
+	public var state : Bool;
 
 	public function new(x : Float, y : Float) {
 		super(x, y, .2);
@@ -12,11 +13,11 @@ class Lever extends base.Interactible {
 		animation.add("false", [0]);
 		animation.add("true", [1]);
 		animation.play("false");
-		on = false;
+		state = false;
 	}
 
 	override public function interact(e : Enemy) : Void {
-		on = !on;
-		animation.play(Std.string(on));
+		state = !state;
+		animation.play(Std.string(state));
 	}
 }

@@ -5,10 +5,11 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.group.FlxTypedGroup;
 import base.Enemy;
+import base.Circuitry;
 
-class Button extends FlxSprite {
-	public var state : Bool;
+class Button extends FlxSprite implements Circuitry {
 	public static var buttons : FlxTypedGroup<Button>;
+	public var state : Bool;
 
 	public function new(x : Float, y : Float) {
 		super(x, y);

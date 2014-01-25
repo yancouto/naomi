@@ -76,4 +76,15 @@
  <objectgroup color="#550000" name="playerSpawn" width="54" height="24">
   <object x="670" y="807" width="69" height="144"/>
  </objectgroup>
+ <objectgroup name="bearTraps" width="54" height="24">
+  <object x="2048" y="840" width="55" height="44"/>
+  <object x="1739" y="713" width="107" height="44"/>
+  <object x="1356" y="837" width="101" height="44"/>
+ </objectgroup>
+ <objectgroup name="fireTraps" width="54" height="24">
+  <object x="2361" y="581" width="59" height="36"/>
+  <object x="2279" y="584" width="53" height="35"/>
+  <object x="2200" y="585" width="52" height="35"/>
+  <object x="2120" y="584" width="61" height="36"/>
+ </objectgroup>
 </map>

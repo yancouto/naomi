@@ -72,7 +72,22 @@ class PlayState extends State {
 			map.objectMap.set("buttons", null);
 			add(Button.buttons);
 		}
+
+		if(map.objectMap.get("bearTraps") != null) {
+			Trap.traps = new FlxTypedGroup <Trap>();
+			for(o in map.objectMap.get("bearTraps").members)
+				Trap.traps.add(new BearTrap(o.x, o.y));
+			map.objectMap.set("bearTraps", null);
+		}
+
+		if(map.objectMap.get("fireTraps") != null) {
+			if(Trap.traps == null) Trap.traps = new FlxTypedGroup <Trap>();
+			for(o in map.objectMap.get("fireTraps").members)
+				Trap.traps.add(new FireTrap(o.x, o.y));
+			map.objectMap.set("fireTraps", null);
+		}
 		
+		if(Trap.traps != null) add(Trap.traps);
 		add(interactibles);
 		
 		Reg.floor = map.objectMap.get("floor");
