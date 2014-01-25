@@ -103,5 +103,11 @@ mais específicos como espelhos que refletem sua alma ou paredes que o jogador n
 		-Mantém seu comando de ativo somente enquanto tiver alguem sobre eles.
 		-Podem ser de tamanho grande, somente podendo ser apertadas por pesos grandes /* a decidir */
 
+	LEVERS:
+
+		-São ativadas e possuem dois estados (on/off)
+		-Permanecem em seu estado
+		-Só podem ser ativadas por humanos /* a decidir */
+
 	
 
