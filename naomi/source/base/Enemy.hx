@@ -2,6 +2,7 @@ package base;
 
 import flixel.FlxSprite;
 import flixel.FlxObject;
+import flixel.FlxG;
 
 class Enemy extends FlxSprite {
 	private var base_speed : Float;

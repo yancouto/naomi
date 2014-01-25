@@ -4,20 +4,41 @@ import flixel.FlxBasic;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.FlxCamera;
+import flixel.util.FlxSpriteUtil;
+import base.Timer;
+import base.Healthbar;
+
 using base.Utils;
 
 class Player extends FlxBasic {
 	public var controlled(default, null) : Enemy;
+	
 	private var soulShot : SoulShot;
+	private var decay_bar : Healthbar;
+	private var decay : Timer;
 
 	public function new() {
 		super();
 		controlled = null;
 		soulShot = null;
+
+		decay_bar = new Healthbar(controlled);
+		decay = new Timer({timeToSet: 0.25, callback: function(self : Timer) {
+				if(controlled == null) return;
+				
+				controlled.hurt(1);
+				decay_bar.refresh();
+			}, repeats: true, running: false});
 	}
 
 	public function possess(enemy : Enemy) : Void {
 		controlled = enemy;
+
+		decay_bar.owner = controlled;
+
+		decay.running = true;
+		decay.reset();
+
 		FlxG.camera.follow(controlled, FlxCamera.STYLE_PLATFORMER, 5);
 		// more stuff here
 	}
@@ -48,8 +69,15 @@ class Player extends FlxBasic {
 
 	override public function draw() : Void {
 		super.draw();
+		if(controlled != null)
+			decay_bar.draw();
 		if(soulShot != null)
 			soulShot.draw();
+	}
+
+	override public function destroy() : Void {
+		decay.delete = true;
+		super.destroy();
 	}
 }
 

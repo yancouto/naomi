@@ -22,6 +22,8 @@ class Timer {
 		timers.add(this);
 	}
 
+	public function reset() : Void currentTime = 0;
+
 	public static function register(t : Timer) : Void {
 		if(!t.delete) return;
 		t.delete = false;
