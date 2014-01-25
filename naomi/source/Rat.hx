@@ -12,5 +12,6 @@ class Rat extends Enemy {
 		animation.play("idle");
 		facing = FlxObject.RIGHT;
 		base_speed = 200;
+		jumps = 0;
 	}
 }

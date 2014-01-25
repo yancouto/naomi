@@ -11,6 +11,8 @@ import base.PlayState;
 class Reg {
 
 	static public var playState : PlayState;
+	static public var floor : TileMap.ObjectGroup; //ugly?
+	
 	/**
 	 * Generic levels Array that can be used for cross-state stuff.
 	 * Example usage: Storing the levels of a platformer.

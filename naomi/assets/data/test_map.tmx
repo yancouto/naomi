@@ -20,4 +20,14 @@
    eJxjYEAAFiBmIhOzMGACmBgzFjlCgJrmMRNhHjpG148ujs88Qm6hlnnY3A0zE5d5jGRiYvw2CkbBKBhZAABEVQCi
   </data>
  </layer>
+ <objectgroup name="floor" width="20" height="20">
+  <object x="259" y="385" width="444" height="15"/>
+  <object x="701" y="319" width="67" height="15"/>
+  <object x="769" y="256" width="63" height="11"/>
+  <object x="831" y="191" width="195" height="16"/>
+  <object x="1024" y="317" width="64" height="17"/>
+  <object x="1088" y="128" width="63" height="13"/>
+  <object x="383" y="189" width="255" height="13"/>
+  <object x="1089" y="385" width="63" height="13"/>
+ </objectgroup>
 </map>
