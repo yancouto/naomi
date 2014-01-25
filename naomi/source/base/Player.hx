@@ -93,10 +93,10 @@ class Player extends FlxBasic {
 
 private class SoulShot extends FlxSprite {
 	private static inline var base_speed : Float = 600;
-	private var mirrorUp : TileMap.ObjectGroup;
-	private var mirrorLeft : TileMap.ObjectGroup;
-	private var mirrorRight : TileMap.ObjectGroup;
-	private var mirrorDown : TileMap.ObjectGroup;
+	private var mirrorUp : TileMap.PObjectGroup;
+	private var mirrorLeft : TileMap.PObjectGroup;
+	private var mirrorRight : TileMap.PObjectGroup;
+	private var mirrorDown : TileMap.PObjectGroup;
 
 	public function new(x : Float, y : Float) {
 		super(x, y);
@@ -104,13 +104,13 @@ private class SoulShot extends FlxSprite {
 		velocity.set(FlxG.mouse.x - x, FlxG.mouse.y - y).normalize().mult(base_speed);
 		var map = Reg.playState.map.objectMap;
 		mirrorUp = map.get("mirrorUp");
-		if(mirrorUp == null) mirrorUp = new TileMap.ObjectGroup();
+		if(mirrorUp == null) mirrorUp = new TileMap.PObjectGroup();
 		mirrorLeft = map.get("mirrorLeft");
-		if(mirrorLeft == null) mirrorLeft = new TileMap.ObjectGroup();
+		if(mirrorLeft == null) mirrorLeft = new TileMap.PObjectGroup();
 		mirrorRight = map.get("mirrorRight");
-		if(mirrorRight == null) mirrorRight = new TileMap.ObjectGroup();
+		if(mirrorRight == null) mirrorRight = new TileMap.PObjectGroup();
 		mirrorDown = map.get("mirrorDown");
-		if(mirrorDown == null) mirrorDown = new TileMap.ObjectGroup();
+		if(mirrorDown == null) mirrorDown = new TileMap.PObjectGroup();
 	}
 
 	override public function update() : Void {

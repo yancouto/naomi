@@ -12,7 +12,7 @@ import base.Player;
 class Reg {
 
 	static public var playState : PlayState;
-	static public var floor : TileMap.ObjectGroup; //ugly?
+	static public var floor : TileMap.PObjectGroup; //ugly?
 	static public var player : Player;
 	
 	/**

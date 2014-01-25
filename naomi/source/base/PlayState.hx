@@ -96,6 +96,8 @@ class PlayState extends State {
 		
 		if(Trap.traps != null) add(Trap.traps);
 		add(interactibles);
+
+		Rogue.wallGrip = map.objectMap.get("wallGrip");
 		
 		Reg.floor = map.objectMap.get("floor");
 		Reg.player = player;

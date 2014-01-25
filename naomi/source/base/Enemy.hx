@@ -26,13 +26,13 @@ class Enemy extends FlxSprite {
 
 	/* Override the following: */
 	public function walkRight() : Void {
-		velocity.x = base_speed;
+		acceleration.x += drag.x;
 		animation.play("walking");
 		idle = false;
 		facing = FlxObject.RIGHT;
 	}
 	public function walkLeft() : Void {
-		velocity.x = -base_speed;
+		acceleration.x -= drag.x;
 		animation.play("walking");
 		idle = false;
 		facing = FlxObject.LEFT;
@@ -40,12 +40,14 @@ class Enemy extends FlxSprite {
 	public function jump() : Void {
 		if(jumpCount < jumps) {
 			jumpCount++;
+			y -= 1;
 			velocity.y = -jumpSpeed;
 		}
 	}
 
 	override public function update() : Void {
 		super.update();
+		acceleration.x = 0;
 		if(!idle && velocity.x == 0) {
 			idle = true;
 			animation.play("idle");

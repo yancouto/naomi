@@ -67,9 +67,7 @@
  <objectgroup color="#760ca4" name="heavySpawns" width="54" height="24">
   <object x="832" y="681" width="94" height="146"/>
  </objectgroup>
- <objectgroup color="#00aa00" name="rogueSpawns" width="54" height="24">
-  <object x="953" y="713" width="70" height="113"/>
- </objectgroup>
+ <objectgroup color="#00aa00" name="rogueSpawns" width="54" height="24"/>
  <objectgroup color="#ffaa7f" name="ratSpawns" width="54" height="24">
   <object x="1231" y="794" width="79" height="32"/>
  </objectgroup>
@@ -92,5 +90,9 @@
   <object x="1123" y="840" width="15" height="107"/>
   <object x="1151" y="840" width="15" height="107"/>
   <object x="1177" y="836" width="21" height="107"/>
+ </objectgroup>
+ <objectgroup color="#ff557f" name="wallGrip" width="54" height="24">
+  <object x="631" y="573" width="11" height="308"/>
+  <object x="2495" y="572" width="8" height="263"/>
  </objectgroup>
 </map>

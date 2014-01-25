@@ -17,5 +17,6 @@ class Rat extends Enemy {
 		health = 50;
 	
 		mass = 1;
+		maxVelocity.x = 200;
 	}
 }

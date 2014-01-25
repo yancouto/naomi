@@ -7,8 +7,10 @@ import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.tile.FlxTilemap;
 import flixel.FlxG;
+import base.Object;
 
 typedef ObjectGroup = FlxTypedGroup<FlxObject>;
+typedef PObjectGroup = FlxTypedGroup<Object>;
 
 /*
 *	My own TileMap with cool stuff.
@@ -18,7 +20,7 @@ class TileMap {
 	public var nonCollidableTiles : ObjectGroup;
 	public var collidableTiles : ObjectGroup;
 	public var glassTiles : ObjectGroup;
-	public var objectMap : Map<String, ObjectGroup>;
+	public var objectMap : Map<String, PObjectGroup>;
 
 	public function new(data : Dynamic) {
 		var tiledMap = new TiledMap(data);
@@ -44,12 +46,12 @@ class TileMap {
 			else
 				collidableTiles.add(map);
 		}
-		objectMap = new Map <String, ObjectGroup>();
+		objectMap = new Map <String, PObjectGroup>();
 		for(group in tiledMap.objectGroups) {
-			var g = new ObjectGroup();
+			var g = new PObjectGroup();
 			objectMap.set(group.name, g);
 			for(obj in group.objects) 
-				g.add(new FlxObject(obj.x, obj.y, obj.width, obj.height));
+				g.add(new Object(obj.x, obj.y, obj.width, obj.height, obj.custom.keys));
 		}
 	}
 }
