@@ -16,8 +16,10 @@ class Rogue extends Enemy {
 		health = 100;
 
 		jumps = 2;
-		jumpSpeed = 250;
+		jumpSpeed = 300;
 
 		base_speed = 120;
+	
+		mass = 10;
 	}
 }

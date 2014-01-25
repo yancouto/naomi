@@ -15,5 +15,7 @@ class Rat extends Enemy {
 		jumps = 0;
 
 		health = 50;
+	
+		mass = 1;
 	}
 }

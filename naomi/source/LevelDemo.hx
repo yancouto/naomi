@@ -27,7 +27,7 @@ class LevelDemo extends PlayState {
 
 		enemies = new EnemyGroup();
 
-		map = new TileMap("assets/data/test_map3.tmx");
+		map = new TileMap("assets/data/test_map2.tmx");
 		add(map.nonCollidableTiles);
 		add(map.collidableTiles);
 		add(map.glassTiles);
@@ -35,7 +35,7 @@ class LevelDemo extends PlayState {
 		var temp :Enemy = new Rat(400, 200);
 		enemies.add(temp);
 		enemies.add(new Heavy(450, 200));
-		enemies.add(new Rogue(350, 200));
+		enemies.add(new Rogue(350, 300));
 
 		player = new Player();
 		player.possess(temp);
@@ -50,6 +50,11 @@ class LevelDemo extends PlayState {
 				interactibles.add(new Lever(o.x, o.y));
 			map.objectMap.set("levers", null);
 		}
+
+		interactibles.add(new Button(200, 100));
+		interactibles.add(new Lever(100, 100));
+
+		add(interactibles);
 		
 		Reg.playState = this;
 		Reg.floor = map.objectMap.get("floor");

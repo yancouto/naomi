@@ -2,6 +2,7 @@ package;
 
 import flixel.util.FlxSave;
 import base.PlayState;
+import base.Player;
 
 /**
  * Handy, pre-built Registry class that can be used to store 
@@ -12,6 +13,7 @@ class Reg {
 
 	static public var playState : PlayState;
 	static public var floor : TileMap.ObjectGroup; //ugly?
+	static public var player : Player;
 	
 	/**
 	 * Generic levels Array that can be used for cross-state stuff.

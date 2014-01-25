@@ -64,7 +64,7 @@ class Player extends FlxBasic {
 			controlled.jump();
 
 		if(FlxG.keyboard.justPressed('E')) {
-			FlxG.overlap(Reg.playState.interactibles, this, Interactible.doInteraction);
+			FlxG.overlap(Reg.playState.interactibles, controlled, Interactible.doInteraction);
 		}
 
 		if(FlxG.mouse.justPressed) {

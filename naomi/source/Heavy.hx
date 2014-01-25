@@ -19,5 +19,7 @@ class Heavy extends Enemy {
 		jumpSpeed = 270;
 
 		base_speed = 80;
+
+		mass = 20;
 	}
 }
