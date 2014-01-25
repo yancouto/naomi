@@ -27,7 +27,7 @@ class TileMap {
 			var map = new FlxTilemap();
 			map.widthInTiles = tiledMap.width;
 			map.heightInTiles = tiledMap.height;
-			map.loadMap(layer.tileArray, "assets/" + tileSet.imageSource, tileSet.tileWidth, tileSet.tileHeight, FlxTilemap.OFF, tileSet.firstGID);
+			map.loadMap(layer.tileArray, "assets/tilesets/" + tileSet.imageSource, tileSet.tileWidth, tileSet.tileHeight, FlxTilemap.OFF, tileSet.firstGID);
 			if(layer.properties.contains("nocollides"))
 				nonCollidableTiles.add(map);
 			else

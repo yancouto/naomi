@@ -6,7 +6,6 @@ import flixel.group.FlxTypedGroup;
 
 // More stuff here later, probably.
 class State extends FlxState {
-	public var interactibles : FlxTypedGroup<Interactible>;
 
 	public override function draw() {
 		super.draw();
