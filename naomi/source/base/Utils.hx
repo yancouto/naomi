@@ -2,6 +2,7 @@ package base;
 
 import flixel.FlxSprite;
 import flixel.tweens.FlxTween;
+import flixel.util.FlxPoint;
 
 class Utils {
 	public static function fadeOut(t : FlxSprite, delay : Float, duration : Float, destroyAfter : Bool = false) : FlxSprite {
@@ -16,4 +17,17 @@ class Utils {
 		else Timer.callIn(delay, function() { FlxTween.color(duration, t.color, t.color, 0, 1, t); });
 		return t; // If you like to chain stuff
 	}
+
+	public static inline function length(p : FlxPoint) : Float
+		return Math.sqrt(p.x*p.x + p.y*p.y);
+
+	public static function mult(p : FlxPoint, v : Float) : FlxPoint {
+		p.x *= v;
+		p.y *= v;
+		return p;
+	}
+
+	public static function normalize(p : FlxPoint) : FlxPoint
+		return mult(p, 1/length(p));
+	
 }

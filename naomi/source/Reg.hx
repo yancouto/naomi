@@ -1,14 +1,16 @@
 package;
 
 import flixel.util.FlxSave;
+import base.PlayState;
 
 /**
  * Handy, pre-built Registry class that can be used to store 
  * references to objects and other things for quick-access. Feel
  * free to simply ignore it or change it in any way you like.
  */
-class Reg
-{
+class Reg {
+
+	static public var playState : PlayState;
 	/**
 	 * Generic levels Array that can be used for cross-state stuff.
 	 * Example usage: Storing the levels of a platformer.

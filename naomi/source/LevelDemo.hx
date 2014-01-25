@@ -9,15 +9,10 @@ import flixel.util.FlxMath;
 import flixel.group.FlxTypedGroup;
 import base.Enemy;
 import base.Player;
+import base.PlayState;
 
-/**
- * A FlxState which can be used for the actual gameplay.
- */
-class PlayState extends FlxState {
-	public var map : TileMap;
-	public var enemies : FlxTypedGroup<Enemy>;
-	public var player : Player;
-
+class LevelDemo extends PlayState {
+	
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -29,7 +24,7 @@ class PlayState extends FlxState {
 		FlxG.mouse.show();
 		#end
 
-		enemies = new FlxTypedGroup <Enemy>();
+		enemies = new EnemyGroup();
 
 		map = new TileMap("assets/data/test_map.tmx");
 		add(map.nonCollidableTiles);
@@ -37,6 +32,7 @@ class PlayState extends FlxState {
 
 		var temp :Enemy = new Rat(400, 230);
 		enemies.add(temp);
+		enemies.add(new Rat(600, 230));
 
 		player = new Player();
 		player.possess(temp);
@@ -44,6 +40,7 @@ class PlayState extends FlxState {
 
 		add(enemies);
 		
+		Reg.playState = this;
 		super.create();
 	}
 	
