@@ -12,7 +12,7 @@ import base.Player;
 import base.PlayState;
 
 class LevelDemo extends PlayState {
-	
+
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -26,14 +26,15 @@ class LevelDemo extends PlayState {
 
 		enemies = new EnemyGroup();
 
-		map = new TileMap("assets/data/test_map.tmx");
+		map = new TileMap("assets/data/test_map2.tmx");
 		add(map.nonCollidableTiles);
 		add(map.collidableTiles);
+		add(map.glassTiles);
 
-		var temp :Enemy = new Rat(400, 300);
+		var temp :Enemy = new Rat(400, 200);
 		enemies.add(temp);
-		enemies.add(new Heavy(450, 300));
-		enemies.add(new Rogue(350, 300));
+		enemies.add(new Heavy(450, 200));
+		enemies.add(new Rogue(350, 200));
 
 		player = new Player();
 		player.possess(temp);
@@ -59,6 +60,7 @@ class LevelDemo extends PlayState {
 	 */
 	override public function update() : Void {
 		FlxG.collide(enemies, map.collidableTiles);
+		FlxG.collide(enemies, map.glassTiles);
 		super.update();
 	}	
 }

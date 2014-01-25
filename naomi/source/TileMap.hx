@@ -16,19 +16,24 @@ typedef ObjectGroup = FlxTypedGroup<FlxObject>;
 class TileMap {
 	public var nonCollidableTiles : ObjectGroup;
 	public var collidableTiles : ObjectGroup;
+	public var glassTiles : ObjectGroup;
 	public var objectMap : Map<String, ObjectGroup>;
 
 	public function new(data : Dynamic) {
 		var tiledMap = new TiledMap(data);
 		nonCollidableTiles = new ObjectGroup();
 		collidableTiles = new ObjectGroup();
+		glassTiles = new ObjectGroup();
 		for(layer in tiledMap.layers) {
-			var tileSet:TiledTileSet = tiledMap.getTileSet(layer.properties.get("tileset"));
+			var tileSetName : String = layer.properties.get("tileset");
+			var tileSet : TiledTileSet = tiledMap.getTileSet(tileSetName);
 			var map = new FlxTilemap();
 			map.widthInTiles = tiledMap.width;
 			map.heightInTiles = tiledMap.height;
-			map.loadMap(layer.tileArray, "assets/tilesets/" + tileSet.imageSource, tileSet.tileWidth, tileSet.tileHeight, FlxTilemap.OFF, tileSet.firstGID);
-			if(layer.properties.contains("nocollides"))
+			map.loadMap(layer.tileArray, "assets/tilesets/" + tileSetName + ".png", tileSet.tileWidth, tileSet.tileHeight, FlxTilemap.OFF, tileSet.firstGID);
+			if(StringTools.startsWith(layer.name, "glass"))
+				glassTiles.add(map);
+			else if(layer.properties.contains("nocollides"))
 				nonCollidableTiles.add(map);
 			else
 				collidableTiles.add(map);
