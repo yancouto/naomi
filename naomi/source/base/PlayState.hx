@@ -86,6 +86,13 @@ class PlayState extends State {
 				Trap.traps.add(new FireTrap(o.x, o.y));
 			map.objectMap.set("fireTraps", null);
 		}
+
+		if(map.objectMap.get("spikeTraps") != null) {
+			if(Trap.traps == null) Trap.traps = new FlxTypedGroup <Trap>();
+			for(o in map.objectMap.get("spikeTraps").members)
+				Trap.traps.add(new SpikeTrap(o.x, o.y));
+			map.objectMap.set("spikeTraps", null);
+		}
 		
 		if(Trap.traps != null) add(Trap.traps);
 		add(interactibles);

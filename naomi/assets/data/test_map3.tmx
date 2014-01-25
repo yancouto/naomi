@@ -87,4 +87,10 @@
   <object x="2200" y="585" width="52" height="35"/>
   <object x="2120" y="584" width="61" height="36"/>
  </objectgroup>
+ <objectgroup name="spikeTraps" width="54" height="24">
+  <object x="1103" y="837" width="12" height="113"/>
+  <object x="1123" y="840" width="15" height="107"/>
+  <object x="1151" y="840" width="15" height="107"/>
+  <object x="1177" y="836" width="21" height="107"/>
+ </objectgroup>
 </map>
