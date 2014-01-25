@@ -11,7 +11,7 @@ import base.Healthbar;
 using base.Utils;
 
 class Player extends FlxBasic {
-	public var controlled(default, null) : Enemy;
+	public var controlled(default, default) : Enemy;
 	
 	private var soulShot : SoulShot;
 	private var decay_bar : Healthbar;
@@ -24,8 +24,12 @@ class Player extends FlxBasic {
 
 		decay_bar = new Healthbar(controlled);
 		decay = new Timer({timeToSet: 0.25, callback: function(self : Timer) {
-				if(controlled == null) return;
-				
+				if(controlled == null) {
+					self.running = false;
+					self.reset();
+					return;
+				}
+
 				controlled.hurt(1);
 				decay_bar.refresh();
 			}, repeats: true, running: false});

@@ -16,11 +16,13 @@ class Healthbar extends FlxSprite {
 	}
 
 	public function refresh() {
+		if(Reg.player.controlled == null) return;
+
 		var _width = 2.5*owner.health;
 
 		makeGraphic(Std.int(_width), 50, 0xff32cd32); //CRASHING WHY
 		x = GameClass.gameWidth/2 - _width/2;
 	}
 
-	override public function draw() if(owner!=null) {super.draw();}
+	override public function draw() if(Reg.player.controlled!=null) super.draw();
 }

@@ -58,6 +58,10 @@ class Enemy extends FlxSprite {
 
 	override public function kill() : Void {
 		super.kill();
+
+		if(this == Reg.player.controlled)
+			Reg.player.controlled = null;
+
 		FlxG.resetState();
 	}
 }

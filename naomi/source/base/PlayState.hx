@@ -66,6 +66,7 @@ class PlayState extends State {
 		}
 
 		if(map.objectMap.get("buttons") != null) {
+			Button.buttons = new FlxTypedGroup <Button>();
 			for(o in map.objectMap.get("buttons").members)
 				Button.buttons.add(new Button(o.x, o.y));
 			map.objectMap.set("buttons", null);

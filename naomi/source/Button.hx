@@ -10,10 +10,6 @@ class Button extends FlxSprite {
 	public var state : Bool;
 	public static var buttons : FlxTypedGroup<Button>;
 
-	static function __init__() : Void {
-		buttons = new FlxTypedGroup <Button>();
-	}
-
 	public function new(x : Float, y : Float) {
 		super(x, y);
 		loadGraphic("assets/images/buttonanimation.png", true, false, 50, 10);
