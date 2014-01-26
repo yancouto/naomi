@@ -21,8 +21,8 @@ class LevelDemo extends PlayState {
 		super.loadMap("level0");
 		// Set a background color
 		FlxG.cameras.bgColor = 0xff0088ff;
-		// Show the mouse (in case it hasn't been disabled)
 
+		// Show the mouse (in case it hasn't been disabled)
 		#if !FLX_NO_MOUSE
 		FlxG.mouse.show();
 		#end

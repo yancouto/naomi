@@ -25,6 +25,7 @@ class End extends Interactible {
 	override public function interact(entity : Enemy) : Void {
 		animation.play("going_up");
 		Reg.player.controlled = null;
-		Timer.callIn(.5, function() { FlxG.switchState(Type.createInstance(Type.resolveClass(next), [])); });
+		FlxG.camera.fade(0xff000000, 4.8, false, false);
+		Timer.callIn(5, function() { FlxG.switchState(Type.createInstance(Type.resolveClass(next), [])); });
 	}
 }

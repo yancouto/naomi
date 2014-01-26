@@ -46,14 +46,22 @@
    eJzt1rEJACEMQNEM4LmP2zn6KVjJcdiIIO/BL0KalIkA4Dap9YwAAPjXf6e8OM+7E0pE/erwWbDVCxnoBOU=
   </data>
  </layer>
- <layer name="mirror_bottom" width="60" height="20">
-  <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20ND6AAAAAA4NcAEsAAAQ==
-  </data>
- </layer>
  <layer name="mirror_top" width="60" height="20">
+  <properties>
+   <property name="nocollides" value="true"/>
+   <property name="tileset" value="brick_tiles"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJztzrEJAEAIBMFry+z7r8oGTOURZmDzTQAAAIArKnlTv79gUwNdrALX
+  </data>
+ </layer>
+ <layer name="mirror_bottom" width="60" height="20">
+  <properties>
+   <property name="nocollides" value="true"/>
+   <property name="tileset" value="brick_tiles"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20ND6AAAAAA4NcAEsAAAQ==
   </data>
  </layer>
  <objectgroup color="#00aa00" name="playerSpawn" width="60" height="20">
@@ -127,10 +135,19 @@
  </objectgroup>
  <objectgroup name="fireTraps" width="60" height="20">
   <object x="1857" y="769" width="62" height="10"/>
-  <object x="1920" y="770" width="64" height="8"/>
-  <object x="1984" y="769" width="64" height="9"/>
+  <object x="1920" y="770" width="64" height="8">
+   <properties>
+    <property name="delay" value="1"/>
+   </properties>
+  </object>
+  <object x="1984" y="769" width="64" height="9">
+   <properties>
+    <property name="delay" value="2"/>
+   </properties>
+  </object>
   <object x="2112" y="768" width="63" height="7">
    <properties>
+    <property name="delay" value="4"/>
     <property name="duration" value="2"/>
    </properties>
   </object>
@@ -141,28 +158,40 @@
   </object>
   <object x="2239" y="769" width="64" height="7">
    <properties>
+    <property name="delay" value="1"/>
     <property name="duration" value="2"/>
    </properties>
   </object>
   <object x="2368" y="769" width="63" height="6">
    <properties>
+    <property name="delay" value="2"/>
     <property name="duration" value="4"/>
    </properties>
   </object>
   <object x="2432" y="767" width="64" height="9">
    <properties>
+    <property name="delay" value="3"/>
     <property name="duration" value="4"/>
    </properties>
   </object>
   <object x="2496" y="766" width="64" height="10">
    <properties>
+    <property name="delay" value="4"/>
     <property name="duration" value="4"/>
    </properties>
   </object>
   <object x="3650" y="125" width="56" height="10"/>
   <object x="3588" y="126" width="57" height="10"/>
-  <object x="3076" y="446" width="57" height="13"/>
-  <object x="3137" y="445" width="53" height="13"/>
+  <object x="3076" y="446" width="57" height="13">
+   <properties>
+    <property name="duration" value="5"/>
+   </properties>
+  </object>
+  <object x="3137" y="445" width="53" height="13">
+   <properties>
+    <property name="duration" value="5"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="bearTraps" width="60" height="20">
   <object x="1792" y="1086" width="61" height="9"/>

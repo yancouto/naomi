@@ -20,6 +20,8 @@ class Player extends FlxBasic {
 	public var decay_bar : Healthbar;
 	private var decay : Timer;
 
+	public var away(default, null) : Bool;
+
 	public function new() {
 		super();
 		controlled = null;
@@ -41,6 +43,7 @@ class Player extends FlxBasic {
 	public function possess(enemy : Enemy) : Void {
 		controlled = enemy;
 
+		away = false;
 		decay_bar.setOwner(controlled);
 
 		decay.running = true;
@@ -57,6 +60,9 @@ class Player extends FlxBasic {
 			if(!soulShot.exists) {
 				soulShot = null;
 				FlxG.camera.follow(controlled, FlxCamera.STYLE_PLATFORMER, 5);
+				
+				away = false;
+				decay.running = true;
 			}
 			return;
 		}
@@ -77,6 +83,9 @@ class Player extends FlxBasic {
 		if(FlxG.mouse.justPressed) {
 			soulShot = new SoulShot(controlled.x, controlled.y);
 			FlxG.camera.follow(soulShot, FlxCamera.STYLE_LOCKON, 5);
+			
+			decay.running = false;
+			away = true;
 		}
 	}
 
@@ -102,6 +111,7 @@ private class SoulShot extends FlxSprite {
 
 	public function new(x : Float, y : Float) {
 		super(x, y);
+
 		loadGraphic("assets/images/soulAnim2.png", true, false, 32, 32);
 		animation.add("moving", [for(i in 0...12) i], 24);
 		animation.play("moving");
