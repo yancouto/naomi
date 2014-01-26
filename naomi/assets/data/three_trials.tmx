@@ -173,7 +173,11 @@
   </object>
  </objectgroup>
  <objectgroup name="end" width="80" height="50">
-  <object x="2239" y="1671" width="129" height="123"/>
+  <object x="2239" y="1671" width="129" height="123">
+   <properties>
+    <property name="next" value="last"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="floor" width="80" height="50">
   <object x="124" y="1779" width="1279" height="18"/>

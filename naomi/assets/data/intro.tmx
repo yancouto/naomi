@@ -36,7 +36,7 @@
    <properties>
     <property name="color" value="0xff000000"/>
     <property name="size" value="20"/>
-    <property name="text" value="Welcome to Naomi. You are a bodyless soul and can project yourself onto other living beings. Use the mouse to aim and throw your soul. Be careful, you harm them while using their bodies and you die when your host dies. Change bodies to avoid that."/>
+    <property name="text" value="You are a bodyless soul and can project yourself onto other living beings. Use the mouse to aim and throw your soul. Be careful, you harm them while using their bodies and you die when your host dies. Change bodies to avoid that."/>
    </properties>
   </object>
   <object x="808" y="555" width="339" height="77">
