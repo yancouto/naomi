@@ -126,4 +126,12 @@
  <objectgroup name="breakables" width="56" height="49">
   <object x="1664" y="1408" width="128" height="64"/>
  </objectgroup>
+ <objectgroup name="text" width="56" height="49">
+  <object name="Text" x="1069" y="1201" width="183" height="83">
+   <properties>
+    <property name="size" value="20"/>
+    <property name="text" value="Hey dude!"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

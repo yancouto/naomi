@@ -2,6 +2,7 @@ package base;
 
 import flixel.group.FlxTypedGroup;
 import flixel.util.FlxPoint;
+import flixel.text.FlxText;
 
 typedef EnemyGroup = FlxTypedGroup<Enemy>;
 
@@ -124,11 +125,16 @@ class PlayState extends State {
 		}
 		add(BreakablePlatform.platforms);
 
-
 		add(Trap.traps);
 		add(interactibles);
 		add(enemies);
 		add(player.decay_bar);
+
+		if(map.objectMap.exists("text")) {
+			for(obj in map.objectMap.get("text").members)
+				add(new FlxText(obj.x, obj.y, Std.int(obj.width), obj.properties.get("text"), obj.properties.exists("size")? Std.parseInt(obj.properties.get("size")) : 12));
+			map.objectMap.remove("text");
+		}
 
 		Rogue.wallGrip = map.objectMap.get("wallGrip");
 		
