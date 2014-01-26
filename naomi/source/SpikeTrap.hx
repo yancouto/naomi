@@ -5,8 +5,10 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 
 class SpikeTrap extends Trap {
-	public function new(x : Float, y : Float) {
-		super(x, y, 999999);
+	public function new(obj : base.Object) {
+		super(obj.x, obj.y, 999999);
+		if(obj.properties.exists("angle"))
+			angle = Std.parseFloat(obj.properties.get("angle"));
 
 		loadGraphic("assets/images/spikes.png", false);
 	}

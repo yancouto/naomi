@@ -13,12 +13,17 @@ import base.PlayState;
 import base.Interactible;
 
 class LevelDemo extends PlayState {
+	public static var levelName : String;
 
+
+	static function __init__() {
+		levelName = "level0";
+	}
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create() : Void {
-		super.loadMap("three_trials");
+		super.loadMap(levelName);
 		// Set a background color
 		FlxG.cameras.bgColor = 0xff0088ff;
 
@@ -27,25 +32,6 @@ class LevelDemo extends PlayState {
 		FlxG.mouse.show();
 		#end
 
-		//FlxG.sound.playMusic("assets/music/castles in the underground.mp3", .5);
+		FlxG.sound.playMusic("assets/music/castles in the underground.mp3", .5);
 	}
-	
-	/**
-	 * Function that is called when this state is destroyed - you might want to 
-	 * consider setting all objects this state uses to null to help garbage collection.
-	 */
-	override public function destroy() : Void {
-		super.destroy();
-	}
-
-	/**
-	 * Function that is called once every frame.
-	 */
-	override public function update() : Void {
-		FlxG.collide(map.collidableTiles, enemies);
-		FlxG.collide(map.glassTiles, enemies);
-		FlxG.collide(Platform.platforms, enemies);
-		FlxG.overlap(BreakablePlatform.platforms, enemies, BreakablePlatform.manageCollision);
-		super.update();
-	}	
 }

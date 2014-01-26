@@ -21,6 +21,8 @@ class TileMap {
 	public var collidableTiles : ObjectGroup;
 	public var glassTiles : ObjectGroup;
 	public var objectMap : Map<String, PObjectGroup>;
+	public var width : Int;
+	public var height : Int;
 
 	public function new(data : Dynamic) {
 		var tiledMap = new TiledMap(data);
@@ -28,12 +30,14 @@ class TileMap {
 		collidableTiles = new ObjectGroup();
 		glassTiles = new ObjectGroup();
 		FlxG.worldBounds.set(0, 0, tiledMap.width * tiledMap.tileWidth, tiledMap.height * tiledMap.tileHeight);
+		width = tiledMap.width;
+		height = tiledMap.height;
 		for(layer in tiledMap.layers) {
 			var tileSetName : String = layer.properties.get("tileset");
 			var tileSet : TiledTileSet = tiledMap.getTileSet(tileSetName);
 			var map = new FlxTilemap();
-			map.widthInTiles = tiledMap.width;
-			map.heightInTiles = tiledMap.height;
+			map.widthInTiles = width;
+			map.heightInTiles = height;
 			map.loadMap(layer.tileArray, "assets/tilesets/" + tileSetName + ".png", tileSet.tileWidth, tileSet.tileHeight, FlxTilemap.OFF, tileSet.firstGID, 1, 1);
 			if(layer.properties.contains("parallax")) {
 				var v : Float = Std.parseFloat(layer.properties.get("parallax"));

@@ -17,6 +17,7 @@ class Healthbar extends FlxSprite {
 
 	public function setOwner(_owner : FlxObject) : Void {
 		owner = _owner;
+		if(Std.is(owner, IntroLevel.Flower)) return;
 		loadGraphic("assets/images/" + Type.getClassName(Type.getClass(owner)) + "_meter.png", false);
 		x = GameClass.gameWidth/2 - width/2;
 		healthSprite.makeGraphic(Std.int(2*owner.health), 33);

@@ -15,22 +15,43 @@ class FireTrap extends Trap {
 		animation.add("on", [1, 2, 3], 12);
 		animation.add("off", [0]);
 		animation.play("off");
-		offset.set(12, 18);
-		setSize(0, 0);
 
 		var timeOn = obj.properties.exists("timeOn")? Std.parseFloat(obj.properties.get("timeOn")) : 3;
 		var timeOff = obj.properties.exists("timeOff")? Std.parseFloat(obj.properties.get("timeOff")) : 3;
 		var delay = obj.properties.exists("delay")? Std.parseFloat(obj.properties.get("delay")) : 0;
+		var rWidth = 37, rHeight = 281;
+		var side = obj.properties.exists("side")? obj.properties.get("side") : "down";
+		origin.set(0, 0);
+		if(side == "down") {
+			offset.set(12, 18);
+		} else if(side == 'up') {
+			angle = 180;
+			y -= height;
+			y += obj.height;
+			offset.set(12 - width, -height);
+		} else if(side == 'right') {
+			angle = -90;
+			rWidth = 281; rHeight = 37;
+			offset.set(18, 12 - width);
+		} else {
+			angle = 90;
+			rWidth = 281; rHeight = 37;
+			x -= height;
+			x += obj.width;
+			offset.set(-height, 12);
+		}
+		setSize(0, 0);
+
 
 		Timer.callIn(delay, function() {
-			cooldown = new Timer({timeToSet: timeOn, 
+			cooldown = new Timer({timeToSet: timeOff, 
 				callback: function(self : Timer) {
 					state = !state;
 					self.timeToSet = self.timeToSet == timeOn? timeOff : timeOn;
 					
 					if(state) {
 						animation.play("on");
-						setSize(37, 281);
+						setSize(rWidth, rHeight);
 					}
 					else {
 						animation.play("off");

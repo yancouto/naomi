@@ -18,7 +18,7 @@ class Player extends FlxBasic {
 	
 	private var soulShot : SoulShot;
 	public var decay_bar : Healthbar;
-	private var decay : Timer;
+	public var decay : Timer;
 
 	public var away(default, null) : Bool;
 
@@ -141,7 +141,7 @@ private class SoulShot extends FlxSprite {
 	override public function update() : Void {
 		super.update();
 		trail.update();
-		if(overlaps(Reg.playState.map.collidableTiles) || overlaps(Platform.platforms))
+		if(overlaps(Reg.playState.map.collidableTiles) || overlaps(Platform.platforms) || overlaps(Trap.traps))
 			destroy();
 		FlxG.overlap(this, Reg.playState.enemies, function(a, b) { possiblePossession(b); });
 		if(!exists) return;

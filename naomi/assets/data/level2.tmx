@@ -75,7 +75,11 @@
   </object>
  </objectgroup>
  <objectgroup name="end" width="60" height="20">
-  <object x="2561" y="547" width="123" height="124"/>
+  <object x="2561" y="547" width="123" height="124">
+   <properties>
+    <property name="next" value="level_1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="otherCollidables" width="60" height="20">
   <object x="2309" y="512" width="632" height="29"/>

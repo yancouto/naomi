@@ -3,6 +3,9 @@ package base;
 import flixel.group.FlxTypedGroup;
 import flixel.util.FlxPoint;
 import flixel.text.FlxText;
+import flixel.FlxG;
+import flixel.group.FlxGroup;
+import flixel.FlxSprite;
 
 typedef EnemyGroup = FlxTypedGroup<Enemy>;
 
@@ -11,10 +14,13 @@ class PlayState extends State {
 	public var enemies : EnemyGroup;
 	public var player : Player;
 	public var interactibles : FlxTypedGroup<Interactible>;
+	public var paused : Bool;
+	public var pauseMenu : FlxGroup;
 
 	public function loadMap(tileMapName : String) : Void {
 		super.create();
 		Reg.playState = this;
+		paused = false;
 
 		enemies = new EnemyGroup();
 		interactibles = new FlxTypedGroup <Interactible>();
@@ -27,6 +33,14 @@ class PlayState extends State {
 			}
 			map.objectMap.remove("otherCollidables");
 		}
+
+		if(map.objectMap.exists("levelInfo")) {
+			var ps = map.objectMap.get("levelInfo").members[0].properties;
+			var back = new FlxSprite(500, 0).loadGraphic("assets/images/" + ps.get("background"), false);
+			back.scrollFactor.y = 1;
+			back.scrollFactor.x = .8;
+			add(back);
+		}
 		add(map.nonCollidableTiles);
 		add(map.collidableTiles);
 		add(map.glassTiles);
@@ -38,8 +52,10 @@ class PlayState extends State {
 		}
 
 		player = new Player();
-		add(new Beginning(map.objectMap.get("playerSpawn").members[0]));
-		map.objectMap.remove("playerSpawn");
+		if(map.objectMap.exists("playerSpawn")) {
+			add(new Beginning(map.objectMap.get("playerSpawn").members[0]));
+			map.objectMap.remove("playerSpawn");
+		}
 		add(player);
 
 		if(map.objectMap.exists("ratSpawns")) {
@@ -92,7 +108,7 @@ class PlayState extends State {
 
 		if(map.objectMap.get("spikeTraps") != null) {
 			for(o in map.objectMap.get("spikeTraps").members)
-				Trap.traps.add(new SpikeTrap(o.x, o.y));
+				Trap.traps.add(new SpikeTrap(o));
 			map.objectMap.remove("spikeTraps");
 		}		
 
@@ -136,8 +152,12 @@ class PlayState extends State {
 		add(player.decay_bar);
 
 		if(map.objectMap.exists("text")) {
-			for(obj in map.objectMap.get("text").members)
-				add(new FlxText(obj.x, obj.y, Std.int(obj.width), obj.properties.get("text"), obj.properties.exists("size")? Std.parseInt(obj.properties.get("size")) : 12));
+			for(obj in map.objectMap.get("text").members) {
+				var t = new FlxText(obj.x, obj.y, Std.int(obj.width), obj.properties.get("text"), obj.properties.exists("size")? Std.parseInt(obj.properties.get("size")) : 12);
+				if(obj.properties.exists("color"))
+					t.color = Std.parseInt(obj.properties.get("color"));
+				add(t);
+			}
 			map.objectMap.remove("text");
 		}
 
@@ -145,5 +165,30 @@ class PlayState extends State {
 		
 		Reg.floor = map.objectMap.get("floor");
 		Reg.player = player;
+
+		pauseMenu = new FlxGroup();
+		pauseMenu.add(new FlxText(100, 100, 100, "PAUSED", 20));
+	}
+
+	override public function update() : Void {
+		if(FlxG.keyboard.anyJustPressed(['P', 'ESCAPE']))
+			FlxG.paused = !FlxG.paused;
+		if(FlxG.paused) {
+			pauseMenu.update();
+			return;
+		}
+
+		FlxG.collide(map.collidableTiles, enemies);
+		FlxG.collide(map.glassTiles, enemies);
+		FlxG.collide(Platform.platforms, enemies);
+		FlxG.overlap(BreakablePlatform.platforms, enemies, BreakablePlatform.manageCollision);
+
+		super.update();
+	}
+
+	override public function draw() : Void {
+		super.draw();
+		if(FlxG.paused)
+			pauseMenu.draw();
 	}
 }

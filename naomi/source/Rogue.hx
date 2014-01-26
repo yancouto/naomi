@@ -16,7 +16,8 @@ class Rogue extends Enemy {
 		loadGraphic("assets/images/rogueeanimation.png", true, true, 42, 84);
 		animation.add("idle", [0]);
 		animation.add("walking",[0, 1, 2, 1], 10);
-		animation.add("air", [3]);
+		animation.add("fallin", [3]);
+		animation.add("jumping", [4]);
 		animation.play("idle");
 		facing = FlxObject.RIGHT;
 
@@ -41,7 +42,8 @@ class Rogue extends Enemy {
 		if(r.velocity.y == 8) return;
 		if(r.velocity.y > 0)
 			r.maxVelocity.y = 40;
-		if(r == Reg.player.controlled && FlxG.keyboard.anyJustPressed(['W','UP'])) {
+		if(r == Reg.player.controlled && FlxG.keyboard.anyJustPressed(['W','UP']) && r.velocity.y != 8) {
+			if((r.y + r.height) - w.y < r.height/4) return;
 			var left : Bool = w.overlapsPoint(new FlxPoint(r.x, r.y)) || w.overlapsPoint(new FlxPoint(r.x, r.y + r.height));
 			r.maxVelocity.y = 1000000;
 			r.velocity.y = -1.5 * r.base_speed;
@@ -61,7 +63,7 @@ class Rogue extends Enemy {
 		maxVelocity.y = 1000000;
 		FlxG.overlap(this, wallGrip, doWallGrip, filter);
 		if(!onFloor || collided)
-			animation.play("air");
+			animation.play(velocity.y > 0? "fallin" : "jumping");
 	}
 
 	override private function deadParts() : Void {

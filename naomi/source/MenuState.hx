@@ -29,8 +29,9 @@ class MenuState extends FlxState {
 			FlxG.mouse.show();
 		#end
 		
-		//FlxG.sound.playMusic("assets/music/stars beneath the roof.mp3", .2);
-
+		FlxG.sound.playMusic("assets/music/stars beneath the roof.mp3");
+		FlxG.sound.volume = 1;
+		FlxG.sound.muted = false;
 
 		background = new FlxSprite(0, 0);
 
@@ -71,7 +72,7 @@ class MenuState extends FlxState {
 			selected = true;
 		} else if(FlxG.keyboard.justPressed("ENTER")) {
 			if(!selected)
-				FlxG.switchState(new LevelDemo());
+				FlxG.switchState(new IntroText());
 			else
 				FlxG.switchState(new CreditsState());
 		}

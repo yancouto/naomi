@@ -19,13 +19,18 @@ class End extends Interactible {
 		animation.add("going_up", [1, 2, 3, 4], 8, false);
 		animation.play("empty");
 	
-		next = _next==null?Type.getClassName(Type.getClass(Reg.playState)):_next;
+		next = _next == null? LevelDemo.levelName : _next;
 	}
 
 	override public function interact(entity : Enemy) : Void {
 		animation.play("going_up");
 		Reg.player.controlled = null;
 		FlxG.camera.fade(0xff000000, 4.8, false, false);
-		Timer.callIn(5, function() { FlxG.switchState(Type.createInstance(Type.resolveClass(next), [])); });
+		if(next == "last") {
+			Timer.callIn(5, function() { FlxG.switchState(new LastLevel()); });
+		} else {
+			LevelDemo.levelName = next;
+			Timer.callIn(5, function() { FlxG.resetState(); });	
+		}
 	}
 }

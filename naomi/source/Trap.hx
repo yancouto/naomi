@@ -13,6 +13,7 @@ class Trap extends FlxSprite implements Circuitry {
 		super(x, y);
 
 		base_damage = damage;
+		immovable = true;
 		state = false;
 	}
 

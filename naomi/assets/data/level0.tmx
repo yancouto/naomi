@@ -215,7 +215,11 @@
   <properties>
    <property name="next" value="TestLevel"/>
   </properties>
-  <object name="End Point Door" x="1276" y="383" width="129" height="131"/>
+  <object name="End Point Door" x="1276" y="383" width="129" height="131">
+   <properties>
+    <property name="next" value="levelrogue"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="ratSpawns" width="60" height="20">
   <object x="809" y="971" width="54" height="64"/>
