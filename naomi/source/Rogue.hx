@@ -54,9 +54,8 @@ class Rogue extends Enemy {
 	override public function update() : Void {
 		super.update();
 		collided = false;
+		maxVelocity.y = 1000000;
 		if(velocity.y > 0)
 			FlxG.overlap(this, wallGrip, doWallGrip, filter);
-		else
-			maxVelocity.y = 1000000;
 	}
 }

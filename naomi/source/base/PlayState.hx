@@ -1,6 +1,7 @@
 package base;
 
 import flixel.group.FlxTypedGroup;
+import flixel.util.FlxPoint;
 
 typedef EnemyGroup = FlxTypedGroup<Enemy>;
 
@@ -31,8 +32,9 @@ class PlayState extends State {
 
 		player = new Player();
 		var playerSpawn = map.objectMap.get("playerSpawn").members[0];
+		var temp = Type.createInstance(Type.resolveClass(
+			playerSpawn.properties.get("type")), [playerSpawn.x, playerSpawn.y]);
 		map.objectMap.set("playerSpawn", null);
-		var temp = new Rogue(playerSpawn.x, playerSpawn.y);
 		enemies.add(temp);
 		player.possess(temp);
 		add(player);
@@ -73,29 +75,42 @@ class PlayState extends State {
 			add(Button.buttons);
 		}
 
+		Trap.traps = new FlxTypedGroup <Trap>();
+
 		if(map.objectMap.get("bearTraps") != null) {
-			Trap.traps = new FlxTypedGroup <Trap>();
 			for(o in map.objectMap.get("bearTraps").members)
 				Trap.traps.add(new BearTrap(o.x, o.y));
 			map.objectMap.set("bearTraps", null);
 		}
 
 		if(map.objectMap.get("fireTraps") != null) {
-			if(Trap.traps == null) Trap.traps = new FlxTypedGroup <Trap>();
 			for(o in map.objectMap.get("fireTraps").members)
-				Trap.traps.add(new FireTrap(o.x, o.y));
+				Trap.traps.add(new FireTrap(o.x, o.y, 
+					Std.parseInt(o.properties.get("duration"))));
 			map.objectMap.set("fireTraps", null);
 		}
 
 		if(map.objectMap.get("spikeTraps") != null) {
-			if(Trap.traps == null) Trap.traps = new FlxTypedGroup <Trap>();
 			for(o in map.objectMap.get("spikeTraps").members)
 				Trap.traps.add(new SpikeTrap(o.x, o.y));
 			map.objectMap.set("spikeTraps", null);
 		}
 		
-		if(Trap.traps != null) add(Trap.traps);
+		add(Trap.traps);
 		add(interactibles);
+
+		if(map.objectMap.get("platforms") != null) {
+			Platform.platforms = new FlxTypedGroup <Platform>();
+			for(o in map.objectMap.get("platforms").members) {
+				var dir : Bool = o.properties.get("direction")=="horizontal";
+				Platform.platforms.add(new Platform([new FlxPoint(o.x, o.y),
+					new FlxPoint(dir?o.x+o.width:o.x, dir?o.y:(o.y+o.height))], 
+					Std.parseInt(o.properties.get("speed"))));
+			}
+			map.objectMap.set("platforms", null);
+		}
+
+		if(Platform.platforms != null) add(Platform.platforms);
 
 		Rogue.wallGrip = map.objectMap.get("wallGrip");
 		

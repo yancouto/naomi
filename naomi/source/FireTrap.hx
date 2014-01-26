@@ -8,13 +8,14 @@ import base.Timer;
 class FireTrap extends Trap {
 	private var cooldown : Timer;
 
-	public function new(x : Float, y : Float) {
+	public function new(x : Float, y : Float, ?duration : Float) {
 		super(x, y, .1);
 
 		makeGraphic(32, 30, 0xff270ee8);
 
 		var ref = this;
-		cooldown = new Timer({timeToSet: 3, callback: function(self : Timer) {
+		cooldown = new Timer({timeToSet: duration==null?3:duration, 
+			callback: function(self : Timer) {
 				state = !state;
 				cooldown.reset();
 				

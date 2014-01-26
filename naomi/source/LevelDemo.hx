@@ -44,6 +44,7 @@ class LevelDemo extends PlayState {
 	override public function update() : Void {
 		FlxG.collide(map.collidableTiles, enemies);
 		FlxG.collide(map.glassTiles, enemies);
+		FlxG.collide(Platform.platforms, enemies);
 		super.update();
 	}	
 }

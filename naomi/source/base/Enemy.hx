@@ -54,7 +54,8 @@ class Enemy extends FlxSprite {
 		}
 		if(jumps > 0 && jumpCount == 0 && velocity.y != 8)
 			jumpCount = 1;
-		if(jumps > 0 && jumpCount > 0 && velocity.y == 8 /* MAGIC NUMBER */ && overlaps(Reg.floor)) 
+		if(jumps > 0 && jumpCount > 0 && velocity.y == 8 /* MAGIC NUMBER */ 
+			&& (overlaps(Reg.floor) || overlaps(Platform.platforms))) 
 			jumpCount = 0;
 	}
 
