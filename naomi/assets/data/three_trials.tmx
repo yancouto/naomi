@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="80" height="50" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="brick_tiles" tilewidth="64" tileheight="64">
+  <image source="../tilesets/brick_tiles.png" width="576" height="512"/>
+ </tileset>
+ <layer name="background" width="80" height="50">
+  <properties>
+   <property name="nocollides" value="true"/>
+   <property name="tileset" value="brick_tiles"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1bsNwCAMBUCGSiSaZP+xwgQRyCJ8csUVFCDAsl9OKWUA0lGcDevacyJ36PGuXq7ibljXnhO5Q493wcy+6vddje73v+bHDPWTH8DKRuTH2z75EdsnP/ib1WbGbCIzw9+P+/se1HOvesLMzJsY8wYAAAAAAACAlTy+/2t2
+  </data>
+ </layer>
+ <layer name="midground" width="80" height="50">
+  <properties>
+   <property name="tileset" value="brick_tiles"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmrFygzAQROU0KVy4StIZOtsVRQr//58lGqNGI5k77cmy0O7MK2DgJB6MOTCTc24iMNcGWI97WmseK9XNMbs2ORjXO7s6xxPq0h9Wl/6wuvSH1aU/rO4zf/eVEO1ySegPS0t/X/98R/xs1H03f9bR+Es5WVza4ZY/v198LqTkzlmLoP5yDrf8lfbrJ+FcXxULf6nr6ffJtsjv7RnYt0as/GmRjJebQ+m+NUJ/WOgPC/1hubjHfe0m2Jb+sNAflh79pZ6ZLPv0UF+ybY/+wpy1/bq0T9/7/aP0/Yh0HPrDxunNn+8XJL1CPGfteHv1p01tf731f9rU9lcyl578lYb+sLy7P09pXyvpdZG+Oby/nBFZiVj7syQ+Vj9X9PsT5D+G3Dlp7UnjD6kX7qtb3yLtBWt/o0F/9v6svhccgdifVUa5jmfQ02dm/aj+/LoPBbnn11H9WYX+sNAflj37W6Jly2etQOtjJIQQQgghhGD8AXE5JjU=
+  </data>
+ </layer>
+ <objectgroup name="heavySpawns" width="80" height="50">
+  <object x="924" y="277" width="92" height="165"/>
+  <object x="1806" y="2374" width="98" height="178"/>
+  <object x="3997" y="364" width="126" height="146"/>
+ </objectgroup>
+ <objectgroup name="spikeTraps" width="80" height="50">
+  <object x="768" y="576" width="63" height="64"/>
+  <object x="833" y="576" width="61" height="63"/>
+  <object x="512" y="576" width="64" height="62"/>
+  <object x="576" y="576" width="63" height="63"/>
+  <object x="256" y="575" width="65" height="66"/>
+  <object x="320" y="576" width="64" height="64"/>
+  <object x="2752" y="1792" width="63" height="64"/>
+  <object x="2816" y="1792" width="64" height="65"/>
+  <object x="2882" y="1793" width="61" height="65"/>
+  <object x="2943" y="1793" width="67" height="66"/>
+  <object x="3008" y="1792" width="63" height="65"/>
+  <object x="3070" y="1791" width="67" height="66"/>
+  <object x="3137" y="1791" width="63" height="68"/>
+  <object x="3199" y="1790" width="67" height="67"/>
+  <object x="3265" y="1791" width="64" height="68"/>
+  <object x="3329" y="1790" width="64" height="70"/>
+  <object x="3390" y="1792" width="72" height="68"/>
+  <object x="3463" y="1789" width="59" height="70"/>
+  <object x="3520" y="1789" width="65" height="70"/>
+  <object x="3583" y="1792" width="67" height="66"/>
+  <object x="3649" y="1792" width="65" height="68"/>
+  <object x="3713" y="1793" width="61" height="65"/>
+  <object x="3775" y="1794" width="66" height="66"/>
+  <object x="3840" y="1793" width="66" height="66"/>
+  <object x="3905" y="1794" width="64" height="63"/>
+ </objectgroup>
+ <objectgroup name="fireTraps" width="80" height="50">
+  <object x="833" y="128" width="64" height="14"/>
+  <object x="769" y="128" width="60" height="15">
+   <properties>
+    <property name="delay" value="0.5"/>
+   </properties>
+  </object>
+  <object x="513" y="129" width="62" height="5">
+   <properties>
+    <property name="delay" value="1"/>
+   </properties>
+  </object>
+  <object x="576" y="130" width="64" height="5">
+   <properties>
+    <property name="delay" value="1.5"/>
+   </properties>
+  </object>
+  <object x="255" y="127" width="65" height="7">
+   <properties>
+    <property name="delay" value="2"/>
+   </properties>
+  </object>
+  <object x="321" y="127" width="65" height="6">
+   <properties>
+    <property name="delay" value="2.5"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="glassTiles" width="80" height="50">
+  <properties>
+   <property name="tileset" value="brick_tiles"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2LEJgEAQRUERrMNSBPsvyuQCU3miHMzAz5cX7rLAvI6/D5icfo1+jX6Nfo1+jX5N6ad9o1+jX6Nfo1+jX6Nfo1+jX6MfAADAN/bbAOBt/nyNfs+dY+sYMLft7wMAAAAmdgGRXAXX
+  </data>
+ </layer>
+ <layer name="mirrors" width="80" height="50">
+  <properties>
+   <property name="nocollides" value="true"/>
+   <property name="tileset" value="brick_tiles"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1cEJACEMBED78HF92H9hvuTAj0IEUWcg/7BkSUoAAAAAAAAAAAAx3+4FeJr7A5rSDXF59wKHk9+v7+dMT+UXIz9WGfXX/wUAgPtUHtEFMw==
+  </data>
+ </layer>
+ <objectgroup name="rogueSpawns" width="80" height="50">
+  <object x="2063" y="975" width="96" height="218"/>
+ </objectgroup>
+ <objectgroup name="ratSpawns" width="80" height="50">
+  <object x="1672" y="2226" width="68" height="66"/>
+ </objectgroup>
+ <objectgroup name="mirrorUp" width="80" height="50">
+  <object x="2433" y="2173" width="254" height="18"/>
+  <object x="1921" y="2368" width="383" height="15"/>
+ </objectgroup>
+ <objectgroup name="mirrorDown" width="80" height="50">
+  <object x="1921" y="2554" width="382" height="17"/>
+  <object x="2432" y="2555" width="255" height="17"/>
+ </objectgroup>
+ <objectgroup name="mirrorRight" width="80" height="50">
+  <object x="2745" y="2239" width="21" height="255"/>
+ </objectgroup>
+ <objectgroup name="levers" width="80" height="50">
+  <object x="1408" y="2512" width="63" height="48">
+   <properties>
+    <property name="id" value="0"/>
+   </properties>
+  </object>
+  <object x="4544" y="654" width="64" height="51">
+   <properties>
+    <property name="id" value="1"/>
+   </properties>
+  </object>
+  <object x="132" y="399" width="61" height="46">
+   <properties>
+    <property name="id" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="doors" width="80" height="50">
+  <object x="1731" y="1535" width="60" height="266">
+   <properties>
+    <property name="source" value="0"/>
+   </properties>
+  </object>
+  <object x="1793" y="1535" width="63" height="262">
+   <properties>
+    <property name="source" value="1"/>
+   </properties>
+  </object>
+  <object x="1855" y="1536" width="65" height="260">
+   <properties>
+    <property name="source" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="playerSpawn" width="80" height="50">
+  <object x="255" y="1663" width="129" height="130">
+   <properties>
+    <property name="type" value="Rogue"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="torches" width="80" height="50">
+  <object x="1572" y="1579" width="27" height="23">
+   <properties>
+    <property name="source" value="0"/>
+   </properties>
+  </object>
+  <object x="1620" y="1581" width="23" height="20">
+   <properties>
+    <property name="source" value="1"/>
+   </properties>
+  </object>
+  <object x="1659" y="1577" width="29" height="23">
+   <properties>
+    <property name="source" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="end" width="80" height="50">
+  <object x="2239" y="1671" width="129" height="123"/>
+ </objectgroup>
+ <objectgroup name="floor" width="80" height="50">
+  <object x="124" y="1779" width="1279" height="18"/>
+  <object x="1605" y="1786" width="1025" height="12"/>
+  <object x="1736" y="1200" width="1010" height="22"/>
+  <object x="3972" y="498" width="378" height="22"/>
+  <object x="4346" y="573" width="67" height="20"/>
+  <object x="4413" y="628" width="65" height="15"/>
+  <object x="4473" y="696" width="205" height="13"/>
+  <object x="1792" y="2551" width="965" height="15"/>
+  <object x="1731" y="2491" width="59" height="13"/>
+  <object x="1407" y="2551" width="322" height="17"/>
+  <object x="897" y="436" width="127" height="13"/>
+  <object x="641" y="437" width="130" height="15"/>
+  <object x="385" y="440" width="127" height="11"/>
+  <object x="128" y="441" width="127" height="10"/>
+  <object x="3267" y="1205" width="186" height="18"/>
+  <object x="1404" y="2291" width="200" height="22"/>
+ </objectgroup>
+ <objectgroup name="wallGrip" width="80" height="50">
+  <object x="122" y="761" width="11" height="1034"/>
+  <object x="1083" y="642" width="12" height="893"/>
+  <object x="952" y="761" width="13" height="774"/>
+  <object x="1401" y="1797" width="14" height="503"/>
+  <object x="1595" y="1793" width="12" height="384"/>
+  <object x="1717" y="1215" width="15" height="443"/>
+  <object x="1980" y="124" width="11" height="453"/>
+  <object x="1913" y="1337" width="11" height="329"/>
+  <object x="2618" y="1337" width="13" height="460"/>
+  <object x="3257" y="124" width="18" height="964"/>
+  <object x="3451" y="124" width="16" height="964"/>
+  <object x="3961" y="516" width="15" height="1345"/>
+  <object x="2743" y="1217" width="17" height="645"/>
+  <object x="4673" y="121" width="8" height="585"/>
+  <object x="3258" y="1210" width="18" height="391"/>
+  <object x="3434" y="1218" width="29" height="380"/>
+ </objectgroup>
+ <layer name="half_tiles" width="80" height="50">
+  <properties>
+   <property name="nocollides" value="true"/>
+   <property name="tileset" value="brick_tiles"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzkENADAMxLAC2Mofbo/F1MmW8k8VAAAAAAAAAMAeJ93Ur0cAAAAAAAAAPjS/pAAo
+  </data>
+ </layer>
+</map>
