@@ -9,7 +9,7 @@ class BearTrap extends Trap {
 
 		loadGraphic("assets/images/beartrapanimation.png", true, false, 60, 45);
 		animation.add("open", [0]);
-		animation.add("closing", [1, 2], false);
+		animation.add("closing", [1, 2], 15, false);
 		animation.play("open");
 
 		offset.set(0, 35);
@@ -22,6 +22,8 @@ class BearTrap extends Trap {
 		animation.play("closing");
 	}
 
-	override public function update() : Void
+	override public function update() : Void {
+		super.update();
 		if(!state) FlxG.overlap(this, Reg.playState.enemies, notify);
+	}
 }

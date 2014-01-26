@@ -86,8 +86,7 @@ class PlayState extends State {
 
 		if(map.objectMap.exists("fireTraps")) {
 			for(o in map.objectMap.get("fireTraps").members)
-				Trap.traps.add(new FireTrap(o.x, o.y, 
-					Std.parseInt(o.properties.get("duration"))));
+				Trap.traps.add(new FireTrap(o));
 			map.objectMap.remove("fireTraps");
 		}
 
@@ -124,6 +123,12 @@ class PlayState extends State {
 			map.objectMap.remove("breakables");
 		}
 		add(BreakablePlatform.platforms);
+
+		if(map.objectMap.exists("torchs")) {
+			for(obj in map.objectMap.get("torchs").members)
+				add(new Torch(obj));
+			map.objectMap.remove("torchs");
+		}
 
 		add(Trap.traps);
 		add(interactibles);

@@ -13,9 +13,11 @@ class Beginning extends FlxSprite {
 
 		var enemy : base.Enemy = Type.createInstance(Type.resolveClass(
 			playerSpawn.properties.get("type")), [playerSpawn.x, playerSpawn.y]);
+		enemy.y  = enemy.y + height - enemy.height;
+		enemy.x += width/2 - enemy.width/2;
+		Reg.playState.enemies.add(enemy);
 		FlxG.camera.follow(enemy);
 		Timer.callIn(1, function() { 
-			Reg.playState.enemies.add(enemy);
 			Reg.player.possess(enemy);
 		});
 	}

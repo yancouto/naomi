@@ -134,4 +134,28 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup name="fireTraps" width="56" height="49">
+  <object x="967" y="999" width="70" height="341"/>
+  <object x="1088" y="999" width="70" height="341">
+   <properties>
+    <property name="delay" value="1"/>
+   </properties>
+  </object>
+  <object x="1218" y="994" width="70" height="341">
+   <properties>
+    <property name="delay" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#55ff00" name="torchs" width="56" height="49">
+  <object x="833" y="1063" width="31" height="45"/>
+  <object x="809" y="1202" width="77" height="34"/>
+  <object x="1335" y="1114" width="42" height="9"/>
+  <object x="1672" y="1035" width="49" height="51"/>
+  <object x="2289" y="1136" width="70" height="54">
+   <properties>
+    <property name="source" value="doorButton"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

@@ -15,6 +15,7 @@ class Rogue extends Enemy {
 		loadGraphic("assets/images/rogueeanimation.png", true, true, 42, 84);
 		animation.add("idle", [0]);
 		animation.add("walking",[0, 1, 2, 1], 10);
+		animation.add("air", [3]);
 		animation.play("idle");
 		facing = FlxObject.RIGHT;
 
@@ -58,5 +59,7 @@ class Rogue extends Enemy {
 		collided = false;
 		maxVelocity.y = 1000000;
 		FlxG.overlap(this, wallGrip, doWallGrip, filter);
+		if(!onFloor || collided)
+			animation.play("air");
 	}
 }
