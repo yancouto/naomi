@@ -85,8 +85,11 @@
   <object x="924" y="839" width="1724" height="9">
    <properties>
     <property name="direction" value="horizontal"/>
-    <property name="speed" value="300"/>
+    <property name="speed" value="1000"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup name="end" width="56" height="49">
+  <object x="2749" y="1145" width="71" height="137"/>
  </objectgroup>
 </map>

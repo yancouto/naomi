@@ -94,10 +94,7 @@ class PlayState extends State {
 			for(o in map.objectMap.get("spikeTraps").members)
 				Trap.traps.add(new SpikeTrap(o.x, o.y));
 			map.objectMap.set("spikeTraps", null);
-		}
-		
-		add(Trap.traps);
-		add(interactibles);
+		}		
 
 		if(map.objectMap.get("platforms") != null) {
 			Platform.platforms = new FlxTypedGroup <Platform>();
@@ -111,6 +108,15 @@ class PlayState extends State {
 		}
 
 		if(Platform.platforms != null) add(Platform.platforms);
+
+		if(map.objectMap.get("end") != null) {
+			var ref : base.Object = map.objectMap.get("end").members[0];
+			interactibles.add(new End(ref.x, ref.y, ref.properties.get("next")));
+			map.objectMap.set("end", null);
+		}
+
+		add(Trap.traps);
+		add(interactibles);
 
 		Rogue.wallGrip = map.objectMap.get("wallGrip");
 		
