@@ -18,7 +18,7 @@ class LevelDemo extends PlayState {
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create() : Void {
-		super.loadMap("test_map4");
+		super.loadMap("level0");
 		// Set a background color
 		FlxG.cameras.bgColor = 0xff0088ff;
 		// Show the mouse (in case it hasn't been disabled)

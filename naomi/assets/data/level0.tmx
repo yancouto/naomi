@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="60" height="20" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="brick_tiles" tilewidth="64" tileheight="64">
+  <image source="../tilesets/brick_tiles.png" width="576" height="512"/>
+ </tileset>
+ <layer name="background" width="60" height="20">
+  <properties>
+   <property name="nocollides" value="true"/>
+   <property name="tileset" value="brick_tiles"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztx0EKABAURdE/tCDKhP0viw0oJUqdwem9WyOiAtelw30pT2XRO/83beqL3vkAAADcNQC5+wUk
+  </data>
+ </layer>
+ <layer name="foreground" width="60" height="20">
+  <properties>
+   <property name="tileset" value="brick_tiles"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztVrEOhDAIZbnpTJzu3LSbd9MN/v+/nSSaEEJLaWns4EveYCyUV1pgAYDl5qV87vw4c+w4zi/4YzbGm3M+oUGcXpD0hsT6dedDsOlV72vnRL6tehErW89zrtlbgTG/C7mxeCS9yEFgDrz1otYtEmNuvaB1oCS/KcwF9qn8aVqt8bbQ+ztinZS1iJz89ax3yPRz5rRWK99He+vSfgHk9xsjHDaB+UvpjdWNWr1YS63zxlahl9YPWid4X9DisvR9qleD531GO9QqzUUldYzbt9YbChnbxxIXR+w+jKC/39x5IxRSQq3eGPAcLP1V+x8M3/wfPWs+57SCdA9azhsU3LeX3xpIes95oZa813n5raFXD7zZN/90T1jR
+  </data>
+ </layer>
+ <layer name="half_tiles" width="60" height="20">
+  <properties>
+   <property name="nocollides" value="true"/>
+   <property name="tileset" value="brick_tiles"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0bEJACAQA8CMYWvr/gO6gF99IeIdpEoTSAIAb5hFxs1RtKzUf546AAD+tAE2ywJT
+  </data>
+ </layer>
+ <layer name="upper_background" width="60" height="20">
+  <properties>
+   <property name="tileset" value="brick_tiles"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlUELgCAMhb1HeKpu5S079///Ww4ciFQsmw1pH7zD0OKJb84YRaHRPdxvC775kiWKizVoY/wfN9znbQGfyAp7eQvc3ZhpEnVUF3g7+hMpyixtoAB4f/L+vRL29RDrFoHzeqJwbsIM/duMajHLKZhRqvYgJ2GUCcwoCPN7V0MfOAmjjEBGHbHO1xRFUWpwALy7CfQ=
+  </data>
+ </layer>
+ <layer name="mid_level" width="60" height="20">
+  <properties>
+   <property name="nocollides" value="true"/>
+   <property name="tileset" value="brick_tiles"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1rEJACEMQNEM4LmP2zn6KVjJcdiIIO/BL0KalIkA4Dap9YwAAPjXf6e8OM+7E0pE/erwWbDVCxnoBOU=
+  </data>
+ </layer>
+ <layer name="mirror_bottom" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20ND6AAAAAA4NcAEsAAAQ==
+  </data>
+ </layer>
+ <layer name="mirror_top" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztzrEJAEAIBMFry+z7r8oGTOURZmDzTQAAAIArKnlTv79gUwNdrALX
+  </data>
+ </layer>
+ <objectgroup color="#00aa00" name="playerSpawn" width="60" height="20">
+  <object name="Player Spawn" x="272" y="269" width="75" height="113">
+   <properties>
+    <property name="type" value="Rat"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="otherCollidables" width="60" height="20">
+  <object x="576" y="448" width="448" height="32"/>
+  <object x="834" y="577" width="317" height="27"/>
+  <object x="386" y="577" width="378" height="28"/>
+  <object x="963" y="380" width="191" height="31"/>
+  <object x="385" y="1023" width="121" height="29"/>
+  <object x="644" y="1024" width="120" height="27"/>
+  <object x="899" y="1027" width="123" height="24"/>
+  <object x="1091" y="1029" width="120" height="23"/>
+ </objectgroup>
+ <objectgroup color="#3021a4" name="floor" width="60" height="20">
+  <object x="1537" y="697" width="123" height="19"/>
+  <object x="1665" y="1080" width="2059" height="9"/>
+  <object x="3203" y="827" width="377" height="11"/>
+  <object x="3201" y="573" width="516" height="8"/>
+  <object x="3459" y="255" width="121" height="5"/>
+  <object x="2500" y="315" width="961" height="7"/>
+  <object x="2435" y="381" width="61" height="5"/>
+  <object x="1986" y="443" width="451" height="7"/>
+  <object x="1923" y="509" width="65" height="5"/>
+  <object x="1791" y="572" width="128" height="4"/>
+  <object x="1277" y="506" width="128" height="7"/>
+ </objectgroup>
+ <objectgroup color="#ac6819" name="wallGrip" width="60" height="20">
+  <object x="1666" y="720" width="3" height="364"/>
+  <object x="1786" y="579" width="5" height="118"/>
+  <object x="1914" y="514" width="7" height="69"/>
+  <object x="1980" y="453" width="5" height="62"/>
+  <object x="2429" y="390" width="6" height="62"/>
+  <object x="2493" y="321" width="4" height="71"/>
+  <object x="3584" y="258" width="6" height="187"/>
+  <object x="3708" y="127" width="7" height="455"/>
+  <object x="3196" y="579" width="5" height="121"/>
+  <object x="3068" y="440" width="7" height="517"/>
+  <object x="3710" y="698" width="4" height="396"/>
+  <object x="3584" y="833" width="6" height="188"/>
+  <object x="3194" y="835" width="7" height="189"/>
+  <object x="2945" y="891" width="3" height="67"/>
+  <object x="2556" y="700" width="6" height="194"/>
+  <object x="1526" y="707" width="12" height="255"/>
+  <object x="1404" y="515" width="7" height="246"/>
+  <object x="1279" y="184" width="5" height="334"/>
+  <object x="1279" y="764" width="5" height="66"/>
+  <object x="1216" y="832" width="5" height="222"/>
+  <object x="1336" y="962" width="8" height="130"/>
+  <object x="1980" y="190" width="5" height="65"/>
+  <object x="2112" y="189" width="4" height="60"/>
+ </objectgroup>
+ <objectgroup color="#ff0000" name="heavySpawns" width="60" height="20">
+  <object name="Heavy Spawn" x="1544" y="494" width="110" height="199"/>
+ </objectgroup>
+ <objectgroup color="#ffff00" name="rogueSpawns" width="60" height="20">
+  <object name="Rogue Spawn" x="3602" y="862" width="92" height="204"/>
+ </objectgroup>
+ <objectgroup color="#a43867" name="spikeTraps" width="60" height="20">
+  <object x="1473" y="897" width="62" height="63"/>
+  <object x="1409" y="897" width="62" height="62"/>
+  <object x="3137" y="959" width="64" height="61"/>
+  <object x="3072" y="958" width="62" height="62"/>
+  <object x="1792" y="511" width="64" height="63"/>
+  <object x="1855" y="511" width="63" height="64"/>
+ </objectgroup>
+ <objectgroup name="fireTraps" width="60" height="20">
+  <object x="1857" y="769" width="62" height="10"/>
+  <object x="1920" y="770" width="64" height="8"/>
+  <object x="1984" y="769" width="64" height="9"/>
+  <object x="2112" y="768" width="63" height="7">
+   <properties>
+    <property name="duration" value="2"/>
+   </properties>
+  </object>
+  <object x="2175" y="767" width="64" height="8">
+   <properties>
+    <property name="duration" value="2"/>
+   </properties>
+  </object>
+  <object x="2239" y="769" width="64" height="7">
+   <properties>
+    <property name="duration" value="2"/>
+   </properties>
+  </object>
+  <object x="2368" y="769" width="63" height="6">
+   <properties>
+    <property name="duration" value="4"/>
+   </properties>
+  </object>
+  <object x="2432" y="767" width="64" height="9">
+   <properties>
+    <property name="duration" value="4"/>
+   </properties>
+  </object>
+  <object x="2496" y="766" width="64" height="10">
+   <properties>
+    <property name="duration" value="4"/>
+   </properties>
+  </object>
+  <object x="3650" y="125" width="56" height="10"/>
+  <object x="3588" y="126" width="57" height="10"/>
+  <object x="3076" y="446" width="57" height="13"/>
+  <object x="3137" y="445" width="53" height="13"/>
+ </objectgroup>
+ <objectgroup name="bearTraps" width="60" height="20">
+  <object x="1792" y="1086" width="61" height="9"/>
+  <object x="2303" y="1085" width="66" height="5"/>
+ </objectgroup>
+ <objectgroup name="platforms" width="60" height="20">
+  <object x="1409" y="415" width="381" height="10">
+   <properties>
+    <property name="direction" value="horizontal"/>
+    <property name="speed" value="500"/>
+   </properties>
+  </object>
+  <object x="1542" y="275" width="123" height="132">
+   <properties>
+    <property name="direction" value="vertical"/>
+    <property name="speed" value="300"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="end" width="60" height="20">
+  <object name="End Point Door" x="1276" y="383" width="129" height="131"/>
+ </objectgroup>
+ <objectgroup name="ratSpawns" width="60" height="20">
+  <object x="809" y="971" width="54" height="64"/>
+ </objectgroup>
+ <objectgroup name="mirrorUp" width="60" height="20">
+  <object x="3201" y="1021" width="388" height="11"/>
+ </objectgroup>
+ <objectgroup name="mirrorDown" width="60" height="20">
+  <object x="3211" y="1077" width="376" height="14"/>
+ </objectgroup>
+ <objectgroup name="text" width="60" height="20">
+  <object name="Heavy Intro" x="1415" y="438" width="368" height="262">
+   <properties>
+    <property name="text" value="The Heavy is the heaviest, slowest but strongest character in-game. Employed as a guard, the Heavy has the most life and thus has the longest possession duration. Look at those abs! Those muscles are built to resist anything. Even fire! Now go get 'em, big boy!"/>
+   </properties>
+  </object>
+  <object name="Heavy Tank" x="1698" y="857" width="389" height="138">
+   <properties>
+    <property name="text" value="Holy sheep! That looks so hot! And I don't mean those mad biceps you're wielding! The Heavy can withstand a lot of damage. But watch out! He is just as mortal as our little buddy the Rat. Oh, and watch your step. That looks sharp!"/>
+   </properties>
+  </object>
+  <object name="Heavy Relief" x="2573" y="913" width="358" height="149">
+   <properties>
+    <property name="text" value="Whew! That was a toughie. Wait, what is that ahead?! Mirrors! Well, that's useful. Not only do mirrors allow you to admire your firm pectorals, but also allow Soul Shots to be reflected. This can turn useful sometime. Like now."/>
+   </properties>
+  </object>
+  <object name="Rat Intro" x="352" y="257" width="284" height="126">
+   <properties>
+    <property name="text" value="Hi, and welcome to Naomi! Now that we've properly met, let's talk about rats. The Rat is the fastest and tiniest of all characters in the game. However, he is also the weakest and least durable of them. Use WASD or the arrow keys for movement. Now run! You gotta get moving before your life runs out!"/>
+   </properties>
+  </object>
+  <object name="Rat Jump" x="641" y="484" width="305" height="89">
+   <properties>
+    <property name="text" value="The rat cannot jump. His tiny little legs wouldn't support his weight. Note that this is not at all accurate to real-life rats."/>
+   </properties>
+  </object>
+  <object name="Rat Life" x="466" y="771" width="442" height="58">
+   <properties>
+    <property name="text" value="Your life is almost all decayed! You gotta find a new body fast!"/>
+   </properties>
+  </object>
+  <object name="Rat Shoot" x="519" y="962" width="117" height="90">
+   <properties>
+    <property name="text" value="Press the right mouse button to attempt to possess the other rat. If you miss you'll get back to your previous body."/>
+   </properties>
+  </object>
+  <object name="Rogue Intro" x="3584" y="707" width="122" height="247">
+   <properties>
+    <property name="text" value="The Rogues are mysterious creatures. Formed by thieves, assassins and mailmen, these highly versatile, acrobatic people can wall jump, practicaly walk on walls and jump higher than chinese acrobats. And that's impressive!"/>
+   </properties>
+  </object>
+  <object name="Rogue Speed" x="3195" y="452" width="499" height="117">
+   <properties>
+    <property name="text" value="Not only are Rogues skilled acrobats, but also tough runners, losing only to the Rat! Wall jumping gets you to go to places in the most badass way possible: prancing from wall to wall in a onesie. And I literally mean onesie. Nothing but that robe."/>
+   </properties>
+  </object>
+  <object name="Platforms" x="1980" y="268" width="429" height="174">
+   <properties>
+    <property name="text" value="As in every good and famous sidescroller (and I do mean every each one of them) moving platforms are present in Naomi. Now, why we put them there for this level? I really cannot tell. But you gotta admit it does look very professional."/>
+   </properties>
+  </object>
+  <object name="Ending" x="1292" y="205" width="237" height="157">
+   <properties>
+    <property name="text" value="So it looks like you've done it! All you have to do now is stand next to the door and press 'E' to go to the next level. I hope you have enjoyed playing this as much as we have working on it: making lots of mistakes, almost giving up on it but still, working really hard on it. And in the end, after all this, doesn't it feel good to end this so successfully? Yeah... Totally not wasted all those hours on this."/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

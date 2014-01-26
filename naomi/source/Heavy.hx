@@ -16,7 +16,7 @@ class Heavy extends Enemy {
 		health = 200;
 	
 		jumps = 1;
-		jumpSpeed = 270;
+		jumpSpeed = 300;
 
 		base_speed = 80;
 
