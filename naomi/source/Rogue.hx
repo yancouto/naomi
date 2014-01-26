@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxObject;
 import base.Enemy;
+import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.util.FlxPoint;
 import flixel.group.FlxTypedGroup;
@@ -61,5 +62,21 @@ class Rogue extends Enemy {
 		FlxG.overlap(this, wallGrip, doWallGrip, filter);
 		if(!onFloor || collided)
 			animation.play("air");
+	}
+
+	override private function deadParts() : Void {
+		var n = 6;
+		var size = 55;
+		var height = 40;
+		var img = new FlxSprite().loadGraphic("assets/images/ROGUEPARTS.png", false);
+		for(i in 0...n) {
+			var temp = new FlxSprite().makeGraphic(size, height, 0x00000000);
+			temp.stamp(img, -i*size, 0);
+			temp.velocity.set(Math.random() * 600 - 300, -Math.random() * 600);
+			temp.setPosition(x + Math.random()*width, y + Math.random()*height);
+			temp.acceleration.y = 420;
+			temp.angularVelocity = Math.random()*100;
+			Reg.playState.add(temp);
+		}
 	}
 }

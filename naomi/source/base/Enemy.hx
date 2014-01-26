@@ -3,6 +3,8 @@ package base;
 import flixel.FlxSprite;
 import flixel.FlxObject;
 import flixel.FlxG;
+import flixel.effects.particles.FlxEmitter;
+import flixel.effects.particles.FlxParticle;
 
 class Enemy extends FlxSprite {
 	private var base_speed : Float;
@@ -64,13 +66,28 @@ class Enemy extends FlxSprite {
 			jumpCount = 0;
 	}
 
+	private function deadParts() : Void {}
+
 	override public function kill() : Void {
 		super.kill();
 
 		if(this == Reg.player.controlled) {
 			Reg.player.controlled = null;
-			FlxG.resetState();
+			Timer.callIn(3, function() { FlxG.resetState(); });
 		}
 
+		var em = new FlxEmitter();
+		em.at(this);
+		em.gravity = 300;
+		em.lifespan = 2;
+		em.xVelocity.min = -(em.xVelocity.max = 300);
+		em.yVelocity.min = -800;
+		em.yVelocity.max = -100;
+		for(i in 0...100) 
+			em.add(new FlxParticle().makeGraphic(5, 5, 0xffff0000));
+		Reg.playState.add(em);
+		em.start();
+
+		deadParts();
 	}
 }
