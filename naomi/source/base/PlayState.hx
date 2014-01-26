@@ -96,8 +96,8 @@ class PlayState extends State {
 			map.objectMap.set("spikeTraps", null);
 		}		
 
+		Platform.platforms = new FlxTypedGroup <Platform>();
 		if(map.objectMap.get("platforms") != null) {
-			Platform.platforms = new FlxTypedGroup <Platform>();
 			for(o in map.objectMap.get("platforms").members) {
 				var dir : Bool = o.properties.get("direction")=="horizontal";
 				Platform.platforms.add(new Platform([new FlxPoint(o.x, o.y),

@@ -10,6 +10,7 @@ class Enemy extends FlxSprite {
 	private var jumps : Int;
 	private var jumpCount : Int;
 	private var jumpSpeed : Float;
+	public var onFloor : Bool;
 
 	public function new(x : Float, y : Float) {
 		super(x, y);
@@ -47,6 +48,9 @@ class Enemy extends FlxSprite {
 
 	override public function update() : Void {
 		super.update();
+		onFloor = overlaps(Reg.floor) || overlaps(Platform.platforms);
+		maxVelocity.x = onFloor? base_speed : 2*base_speed;
+
 		acceleration.x = 0;
 		if(!idle && velocity.x == 0) {
 			idle = true;
@@ -55,7 +59,8 @@ class Enemy extends FlxSprite {
 		if(jumps > 0 && jumpCount == 0 && velocity.y != 8)
 			jumpCount = 1;
 		if(jumps > 0 && jumpCount > 0 && velocity.y == 8 /* MAGIC NUMBER */ 
-			&& (overlaps(Reg.floor) || overlaps(Platform.platforms))) 
+			&& onFloor) 
+
 			jumpCount = 0;
 	}
 

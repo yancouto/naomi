@@ -5,6 +5,9 @@ import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.FlxCamera;
 import flixel.util.FlxSpriteUtil;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import flixel.effects.FlxTrail;
 import base.Timer;
 import base.Healthbar;
 
@@ -97,11 +100,18 @@ private class SoulShot extends FlxSprite {
 	private var mirrorLeft : TileMap.PObjectGroup;
 	private var mirrorRight : TileMap.PObjectGroup;
 	private var mirrorDown : TileMap.PObjectGroup;
+	private var trail : FlxTrail;
 
 	public function new(x : Float, y : Float) {
 		super(x, y);
-		loadGraphic("assets/images/soul.png", false);
+		loadGraphic("assets/images/soulAnim2.png", true, false, 32, 32);
+		animation.add("moving", [for(i in 0...12) i], 24);
+		animation.play("moving");
+		offset.set(6, 6);
+		setSize(20, 20);
 		velocity.set(FlxG.mouse.x - x, FlxG.mouse.y - y).normalize().mult(base_speed);
+		setPosition(x + .05*velocity.x, y + .05*velocity.y);
+		trail = new FlxTrail(this, null, 5, 0, .5, .1);
 		var map = Reg.playState.map.objectMap;
 		mirrorUp = map.get("mirrorUp");
 		if(mirrorUp == null) mirrorUp = new TileMap.PObjectGroup();
@@ -113,8 +123,14 @@ private class SoulShot extends FlxSprite {
 		if(mirrorDown == null) mirrorDown = new TileMap.PObjectGroup();
 	}
 
+	override public function draw() : Void {
+		trail.draw();
+		super.draw();
+	}
+
 	override public function update() : Void {
 		super.update();
+		trail.update();
 		if(overlaps(Reg.playState.map.collidableTiles))
 			destroy();
 		FlxG.overlap(this, Reg.playState.enemies, function(a, b) { possiblePossession(b); });

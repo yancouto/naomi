@@ -11,10 +11,10 @@ class Rogue extends Enemy {
 
 	public function new(x : Float, y : Float) {
 		super(x, y);
-		
+
 		loadGraphic("assets/images/rogueeanimation.png", true, true, 42, 84);
 		animation.add("idle", [0]);
-		animation.add("walking", [0, 1, 2, 1], 10);
+		animation.add("walking",[0, 1, 2, 1], 10);
 		animation.play("idle");
 		facing = FlxObject.RIGHT;
 
@@ -36,17 +36,19 @@ class Rogue extends Enemy {
 
 	private static function doWallGrip(r : Rogue, w : FlxObject) : Void {
 		collided = true;
-		r.maxVelocity.y = 40;
+		if(r.velocity.y == 8) return;
+		if(r.velocity.y > 0)
+			r.maxVelocity.y = 40;
 		if(r == Reg.player.controlled && FlxG.keyboard.anyJustPressed(['W','UP'])) {
-			var left : Bool = w.overlapsPoint(new FlxPoint(r.x, r.y));
+			var left : Bool = w.overlapsPoint(new FlxPoint(r.x, r.y)) || w.overlapsPoint(new FlxPoint(r.x, r.y + r.height));
 			r.maxVelocity.y = 1000000;
 			r.velocity.y = -1.5 * r.base_speed;
 			if(left) {
 				r.x += 2;
-				r.velocity.x = r.base_speed;
+				r.velocity.x = 2*r.base_speed;
 			} else {
 				r.x -= 2;
-				r.velocity.x = -r.base_speed;
+				r.velocity.x = -2*r.base_speed;
 			}
 		}
 	}
@@ -55,7 +57,6 @@ class Rogue extends Enemy {
 		super.update();
 		collided = false;
 		maxVelocity.y = 1000000;
-		if(velocity.y > 0)
-			FlxG.overlap(this, wallGrip, doWallGrip, filter);
+		FlxG.overlap(this, wallGrip, doWallGrip, filter);
 	}
 }
