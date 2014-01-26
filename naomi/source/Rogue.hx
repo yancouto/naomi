@@ -26,7 +26,7 @@ class Rogue extends Enemy {
 		base_speed = 250;
 		drag.x = 700;
 	
-		mass = 10;
+		mass = 40;
 		maxVelocity.x = base_speed;
 	}
 

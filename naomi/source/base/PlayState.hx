@@ -112,9 +112,17 @@ class PlayState extends State {
 
 		if(map.objectMap.exists("doors")) {
 			for(obj in map.objectMap.get("doors").members)
-				map.collidableTiles.add(new Door(obj.x, obj.y + obj.height, obj));
+				map.collidableTiles.add(new Door(obj));
 			map.objectMap.remove("doors");
 		}
+
+		BreakablePlatform.platforms = new FlxTypedGroup <BreakablePlatform>();
+		if(map.objectMap.exists("breakables")) {
+			for(obj in map.objectMap.get("breakables").members)
+				BreakablePlatform.platforms.add(new BreakablePlatform(obj));
+			map.objectMap.remove("breakables");
+		}
+		add(BreakablePlatform.platforms);
 
 
 		add(Trap.traps);

@@ -45,6 +45,7 @@ class LevelDemo extends PlayState {
 		FlxG.collide(map.collidableTiles, enemies);
 		FlxG.collide(map.glassTiles, enemies);
 		FlxG.collide(Platform.platforms, enemies);
+		FlxG.overlap(BreakablePlatform.platforms, enemies, BreakablePlatform.manageCollision);
 		super.update();
 	}	
 }

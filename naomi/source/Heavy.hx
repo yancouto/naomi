@@ -20,7 +20,7 @@ class Heavy extends Enemy {
 
 		base_speed = 80;
 
-		mass = 20;
+		mass = 100;
 
 		maxVelocity.x = 80;
 	}
