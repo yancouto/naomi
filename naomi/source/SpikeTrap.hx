@@ -14,6 +14,8 @@ class SpikeTrap extends Trap {
 	inline private function notify(e1 : FlxObject, e2 : FlxObject) : Void
 		trigger(e2);
 
-	override public function update() : Void
+	override public function update() : Void {
+		super.update();
 		FlxG.overlap(this, Reg.playState.enemies, notify);
+	}
 }
