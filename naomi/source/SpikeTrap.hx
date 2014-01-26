@@ -8,7 +8,7 @@ class SpikeTrap extends Trap {
 	public function new(x : Float, y : Float) {
 		super(x, y, 999999);
 
-		loadGraphic("assets/images/spike.png", false);
+		loadGraphic("assets/images/spikes.png", false);
 	}
 
 	inline private function notify(e1 : FlxObject, e2 : FlxObject) : Void

@@ -11,12 +11,14 @@ class Button extends FlxSprite implements Circuitry {
 	public static var buttons : FlxTypedGroup<Button>;
 	public var state : Bool;
 
-	public function new(x : Float, y : Float) {
+	public function new(x : Float, y : Float, id : String) {
 		super(x, y);
 		loadGraphic("assets/images/buttonanimation.png", true, false, 50, 10);
 		animation.add("false", [0]);
 		animation.add("true", [1]);
 		animation.play("false");
+
+		Reg.circuitryComponents.set(id, this);
 
 		state = false;
 	}

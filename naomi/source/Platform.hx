@@ -16,7 +16,7 @@ class Platform extends FlxSprite {
 		path = FlxTween.linearPath(this, points, speed==null?100:speed, 
 			false, {type: FlxTween.PINGPONG});
 
-		makeGraphic(128, 20, 0xffc68c3e);
+		loadGraphic("assets/images/movingplatform.png", false);
 	}
 
 	public function toggle() : Void

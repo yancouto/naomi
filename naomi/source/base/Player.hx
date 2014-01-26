@@ -14,10 +14,10 @@ import base.Healthbar;
 using base.Utils;
 
 class Player extends FlxBasic {
-	public var controlled(default, default) : Enemy;
+	public var controlled : Enemy;
 	
 	private var soulShot : SoulShot;
-	private var decay_bar : Healthbar;
+	public var decay_bar : Healthbar;
 	private var decay : Timer;
 
 	public function new() {
@@ -25,7 +25,7 @@ class Player extends FlxBasic {
 		controlled = null;
 		soulShot = null;
 
-		decay_bar = new Healthbar(controlled);
+		decay_bar = new Healthbar();
 		decay = new Timer({timeToSet: 0.25, callback: function(self : Timer) {
 				if(controlled == null) {
 					self.running = false;
@@ -41,7 +41,7 @@ class Player extends FlxBasic {
 	public function possess(enemy : Enemy) : Void {
 		controlled = enemy;
 
-		decay_bar.owner = controlled;
+		decay_bar.setOwner(controlled);
 
 		decay.running = true;
 		decay.reset();
@@ -82,8 +82,6 @@ class Player extends FlxBasic {
 
 	override public function draw() : Void {
 		super.draw();
-		if(controlled != null)
-			decay_bar.draw();
 		if(soulShot != null)
 			soulShot.draw();
 	}
@@ -107,6 +105,8 @@ private class SoulShot extends FlxSprite {
 		loadGraphic("assets/images/soulAnim2.png", true, false, 32, 32);
 		animation.add("moving", [for(i in 0...12) i], 24);
 		animation.play("moving");
+		angularVelocity = 200;
+
 		offset.set(6, 6);
 		setSize(20, 20);
 		velocity.set(FlxG.mouse.x - x, FlxG.mouse.y - y).normalize().mult(base_speed);
@@ -131,7 +131,7 @@ private class SoulShot extends FlxSprite {
 	override public function update() : Void {
 		super.update();
 		trail.update();
-		if(overlaps(Reg.playState.map.collidableTiles))
+		if(overlaps(Reg.playState.map.collidableTiles) || overlaps(Platform.platforms))
 			destroy();
 		FlxG.overlap(this, Reg.playState.enemies, function(a, b) { possiblePossession(b); });
 		if(!exists) return;

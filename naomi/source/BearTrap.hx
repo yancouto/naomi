@@ -7,13 +7,19 @@ class BearTrap extends Trap {
 	public function new(x : Float, y : Float) {
 		super(x, y, 50);
 
-		makeGraphic(56, 16, 0xff006400);
+		loadGraphic("assets/images/beartrapanimation.png", true, false, 60, 45);
+		animation.add("open", [0]);
+		animation.add("closing", [1, 2], false);
+		animation.play("open");
+
+		offset.set(0, 35);
+		setSize(60, 10);
 	}
 
 	inline private function notify(e1 : FlxObject, e2 : FlxObject) : Void {
 		trigger(e2);
 		state = true;
-		color = 0xffe80e0e;
+		animation.play("closing");
 	}
 
 	override public function update() : Void

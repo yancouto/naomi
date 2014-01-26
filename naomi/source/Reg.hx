@@ -14,6 +14,7 @@ class Reg {
 	static public var playState : PlayState;
 	static public var floor : TileMap.PObjectGroup; //ugly?
 	static public var player : Player;
+	static public var circuitryComponents : Map<String, base.Circuitry>;
 	
 	/**
 	 * Generic levels Array that can be used for cross-state stuff.
