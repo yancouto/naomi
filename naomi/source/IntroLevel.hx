@@ -34,16 +34,15 @@ class IntroLevel extends PlayState {
 		plant = new Flower(map.objectMap.get("plant").members[0]);
 		add(plant);
 		player.possess(plant);
-		player.decay.running = false;
 
 
-		FlxG.sound.playMusic("assets/music/castles in the underground.mp3", .5);
+		Reg.playBackgroundMusic("Castles in the Underground.mp3", 3);
 	}
 
 	override public function update() : Void {
 		super.update();
 		if(endPortal.overlaps(enemies)) {
-			player.controlled = null;
+			player.possess(null);
 			FlxG.camera.fade(0xff000000, 4.8, false, false);
 			Timer.callIn(5, function() { FlxG.switchState(new LevelDemo()); });
 		}
@@ -59,14 +58,14 @@ class Flower extends base.Enemy {
 		animation.play("still");
 		acceleration.y = 0;
 		jumps = 0;
+
+		healthColor = 0;
 	}
 
 	override public function update() : Void {
 		super.update();
 		if(Reg.player.controlled != this && animation.name != 'dying') 
 			animation.play("dying");
-		if(animation.name == 'still')
-			Reg.player.decay.running = false;
 	}
 	override public function walkLeft() {}
 	override public function walkRight() {}

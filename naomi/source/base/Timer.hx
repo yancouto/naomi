@@ -6,10 +6,11 @@ class Timer {
 	public var repeats : Bool;
 	public var running : Bool;
 	public var delete : Bool;
-	private var currentTime : Float;
+	public var currentTime(default, null) : Float;
 
-	public static function callIn(timeToSet : Float, callback : Void -> Void) {
-		new Timer({ timeToSet : timeToSet, repeats: false, callback : function(_) { callback(); } });
+	public static inline function callIn(timeToSet : Float, callback : Void -> Void) {
+		if(timeToSet == 0) callback();
+		else new Timer({ timeToSet : timeToSet, repeats: false, callback : function(_) { callback(); } });
 	}
 
 	public function new( args : { timeToSet : Float, callback : Timer -> Void, ?repeats : Bool, ?running : Bool} ) {

@@ -29,9 +29,7 @@ class MenuState extends FlxState {
 			FlxG.mouse.show();
 		#end
 		
-		FlxG.sound.playMusic("assets/music/stars beneath the roof.mp3");
-		FlxG.sound.volume = 1;
-		FlxG.sound.muted = false;
+		Reg.playBackgroundMusic("Stars Beneath the Roof.mp3", 0);
 
 		background = new FlxSprite(0, 0);
 

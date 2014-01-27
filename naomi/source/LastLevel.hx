@@ -19,9 +19,9 @@ class LastLevel extends PlayState {
 		FlxG.mouse.show();
 		#end
 
-		FlxG.sound.playMusic("assets/music/castles in the underground.mp3", .5);
+		Reg.playBackgroundMusic("Castles in the Undergroung.mp3");
 		naomi = new Naomi(map.objectMap.get("naomi").members[0]);
-		Reg.playState.enemies.add(naomi);
+		enemies.add(naomi);
 	}
 }
 
@@ -32,10 +32,14 @@ class Naomi extends base.Enemy {
 		animation.add("idle", [0]);
 		animation.add("transforming", [1, 2], 2, false);
 		animation.play("idle");
+
 		scale.set(3, 3);
 		setSize(69, 135);
+
 		acceleration.y = 0;
 		jumps = 0;
+
+		healthColor = 0;
 	}
 
 	private function explode() : Void {
@@ -65,7 +69,7 @@ class Naomi extends base.Enemy {
 			i += size;
 			Timer.callIn(Math.random()*2 + 3, function() { temp.destroy(); });
 		}
-		Timer.callIn(.5, function() { FlxG.switchState(new CreditsState()); });
+		Timer.callIn(.7, function() { FlxG.switchState(new CreditsState()); });
 
 		destroy();
 	}
@@ -73,7 +77,6 @@ class Naomi extends base.Enemy {
 	override public function update() : Void {
 		super.update();
 		if(Reg.player.controlled == this && animation.name != 'transforming') {
-			Reg.player.decay.running = false;
 			animation.play("transforming");
 			Reg.playState.add(new FlxText(x - 30, y - 60, 150, "FINALLY", 20));
 			Timer.callIn(3, explode);

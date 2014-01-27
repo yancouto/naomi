@@ -20,6 +20,8 @@ class Rat extends Enemy {
 	
 		mass = 1;
 		maxVelocity.x = 200;
+
+		healthColor = 0xff999999;
 	}
 
 	override private function deadParts() : Void {

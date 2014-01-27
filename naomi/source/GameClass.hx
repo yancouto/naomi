@@ -29,5 +29,8 @@ class GameClass extends FlxGame {
 		}
 
 		super(gameWidth, gameHeight, skipSplash? MenuState : SplashState, zoom, framerate, framerate, skipSplash, startFullscreen);
+		
+		flixel.FlxG.sound.muted = false;
+		flixel.FlxG.sound.volume = 1;
 	}
 }

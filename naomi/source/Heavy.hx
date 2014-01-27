@@ -25,6 +25,8 @@ class Heavy extends Enemy {
 		mass = 100;
 
 		maxVelocity.x = 80;
+
+		healthColor = 0xff881221;
 	}
 
 	override private function deadParts() : Void {

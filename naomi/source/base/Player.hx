@@ -29,7 +29,7 @@ class Player extends FlxBasic {
 
 		decay_bar = new Healthbar();
 		decay = new Timer({timeToSet: 0.25, callback: function(self : Timer) {
-				if(controlled == null) {
+				if(controlled == null || !controlled.canBeHurt) {
 					self.running = false;
 					self.reset();
 					return;
@@ -44,12 +44,13 @@ class Player extends FlxBasic {
 		controlled = enemy;
 
 		away = false;
-		decay_bar.setOwner(controlled);
+		decay_bar.resetOwner();
 
 		decay.running = true;
 		decay.reset();
 
-		FlxG.camera.follow(controlled, FlxCamera.STYLE_PLATFORMER, 5);
+		if(controlled != null)
+			FlxG.camera.follow(controlled, FlxCamera.STYLE_PLATFORMER, 5);
 		// more stuff here
 	}
 

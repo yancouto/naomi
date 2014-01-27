@@ -14,6 +14,13 @@ class Enemy extends FlxSprite {
 	private var jumpSpeed : Float;
 	public var onFloor : Bool;
 
+	/* Color of healthbar...
+	* If it is set to 0x00000000 then the enemy will have no healthbar and won't be hurt by player
+	*/
+	public var healthColor : Int;
+
+	public var canBeHurt(get, never) : Bool;
+
 	public function new(x : Float, y : Float) {
 		super(x, y);
 
@@ -26,6 +33,9 @@ class Enemy extends FlxSprite {
 		jumpCount = 0;
 		jumpSpeed = 200;
 	}
+
+	public inline function get_canBeHurt() : Bool
+		return healthColor != 0;
 
 	/* Override the following: */
 	public function walkRight() : Void {

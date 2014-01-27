@@ -4,8 +4,7 @@ import flixel.FlxSprite;
 import flixel.FlxObject;
 
 class Healthbar extends FlxSprite {
-	public var owner : FlxObject;
-	public var healthSprite : FlxSprite;
+	private var healthSprite : FlxSprite;
 
 	public function new() {
 		super(0, GameClass.gameHeight - 100);
@@ -15,20 +14,19 @@ class Healthbar extends FlxSprite {
 		scrollFactor.x = scrollFactor.y = 0;
 	}
 
-	public function setOwner(_owner : FlxObject) : Void {
-		owner = _owner;
-		if(Std.is(owner, IntroLevel.Flower) || Std.is(owner, LastLevel.Naomi)) return; // Gambz
+	public function resetOwner() : Void {
+		var owner = Reg.player.controlled;
+		if(owner == null || !owner.canBeHurt) return;
+		healthSprite.color = owner.healthColor;
 		loadGraphic("assets/images/" + Type.getClassName(Type.getClass(owner)) + "_meter.png", false);
 		x = GameClass.gameWidth/2 - width/2;
 		healthSprite.makeGraphic(Std.int(2*owner.health), 33);
 		healthSprite.x = GameClass.gameWidth/2 - 2*owner.health/2;
-		if(Std.is(owner, Heavy)) healthSprite.color = 0xff881221;
-		else if(Std.is(owner, Rogue)) healthSprite.color = 0xff32cd32;
-		else healthSprite.color = 0xff999999;
 	}
 
 	public function refresh() : Void {
-		if(Reg.player.controlled == null) return;
+		var owner = Reg.player.controlled;
+		if(owner == null) return;
 
 		var _width = 2 * owner.health;
 

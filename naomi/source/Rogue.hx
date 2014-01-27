@@ -31,6 +31,8 @@ class Rogue extends Enemy {
 	
 		mass = 40;
 		maxVelocity.x = base_speed;
+
+		healthColor = 0xff32cd32;
 	}
 
 	private static var collided : Bool;

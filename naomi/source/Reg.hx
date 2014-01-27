@@ -3,6 +3,8 @@ package;
 import flixel.util.FlxSave;
 import base.PlayState;
 import base.Player;
+import flixel.FlxG;
+import base.Timer;
 
 /**
  * Handy, pre-built Registry class that can be used to store 
@@ -16,29 +18,18 @@ class Reg {
 	static public var player : Player;
 	static public var circuitryComponents : Map<String, base.Circuitry>;
 	
-	/**
-	 * Generic levels Array that can be used for cross-state stuff.
-	 * Example usage: Storing the levels of a platformer.
-	 */
-	static public var levels:Array<Dynamic> = [];
-	/**
-	 * Generic level variable that can be used for cross-state stuff.
-	 * Example usage: Storing the current level number.
-	 */
-	static public var level:Int = 0;
-	/**
-	 * Generic scores Array that can be used for cross-state stuff.
-	 * Example usage: Storing the scores for level.
-	 */
-	static public var scores:Array<Dynamic> = [];
-	/**
-	 * Generic score variable that can be used for cross-state stuff.
-	 * Example usage: Storing the current score.
-	 */
-	static public var score:Int = 0;
-	/**
-	 * Generic bucket for storing different <code>FlxSaves</code>.
-	 * Especially useful for setting up multiple save slots.
-	 */
-	static public var saves:Array<FlxSave> = [];
+	static private var backgroungMusicName : String = "";
+	static public function playBackgroundMusic(fileName : String, fadeTime : Float = 2) {
+		if(fileName == backgroungMusicName) return;
+		backgroungMusicName = fileName;
+		var doFadeOut = FlxG.sound.music != null && FlxG.sound.music.active;
+		trace(doFadeOut);
+		if(doFadeOut)
+			FlxG.sound.music.fadeOut(fadeTime);
+		Timer.callIn(doFadeOut? fadeTime : 0, function() {
+			FlxG.sound.playMusic("assets/music/" + fileName);
+			FlxG.sound.music.pause();
+			FlxG.sound.music.fadeIn(fadeTime);
+		});
+	}
 }
