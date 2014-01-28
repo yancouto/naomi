@@ -14,7 +14,7 @@ import base.Timer;
 class Reg {
 
 	static public var playState : PlayState;
-	static public var floor : TileMap.PObjectGroup; //ugly?
+	static public var floor : TileMap.PObjectGroup;
 	static public var player : Player;
 	static public var circuitryComponents : Map<String, base.Circuitry>;
 	

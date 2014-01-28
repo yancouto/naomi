@@ -286,5 +286,10 @@
     <property name="text" value="So it looks like you've done it! All you have to do now is stand next to the door and press 'E' to go to the next level. I hope you have enjoyed playing this as much as we have working on it: making lots of mistakes, almost giving up on it but still, working really hard on it. And in the end, after all this, doesn't it feel good to end this so successfully? Yeah... Totally not wasted all those hours on this."/>
    </properties>
   </object>
+  <object x="1228" y="986" width="101" height="70">
+   <properties>
+    <property name="text" value="Use arrow keys to look around."/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

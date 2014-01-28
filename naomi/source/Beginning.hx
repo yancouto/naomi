@@ -16,9 +16,6 @@ class Beginning extends FlxSprite {
 		enemy.y  = enemy.y + height - enemy.height;
 		enemy.x += width/2 - enemy.width/2;
 		Reg.playState.enemies.add(enemy);
-		FlxG.camera.follow(enemy);
-		Timer.callIn(1, function() { 
-			Reg.player.possess(enemy);
-		});
+		Reg.player.possess(enemy);
 	}
 }

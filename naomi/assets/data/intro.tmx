@@ -43,7 +43,7 @@
    <properties>
     <property name="color" value="0xff000000"/>
     <property name="size" value="30"/>
-    <property name="text" value=" Use WASD or arrow keys to move. Be quick."/>
+    <property name="text" value=" Use WASD to move. Be quick."/>
    </properties>
   </object>
  </objectgroup>

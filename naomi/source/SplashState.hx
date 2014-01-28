@@ -11,7 +11,7 @@ import flixel.util.FlxMath;
 import flixel.tweens.FlxTween;
 import base.State;
 import base.Timer;
-using base.Utils;
+using base.UsingUtils;
 
 /**
  * Splash Screen stuff. Just Marvellous Soft for now.

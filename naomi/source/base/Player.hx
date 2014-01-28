@@ -1,6 +1,6 @@
 package base;
 
-import flixel.FlxBasic;
+import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.FlxCamera;
@@ -10,20 +10,25 @@ import flixel.tweens.FlxEase;
 import flixel.effects.FlxTrail;
 import base.Timer;
 import base.Healthbar;
+import base.Utils;
 
-using base.Utils;
+using base.UsingUtils;
 
-class Player extends FlxBasic {
-	public var controlled : Enemy;
+class Player extends FlxObject {
+	public var controlled(default, null) : Enemy;
 	
 	private var soulShot : SoulShot;
-	public var decay_bar : Healthbar;
+	private var decay_bar : Healthbar;
 	public var decay : Timer;
 
 	public var away(default, null) : Bool;
 
+	private var cameraOffsetX : Float;
+	private var cameraOffsetY : Float;
+
 	public function new() {
-		super();
+		super(0, 0, 0, 0);
+		FlxG.camera.follow(this, FlxCamera.STYLE_PLATFORMER, 5);
 		controlled = null;
 		soulShot = null;
 
@@ -38,6 +43,8 @@ class Player extends FlxBasic {
 				controlled.hurt(1);
 				decay_bar.refresh();
 			}, repeats: true, running: false});
+
+		cameraOffsetX = cameraOffsetY = 0;
 	}
 
 	public function possess(enemy : Enemy) : Void {
@@ -49,37 +56,45 @@ class Player extends FlxBasic {
 		decay.running = true;
 		decay.reset();
 
-		if(controlled != null)
-			FlxG.camera.follow(controlled, FlxCamera.STYLE_PLATFORMER, 5);
-		// more stuff here
+		if(controlled != null) {
+			width = controlled.width;
+			height = controlled.height;
+		}
 	}
 
 	override public function update() : Void {
 		super.update();
+
+		decay_bar.update();
+
 		if(soulShot != null)  {
 			soulShot.update();
 			if(!soulShot.exists) {
 				soulShot = null;
-				FlxG.camera.follow(controlled, FlxCamera.STYLE_PLATFORMER, 5);
+				FlxG.camera.follow(this, FlxCamera.STYLE_PLATFORMER, 5);
 				
 				away = false;
 				decay.running = true;
 			}
 			return;
 		}
+
 		if(controlled == null) return;
+		x = controlled.x + cameraOffsetX;
+		y = controlled.y + cameraOffsetY;
 		
-		if(FlxG.keyboard.anyPressed(['A', 'LEFT']))
+		if(FlxG.keyboard.pressed('A'))
 			controlled.walkLeft();
-		else if(FlxG.keyboard.anyPressed(['D', 'RIGHT']))
+		else if(FlxG.keyboard.pressed('D'))
 			controlled.walkRight();
 		
-		if(FlxG.keyboard.anyJustPressed(['W', 'UP']))
+		if(FlxG.keyboard.anyJustPressed(['W', 'SPACE']))
 			controlled.jump();
 
-		if(FlxG.keyboard.justPressed('E')) {
+		if(FlxG.keyboard.justPressed('E'))
 			FlxG.overlap(Reg.playState.interactibles, controlled, Interactible.doInteraction);
-		}
+
+		manageCameraScroll();
 
 		if(FlxG.mouse.justPressed) {
 			soulShot = new SoulShot(controlled.x, controlled.y);
@@ -90,7 +105,36 @@ class Player extends FlxBasic {
 		}
 	}
 
+	private static inline var speed : Float = 200;
+	private static inline var maxTranslate : Float = 100;
+	private function manageCameraScroll() : Void {
+		var prevX = cameraOffsetX;
+		var prevY = cameraOffsetY;
+		var dt = FlxG.elapsed;
+
+		if(FlxG.keyboard.pressed('UP')) cameraOffsetY -= speed * dt;
+		if(FlxG.keyboard.pressed('DOWN')) cameraOffsetY += speed * dt;
+		if(FlxG.keyboard.pressed('LEFT')) cameraOffsetX -= speed * dt;
+		if(FlxG.keyboard.pressed('RIGHT')) cameraOffsetX += speed * dt;
+
+		var diff = speed * dt/2;
+		if(diff >= Math.abs(cameraOffsetX)) cameraOffsetX = 0;
+		else cameraOffsetX -= Utils.sign(cameraOffsetX) * diff;
+		if(diff >= Math.abs(cameraOffsetY)) cameraOffsetY = 0;
+		else cameraOffsetY -= Utils.sign(cameraOffsetY) * diff;
+
+		if(Math.abs(cameraOffsetX) > maxTranslate) cameraOffsetX = Utils.sign(cameraOffsetX) * maxTranslate;
+		if(Math.abs(cameraOffsetY) > maxTranslate) cameraOffsetY = Utils.sign(cameraOffsetY) * maxTranslate;
+
+		if(FlxG.camera.target != this) return;
+		if(cameraOffsetX == 0 && cameraOffsetY == 0 && (cameraOffsetX != prevX || cameraOffsetY != prevY))
+			FlxG.camera.follow(this, FlxCamera.STYLE_PLATFORMER, 5);
+		else if((cameraOffsetX != 0 || cameraOffsetY != 0) && prevX == 0 && prevY == 0)
+			FlxG.camera.follow(this, FlxCamera.STYLE_LOCKON, 5);
+	}
+
 	override public function draw() : Void {
+		decay_bar.draw();
 		super.draw();
 		if(soulShot != null)
 			soulShot.draw();
@@ -98,6 +142,10 @@ class Player extends FlxBasic {
 
 	override public function destroy() : Void {
 		decay.delete = true;
+		decay = null;
+		soulShot = null;
+		decay_bar = null;
+		controlled = null;
 		super.destroy();
 	}
 }

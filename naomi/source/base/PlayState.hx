@@ -22,6 +22,8 @@ class PlayState extends State {
 		Reg.playState = this;
 		paused = false;
 
+		player = new Player();
+		Reg.player = player;
 		enemies = new EnemyGroup();
 		interactibles = new FlxTypedGroup <Interactible>();
 
@@ -51,7 +53,6 @@ class PlayState extends State {
 			map.objectMap.remove("end");
 		}
 
-		player = new Player();
 		if(map.objectMap.exists("playerSpawn")) {
 			add(new Beginning(map.objectMap.get("playerSpawn").members[0]));
 			map.objectMap.remove("playerSpawn");
@@ -149,7 +150,6 @@ class PlayState extends State {
 		add(Trap.traps);
 		add(interactibles);
 		add(enemies);
-		add(player.decay_bar);
 
 		if(map.objectMap.exists("text")) {
 			for(obj in map.objectMap.get("text").members) {
@@ -164,7 +164,6 @@ class PlayState extends State {
 		Rogue.wallGrip = map.objectMap.get("wallGrip");
 		
 		Reg.floor = map.objectMap.get("floor");
-		Reg.player = player;
 
 		pauseMenu = new FlxGroup();
 		pauseMenu.add(new FlxText(100, 100, 100, "PAUSED", 20));

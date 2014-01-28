@@ -41,10 +41,10 @@ class IntroLevel extends PlayState {
 
 	override public function update() : Void {
 		super.update();
-		if(endPortal.overlaps(enemies)) {
+		if(Reg.player.controlled != null && endPortal.overlaps(enemies)) {
 			player.possess(null);
-			FlxG.camera.fade(0xff000000, 4.8, false, false);
-			Timer.callIn(5, function() { FlxG.switchState(new LevelDemo()); });
+			FlxG.camera.fade(0xff000000, 2.8, false, false);
+			Timer.callIn(3, function() { FlxG.switchState(new LevelDemo()); });
 		}
 	}
 }

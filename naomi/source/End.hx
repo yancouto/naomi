@@ -24,7 +24,7 @@ class End extends Interactible {
 
 	override public function interact(entity : Enemy) : Void {
 		animation.play("going_up");
-		Reg.player.controlled = null;
+		Reg.player.possess(null);
 		FlxG.camera.fade(0xff000000, 4.8, false, false);
 		if(next == "last") {
 			Timer.callIn(5, function() { FlxG.switchState(new LastLevel()); });
