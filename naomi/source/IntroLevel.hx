@@ -14,10 +14,10 @@ class IntroLevel extends PlayState {
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create() : Void {
-		var back = new FlxSprite(0, 0).loadGraphic("assets/images/skyfinal.png", false);
-		back.scrollFactor.x = .7;
-		back.scrollFactor.y = 0;
-		FlxTween.linearMotion(back, 0, 0, 0, -780, 30, true, {type: FlxTween.PERSIST});
+		var back = new FlxSprite().loadGraphic("assets/images/skyfinal.png", false);
+		back.scrollFactor.x = .9;
+		back.scrollFactor.y = 1;
+		FlxTween.linearMotion(back, -120, 0, -120, -480, 30, true, {type: FlxTween.PERSIST});
 		add(back);
 		super.loadMap("intro");
 		// Set a background color

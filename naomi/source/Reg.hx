@@ -19,11 +19,10 @@ class Reg {
 	static public var circuitryComponents : Map<String, base.Circuitry>;
 	
 	static private var backgroungMusicName : String = "";
-	static public function playBackgroundMusic(fileName : String, fadeTime : Float = 2) {
+	static public function playBackgroundMusic(fileName : String, fadeTime : Float = 2) : Void {
 		if(fileName == backgroungMusicName) return;
 		backgroungMusicName = fileName;
 		var doFadeOut = FlxG.sound.music != null && FlxG.sound.music.active;
-		trace(doFadeOut);
 		if(doFadeOut)
 			FlxG.sound.music.fadeOut(fadeTime);
 		Timer.callIn(doFadeOut? fadeTime : 0, function() {
