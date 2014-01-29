@@ -8,7 +8,11 @@ import base.Timer;
 class Rat extends Enemy {
 	public function new(x : Float, y : Float) {
 		super(x, y);
-		loadGraphic("assets/images/ratfinal.png", true, true, 62, 29);
+		loadGraphic("assets/images/rat_animation.png", true, true, 64, 32);
+
+		offset.set(2, 2);
+		setSize(62, 30);
+
 		animation.add("idle", [0]);
 		animation.add("walking", [0, 1], 4);
 		animation.play("idle");

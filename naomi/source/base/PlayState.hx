@@ -28,6 +28,10 @@ class PlayState extends State {
 		interactibles = new FlxTypedGroup <Interactible>();
 
 		map = new TileMap("assets/data/" + tileMapName + ".tmx");
+
+		/* Object Layer of rectangles that collide with the player.objectMap
+		*  Useful for half-tiles
+		*/
 		if(map.objectMap.exists("otherCollidables")) {
 			for(collidable in map.objectMap.get("otherCollidables").members) {
 				collidable.immovable = true;
@@ -36,28 +40,43 @@ class PlayState extends State {
 			map.objectMap.remove("otherCollidables");
 		}
 
+		/*
+		* Useless for now. Should be used for important level stuff.
+		*/
 		if(map.objectMap.exists("levelInfo")) {
-			var ps = map.objectMap.get("levelInfo").members[0].properties;
-			var back = new FlxSprite(500, 0).loadGraphic("assets/images/" + ps.get("background"), false);
-			back.scrollFactor.y = 1;
-			back.scrollFactor.x = .8;
-			add(back);
+			//something something
+			map.objectMap.remove("levelInfo");
 		}
+
+		/*
+		* Adding default tiles to be drawn and updated.
+		*/
 		add(map.nonCollidableTiles);
 		add(map.collidableTiles);
 		add(map.glassTiles);
 
+		/*
+		* End of the level stuff.
+		* Not strictly necessary but should be used in most levels.
+		*/
 		if(map.objectMap.exists("end")) {
-			var ref : base.Object = map.objectMap.get("end").members[0];
-			interactibles.add(new End(ref.x, ref.y, ref.properties.get("next")));
+			interactibles.add(new End(map.objectMap.get("end").members[0]));
 			map.objectMap.remove("end");
 		}
 
+		/*
+		* Beginning of the level stuff.
+		* Not strictly necessary but should be used in most levels. 
+		*/
 		if(map.objectMap.exists("playerSpawn")) {
 			add(new Beginning(map.objectMap.get("playerSpawn").members[0]));
 			map.objectMap.remove("playerSpawn");
 		}
+
+		/* Adding player over spawns and end. */
 		add(player);
+
+		/* [Enemy Spawns] */
 
 		if(map.objectMap.exists("ratSpawns")) {
 			for(rat in map.objectMap.get("ratSpawns").members)
@@ -77,6 +96,10 @@ class PlayState extends State {
 			map.objectMap.remove("heavySpawns");
 		}
 
+		/* [/EnemySpawns] */
+
+		/* [Circuitry] */
+
 		Reg.circuitryComponents = new Map <String, Circuitry>();
 
 		if(map.objectMap.exists("levers")) {
@@ -93,6 +116,10 @@ class PlayState extends State {
 			add(Button.buttons);
 		}
 
+		/* [/Circuitry] */
+
+		/* [Traps] */
+
 		Trap.traps = new FlxTypedGroup <Trap>();
 
 		if(map.objectMap.exists("bearTraps")) {
@@ -107,11 +134,16 @@ class PlayState extends State {
 			map.objectMap.remove("fireTraps");
 		}
 
-		if(map.objectMap.get("spikeTraps") != null) {
+		if(map.objectMap.exists("spikeTraps")) {
 			for(o in map.objectMap.get("spikeTraps").members)
 				Trap.traps.add(new SpikeTrap(o));
 			map.objectMap.remove("spikeTraps");
-		}		
+		}
+
+		add(Trap.traps);
+		/* [/Traps] */
+
+		/* [Platforms] */
 
 		Platform.platforms = new FlxTypedGroup <Platform>();
 		if(map.objectMap.exists("platforms")) {
@@ -124,14 +156,7 @@ class PlayState extends State {
 			}
 			map.objectMap.remove("platforms");
 		}
-
 		add(Platform.platforms);
-
-		if(map.objectMap.exists("doors")) {
-			for(obj in map.objectMap.get("doors").members)
-				map.collidableTiles.add(new Door(obj));
-			map.objectMap.remove("doors");
-		}
 
 		BreakablePlatform.platforms = new FlxTypedGroup <BreakablePlatform>();
 		if(map.objectMap.exists("breakables")) {
@@ -141,16 +166,25 @@ class PlayState extends State {
 		}
 		add(BreakablePlatform.platforms);
 
+		/* [/Platforms] */
+
+		/* Doors */
+		if(map.objectMap.exists("doors")) {
+			for(obj in map.objectMap.get("doors").members)
+				map.collidableTiles.add(new Door(obj));
+			map.objectMap.remove("doors");
+		}
+
+		/* Torchs */
 		if(map.objectMap.exists("torchs")) {
 			for(obj in map.objectMap.get("torchs").members)
 				add(new Torch(obj));
 			map.objectMap.remove("torchs");
 		}
 
-		add(Trap.traps);
 		add(interactibles);
-		add(enemies);
 
+		/* Text */
 		if(map.objectMap.exists("text")) {
 			for(obj in map.objectMap.get("text").members) {
 				var t = new FlxText(obj.x, obj.y, Std.int(obj.width), obj.properties.get("text"), obj.properties.exists("size")? Std.parseInt(obj.properties.get("size")) : 12);
@@ -161,12 +195,26 @@ class PlayState extends State {
 			map.objectMap.remove("text");
 		}
 
-		Rogue.wallGrip = map.objectMap.get("wallGrip");
-		
-		Reg.floor = map.objectMap.get("floor");
+		add(enemies);
 
+		/* Rogue wallgrip stuff */
+		Rogue.wallGrip = map.objectMap.get("wallGrip");
+		if(Rogue.wallGrip == null) throw "You must create Object Layer \"wallGrip\".";
+		map.objectMap.remove("wallGrip");
+		
+		/* Floor identifier for jumping stuff. Is it maybe unnecessary? */
+		Reg.floor = map.objectMap.get("floor");
+		if(Reg.floor == null) throw "You must create Object Layer \"floor\".";
+		map.objectMap.remove("floor");
+
+		/* Loading Pause Menu */
 		pauseMenu = new FlxGroup();
-		pauseMenu.add(new FlxText(100, 100, 100, "PAUSED", 20));
+		var menuObj : flixel.FlxObject = new FlxSprite(0, 0).makeGraphic(1200, 600, 0x77000000);
+		menuObj.scrollFactor.set(0, 0);
+		pauseMenu.add(menuObj);
+		menuObj = new FlxText(100, 100, 100, "PAUSED", 20);
+		menuObj.scrollFactor.set(0, 0);
+		pauseMenu.add(menuObj);
 	}
 
 	override public function update() : Void {

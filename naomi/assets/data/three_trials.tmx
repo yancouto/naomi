@@ -175,7 +175,7 @@
  <objectgroup name="end" width="80" height="50">
   <object x="2239" y="1671" width="129" height="123">
    <properties>
-    <property name="next" value="last"/>
+    <property name="nextState" value="LastLevel"/>
    </properties>
   </object>
  </objectgroup>

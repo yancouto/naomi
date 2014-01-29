@@ -27,7 +27,7 @@ class Enemy extends FlxSprite {
 		health = 100;
 		base_speed = 100;
 		acceleration.y = 500;
-		drag.x = 400;
+		drag.x = 1200;
 		idle = true;
 		jumps = 1;
 		jumpCount = 0;
