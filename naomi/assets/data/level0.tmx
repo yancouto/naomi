@@ -212,9 +212,6 @@
   </object>
  </objectgroup>
  <objectgroup name="end" width="60" height="20">
-  <properties>
-   <property name="next" value="TestLevel"/>
-  </properties>
   <object name="End Point Door" x="1276" y="383" width="129" height="131">
    <properties>
     <property name="next" value="levelrogue"/>

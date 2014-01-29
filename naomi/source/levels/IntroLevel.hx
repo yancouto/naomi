@@ -1,4 +1,4 @@
-package;
+package levels;
 
 import base.PlayState;
 import flixel.FlxObject;
@@ -44,7 +44,7 @@ class IntroLevel extends PlayState {
 		if(Reg.player.controlled != null && endPortal.overlaps(enemies)) {
 			player.possess(null);
 			FlxG.camera.fade(0xff000000, 2.8, false, false);
-			Timer.callIn(3, function() { FlxG.switchState(new LevelDemo()); });
+			Timer.callIn(3, function() { FlxG.switchState(new SimpleLevel()); });
 		}
 	}
 }

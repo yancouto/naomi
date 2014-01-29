@@ -8,6 +8,8 @@ import base.Interactible;
 import base.Enemy;
 import base.Timer;
 
+import levels.*;
+
 /* End of the level. Stairs with cool animations.
 *  Will load the next level ('simple' levels with "next" and 'complex' (with their own State) with "nextState")
 */
@@ -36,7 +38,7 @@ class End extends Interactible {
 		if(next == null) {
 			Timer.callIn(5, function() { FlxG.switchState(Type.createInstance(Type.resolveClass(nextState), [])); });
 		} else {
-			LevelDemo.levelName = next;
+			SimpleLevel.levelName = next;
 			Timer.callIn(5, function() { FlxG.resetState(); });	
 		}
 	}

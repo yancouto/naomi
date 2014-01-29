@@ -1,4 +1,4 @@
-package;
+package levels;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -12,7 +12,7 @@ import base.Player;
 import base.PlayState;
 import base.Interactible;
 
-class LevelDemo extends PlayState {
+class SimpleLevel extends PlayState {
 	public static var levelName : String;
 
 

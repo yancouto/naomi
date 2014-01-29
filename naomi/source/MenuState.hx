@@ -60,15 +60,15 @@ class MenuState extends FlxState {
 	 * Function that is called once every frame.
 	 */
 	override public function update() : Void {
-		if(FlxG.keyboard.justPressed("LEFT") && selected) {
+		if(FlxG.keyboard.anyJustPressed(['LEFT', 'A']) && selected) {
 			selector.x = 45 + background.x;
 			selector.refresh();
 			selected = false;
-		} else if(FlxG.keyboard.justPressed("RIGHT") && !selected) {
+		} else if(FlxG.keyboard.anyJustPressed(['RIGHT', 'D']) && !selected) {
 			selector.x = 440 + background.x;
 			selector.refresh();
 			selected = true;
-		} else if(FlxG.keyboard.justPressed("ENTER")) {
+		} else if(FlxG.keyboard.anyJustPressed(['ENTER', 'SPACE'])) {
 			if(!selected)
 				FlxG.switchState(new IntroText());
 			else

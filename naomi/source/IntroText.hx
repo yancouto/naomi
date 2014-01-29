@@ -4,6 +4,7 @@ import base.State;
 import flixel.FlxG;
 import flixel.text.FlxText;
 import base.Timer;
+import levels.IntroLevel;
 
 class IntroText extends State {
 	private var fadeTimer : Timer;
@@ -33,7 +34,7 @@ class IntroText extends State {
 
 	override public function update() : Void {
 		super.update();
-		if(FlxG.mouse.justPressed) {
+		if(FlxG.mouse.justPressed || FlxG.keyboard.anyJustPressed(['SPACE', 'ENTER', 'ESC'])) {
 			if(!fading)
 				fadeTimer.callback(fadeTimer);
 			else {

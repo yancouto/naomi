@@ -44,12 +44,14 @@ class Enemy extends FlxSprite {
 		idle = false;
 		facing = FlxObject.RIGHT;
 	}
+
 	public function walkLeft() : Void {
 		acceleration.x -= drag.x;
 		animation.play("walking");
 		idle = false;
 		facing = FlxObject.LEFT;
 	}
+	
 	public function jump() : Void {
 		if(jumpCount < jumps) {
 			jumpCount++;
