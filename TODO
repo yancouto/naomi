@@ -94,3 +94,18 @@ FILES AND STUFF
 -escrever licensa pra tudo
 -aumentar readme
 -DOCUMENTAÇÃO
+
+
+-----------------------
+COISAS FRITAS OPCIONAIS
+-----------------------
+
+*        coisas dahoras que combinariam com o jogo, mas totalmente opcionais que podemos        *
+*pensar em fazer depois de tudo (ou quando voce tiver entediado e queira programar algo da hora)*
+
+
+-Os pixels de "sangue" que voam quando alguem morre, ao tocar na lateral de uns dos tiles de parede
+	"pintam" sua superficie de vermelho, dando um efeito da hora e mais interativo da morte com o jogo
+	(imagem de referencia se nao deu pra sacar: http://bulk2.destructoid.com/ul/225536-TheyBleed-Header.jpg)
+	(se for fazer pode ser tanto programacional quanto da pra fazer facil uma versao de cada tile com uma linha de pixels vermelhos na superficie correta)
+
