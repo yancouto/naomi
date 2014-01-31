@@ -34,7 +34,7 @@ class IntroText extends State {
 
 	override public function update() : Void {
 		super.update();
-		if(FlxG.mouse.justPressed || FlxG.keyboard.anyJustPressed(['SPACE', 'ENTER', 'ESC'])) {
+		if(FlxG.mouse.justPressed || FlxG.keyboard.anyJustPressed(['SPACE', 'ENTER', 'ESCAPE'])) {
 			if(!fading)
 				fadeTimer.callback(fadeTimer);
 			else {

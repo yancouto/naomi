@@ -116,6 +116,13 @@ class PlayState extends State {
 			add(Button.buttons);
 		}
 
+		/* Invisible Triggers */
+		if(map.objectMap.exists("triggers")) {
+			for(obj in map.objectMap.get("triggers").members)
+				add(new Trigger(obj));
+			map.objectMap.remove("triggers");
+		}
+
 		/* [/Circuitry] */
 
 		/* [Traps] */
@@ -141,6 +148,7 @@ class PlayState extends State {
 		}
 
 		add(Trap.traps);
+
 		/* [/Traps] */
 
 		/* [Platforms] */
