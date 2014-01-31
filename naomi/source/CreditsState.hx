@@ -6,7 +6,7 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 
-class CreditsState extends FlxState {
+class CreditsState extends base.State {
 	private var back : FlxText;
 	private var selector : Selector;
 
@@ -19,7 +19,7 @@ class CreditsState extends FlxState {
 
 		back = new FlxText(GameClass.gameWidth/2-100, GameClass.gameHeight-100,
 			100, "Back", 20);
-		selector = new Selector(back.x-50, back.y);
+		selector = new Selector(back.x - 50, back.y);
 
 		add(back);
 		add(new FlxText(250, 200, 500, 
@@ -31,7 +31,7 @@ class CreditsState extends FlxState {
 	}
 
 	override public function update() : Void {
-		if(FlxG.keyboard.justPressed("ENTER"))
+		if(FlxG.keyboard.anyJustPressed(['ENTER', 'SPACE']))
 			FlxG.switchState(new MenuState());
 		super.update();
 	}

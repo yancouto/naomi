@@ -6,8 +6,8 @@ BUGS
 ----
 
 -na tela de pause as platafromas ainda andam
--os dois frames das levers estao com a parte de baixo cortada (nao sei se é por colocação errada no tiled ou programação)
 -invisible mirrors
+- Simbolos misteriosos do flixel aparecendo por causa da floor
 
 -----------------
 PROGRAMMING STUFF
@@ -21,10 +21,6 @@ GAMEPLAY
 -alma volta pro seu corpo
 -pode fazer a alma voltar instantaneamente pro corpo pra nao ter que esperar ela bater em algo (pode ser clicando de novo ou sei la)
 -alma ter um limite maximo que pdoe percorrer (a decidir se faz isso ou nao)
--Tirar falta de atrito no moviemnto dos caras
- 	-parar de apertar a tecla e seu cara ainda desliza loucamente pelo chão é uma coisa nao dahora em plataformers
- 		-tirar completamente ou deixar ridulamente baixo, mas ainda sim precisa ver se fica legal
- 			-provavelmente so tirar
 -Acertar o fogo com sua alma tem que tirar uma porção da sua vida
 -levers que so podem ser ativas uma vez, e depois nao podem mais ser desativadas (quem sabe um novo elemento com seu proprio sprite pra nao ter dois tipos de levers)
 -balancear dano dos fogos
@@ -33,7 +29,6 @@ GAMEPLAY
 GAME
 ----
 -criar "triggers" de evento invisiveis que acontecem ao serem passados
-	-triggers podem dar fade out em texto (quem sabe fade in tambem, mas sei la)
 -no menu de pause poder resetar a fase
 -o fadeout entre uma tela e outra precisa ser muito mais rapido
 -vou mudar a animação e pans, mas por enquanto faz a animação da alma ubindo as escadas acabar com o primeiro frame das escadas vazias
@@ -42,7 +37,7 @@ GAME
 	-Fases iniciais que ensinam cada habildiade dos personagens
 	-Textos curtos ou sem texto, com a mecanica de morrer com tempo nao cabe ter muitos textos no jogo
 	-Mais Fases!
--Soul sair do centro do personagem (nao é intuitivo sair da cabeça do rogue por exemplo)
+-Soul sair do centro do personagem (nao é intuitivo sair da cabeça do rogue por exemplo) (fode o rato)
 -Poder clicar nos botões do menu
 -better credits, apesar de o atual ser mega indie
 -OUTRO
@@ -91,7 +86,6 @@ MUSICA
 FILES AND STUFF
 ---------------
 
--escrever licensa pra tudo
 -aumentar readme
 -DOCUMENTAÇÃO
 
@@ -108,4 +102,5 @@ COISAS FRITAS OPCIONAIS
 	"pintam" sua superficie de vermelho, dando um efeito da hora e mais interativo da morte com o jogo
 	(imagem de referencia se nao deu pra sacar: http://bulk2.destructoid.com/ul/225536-TheyBleed-Header.jpg)
 	(se for fazer pode ser tanto programacional quanto da pra fazer facil uma versao de cada tile com uma linha de pixels vermelhos na superficie correta)
+	(TOTALMENTE APOIADO FAREI LOGO (mas isso seria mais legal se mais coisas morressem...))
 

@@ -21,6 +21,10 @@ class State extends FlxState {
 
 	public override function update() {
 		Timer.updateTimers(FlxG.elapsed);
+
+		if(FlxG.keyboard.justPressed('M'))
+			FlxG.sound.muted = !FlxG.sound.muted;
+
 		super.update();
 	}
 }

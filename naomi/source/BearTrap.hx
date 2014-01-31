@@ -4,8 +4,8 @@ import flixel.FlxG;
 import flixel.FlxObject;
 
 class BearTrap extends Trap {
-	public function new(x : Float, y : Float) {
-		super(x, y, 50);
+	public function new(obj : base.Object) { // Assumes the object is touching the floor
+		super(obj.x, obj.y + obj.height - 10, 50);
 
 		loadGraphic("assets/images/beartrapanimation.png", true, false, 60, 45);
 		animation.add("open", [0]);

@@ -103,15 +103,15 @@ class PlayState extends State {
 		Reg.circuitryComponents = new Map <String, Circuitry>();
 
 		if(map.objectMap.exists("levers")) {
-			for(o in map.objectMap.get("levers").members)
-				interactibles.add(new Lever(o.x, o.y, o.properties.get("id")));
+			for(obj in map.objectMap.get("levers").members)
+				interactibles.add(new Lever(obj));
 			map.objectMap.remove("levers");
 		}
 
 		if(map.objectMap.exists("buttons")) {
 			Button.buttons = new FlxTypedGroup <Button>();
-			for(o in map.objectMap.get("buttons").members)
-				Button.buttons.add(new Button(o.x, o.y, o.properties.get("id")));
+			for(obj in map.objectMap.get("buttons").members)
+				Button.buttons.add(new Button(obj));
 			map.objectMap.remove("buttons");
 			add(Button.buttons);
 		}
@@ -123,20 +123,20 @@ class PlayState extends State {
 		Trap.traps = new FlxTypedGroup <Trap>();
 
 		if(map.objectMap.exists("bearTraps")) {
-			for(o in map.objectMap.get("bearTraps").members)
-				Trap.traps.add(new BearTrap(o.x, o.y));
+			for(obj in map.objectMap.get("bearTraps").members)
+				Trap.traps.add(new BearTrap(obj));
 			map.objectMap.remove("bearTraps");
 		}
 
 		if(map.objectMap.exists("fireTraps")) {
-			for(o in map.objectMap.get("fireTraps").members)
-				Trap.traps.add(new FireTrap(o));
+			for(obj in map.objectMap.get("fireTraps").members)
+				Trap.traps.add(new FireTrap(obj));
 			map.objectMap.remove("fireTraps");
 		}
 
 		if(map.objectMap.exists("spikeTraps")) {
-			for(o in map.objectMap.get("spikeTraps").members)
-				Trap.traps.add(new SpikeTrap(o));
+			for(obj in map.objectMap.get("spikeTraps").members)
+				Trap.traps.add(new SpikeTrap(obj));
 			map.objectMap.remove("spikeTraps");
 		}
 
@@ -186,12 +186,8 @@ class PlayState extends State {
 
 		/* Text */
 		if(map.objectMap.exists("text")) {
-			for(obj in map.objectMap.get("text").members) {
-				var t = new FlxText(obj.x, obj.y, Std.int(obj.width), obj.properties.get("text"), obj.properties.exists("size")? Std.parseInt(obj.properties.get("size")) : 12);
-				if(obj.properties.exists("color"))
-					t.color = Std.parseInt(obj.properties.get("color"));
-				add(t);
-			}
+			for(obj in map.objectMap.get("text").members)
+				add(new Text(obj));
 			map.objectMap.remove("text");
 		}
 

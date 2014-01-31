@@ -19,7 +19,7 @@ class Door extends FlxSprite {
 		setPosition(obj.x, obj.y + obj.height - height);
 		maxY = y;
 		minY = obj.y;
-		source = Reg.circuitryComponents.get(obj.properties.get("source"));
+		source = Reg.getTrigger(obj.properties.get("source"));
 		speedUp = obj.properties.exists("speedUp")? Std.parseFloat(obj.properties.get("speedUp")) : 100;
 		speedDown = obj.properties.exists("speedDown")? Std.parseFloat(obj.properties.get("speedDown")) : 50;
 		immovable = true;

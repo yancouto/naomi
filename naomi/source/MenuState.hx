@@ -14,7 +14,7 @@ import flixel.effects.FlxTrail;
 /**
  * A FlxState which can be used for the game's menu.
  */
-class MenuState extends FlxState {
+class MenuState extends base.State {
 	private var selector : Selector;
 	private var selected : Bool;
 	private var background : FlxSprite;
@@ -34,8 +34,8 @@ class MenuState extends FlxState {
 		background = new FlxSprite(0, 0);
 
 		background.loadGraphic("assets/images/mainmenu.png", false);
-		background.x = (GameClass.gameWidth-background.width)/2;
-		background.y = (GameClass.gameHeight-background.height)/2;
+		background.x = (GameClass.gameWidth - background.width) / 2;
+		background.y = (GameClass.gameHeight - background.height) / 2;
 		
 		selector = new Selector(background.x + 45, background.y + 520);
 
@@ -45,15 +45,6 @@ class MenuState extends FlxState {
 		add(selector);
 		
 		super.create();
-	}
-	
-	/**
-	 * Function that is called when this state is destroyed - you might want to 
-	 * consider setting all objects this state uses to null to help garbage collection.
-	 */
-	override public function destroy() : Void {
-		super.destroy();
-		//FlxG.sound.music.fadeOut(1);
 	}
 
 	/**

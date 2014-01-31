@@ -194,7 +194,7 @@
   </object>
  </objectgroup>
  <objectgroup name="bearTraps" width="60" height="20">
-  <object x="1792" y="1086" width="61" height="9"/>
+  <object x="1792" y="1056" width="64" height="32"/>
   <object x="2303" y="1085" width="66" height="5"/>
  </objectgroup>
  <objectgroup name="platforms" width="60" height="20">

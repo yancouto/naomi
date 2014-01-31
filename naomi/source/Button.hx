@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.group.FlxTypedGroup;
+
 import base.Enemy;
 import base.Circuitry;
 
@@ -11,14 +12,14 @@ class Button extends FlxSprite implements Circuitry {
 	public static var buttons : FlxTypedGroup<Button>;
 	public var state : Bool;
 
-	public function new(x : Float, y : Float, id : String) {
-		super(x, y);
+	public function new(obj : base.Object) { // Assumes the object is touching the floor
+		super(obj.x, obj.y + obj.height - 10);
 		loadGraphic("assets/images/buttonanimation.png", true, false, 50, 10);
 		animation.add("false", [0]);
 		animation.add("true", [1]);
 		animation.play("false");
 
-		Reg.circuitryComponents.set(id, this);
+		Reg.circuitryComponents.set(obj.properties.get("id"), this);
 
 		state = false;
 	}
