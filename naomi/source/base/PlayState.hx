@@ -6,6 +6,7 @@ import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.group.FlxGroup;
 import flixel.FlxSprite;
+import base.Utils;
 
 typedef EnemyGroup = FlxTypedGroup<Enemy>;
 
@@ -213,7 +214,7 @@ class PlayState extends State {
 
 		/* Loading Pause Menu */
 		pauseMenu = new FlxGroup();
-		var menuObj : flixel.FlxObject = new FlxSprite(0, 0).makeGraphic(1200, 600, 0x77000000);
+		var menuObj : flixel.FlxObject = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0x77000000);
 		menuObj.scrollFactor.set(0, 0);
 		pauseMenu.add(menuObj);
 		menuObj = new FlxText(100, 100, 100, "PAUSED", 20);
@@ -223,7 +224,7 @@ class PlayState extends State {
 
 	override public function update() : Void {
 		if(FlxG.keyboard.anyJustPressed(['P', 'ESCAPE']))
-			FlxG.paused = !FlxG.paused;
+			Utils.pause();
 		if(FlxG.paused) {
 			pauseMenu.update();
 			return;

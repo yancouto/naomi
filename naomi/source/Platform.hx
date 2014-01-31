@@ -23,4 +23,8 @@ class Platform extends FlxSprite {
 		path.active = !path.active;
 
 	public static var platforms : FlxTypedGroup<Platform>;
+
+	public static function pause() : Void
+		for(p in platforms.iterator())
+			p.toggle();
 }
