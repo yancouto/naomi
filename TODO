@@ -18,7 +18,6 @@ PROGRAMMING STUFF
 --------
 GAMEPLAY
 --------
-
 -alma volta pro seu corpo
 -pode fazer a alma voltar instantaneamente pro corpo pra nao ter que esperar ela bater em algo (pode ser clicando de novo ou sei la)
 -alma ter um limite maximo que pdoe percorrer (a decidir se faz isso ou nao)
@@ -33,7 +32,8 @@ GAMEPLAY
 ----
 GAME
 ----
-
+-criar "triggers" de evento invisiveis que acontecem ao serem passados
+	-triggers podem dar fade out em texto (quem sabe fade in tambem, mas sei la)
 -no menu de pause poder resetar a fase
 -o fadeout entre uma tela e outra precisa ser muito mais rapido
 -vou mudar a animação e pans, mas por enquanto faz a animação da alma ubindo as escadas acabar com o primeiro frame das escadas vazias
@@ -45,7 +45,30 @@ GAME
 -Soul sair do centro do personagem (nao é intuitivo sair da cabeça do rogue por exemplo)
 -Poder clicar nos botões do menu
 -better credits, apesar de o atual ser mega indie
--o fim quem sabe muda, mas deixa um pouco mais tempo no jogo depois da naomi explodir
+-OUTRO
+	-o fim quem sabe muda, mas deixa um pouco mais tempo no jogo depois da naomi explodir
+-INTRO
+	-CLica no botão start do menu
+	-Textos start e credit dao fadeout
+	-camera começa a descer
+	-aparece o texto inicial
+	-vai descendo mais
+	-ja mescla com a imagem do ceu e vai descendo ate o vaso
+	-depois de um tempo o texto grande inicial(o que antes começava com "welcome to naomi") da fade in
+	-n segundos passam
+	-rato aparece
+	-ao entrar no rato aparece o texto do wasd
+	-???
+	-profit
+	-primeira fase (quem sabe a ultima) tem que começar com o rato cehgando pelo tunelzinho, e nao pela escada
+-"WE DONT SEE THING AS THEY ARE, WE SEE THEM AS WE ARE"
+	-Pensar e fazer(quando todo o resto da tiver mais ou menos bem feito):
+		-um efeito que mude seu arredor dependendo do personagem que voce esta usando, aka "como ele ve o mundo"
+		-ideias possiveis:
+			-tudo distorcido (rogue quem sabe?)
+			-tudo sangrento (heavy quem sabe?)
+			-tudo cinzento ou mal definido (como se o jogo inteiro já nao é cinzento e mal definido o suficiente...) (rato quem sabe)
+
 
 ----
 ARTE
