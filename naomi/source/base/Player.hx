@@ -77,6 +77,8 @@ class Player extends FlxObject {
 
 		if(soulShot != null)  {
 			soulShot.update();
+			if(FlxG.mouse.justPressed)
+				soulShot.destroy();
 			if(!soulShot.exists) {
 				soulShot = null;
 				FlxG.camera.follow(this, FlxCamera.STYLE_PLATFORMER, 5);

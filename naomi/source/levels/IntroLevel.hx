@@ -44,7 +44,7 @@ class IntroLevel extends PlayState {
 		var rat = enemies.members[0];
 		if(Reg.player.controlled != null && endPortal.overlaps(rat)) {
 			player.possess(null);
-			FlxG.camera.fade(0xff000000, 2.8, false, false);
+			FlxG.camera.fade(0xff000000, 1.8, false, false);
 			FlxG.camera.follow(null);
 
 			/*
@@ -60,7 +60,7 @@ class IntroLevel extends PlayState {
 			enemies.clear();
 			add(rat);
 			
-			Timer.callIn(3, function() { FlxG.switchState(new SimpleLevel()); });
+			Timer.callIn(2, function() { FlxG.switchState(new SimpleLevel()); });
 		}
 	}
 }

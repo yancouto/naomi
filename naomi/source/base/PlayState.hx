@@ -71,8 +71,6 @@ class PlayState extends State {
 			map.objectMap.remove("playerSpawn");
 		}
 
-		/* Adding player over spawns and end. */
-		add(player);
 
 		/* [Enemy Spawns] */
 
@@ -222,6 +220,8 @@ class PlayState extends State {
 		menuObj.scrollFactor.set(0, 0);
 		pauseMenu.add(menuObj);
 
+		/* Adding player. */
+		add(player);
 	}
 
 	override public function update() : Void {

@@ -11,14 +11,13 @@ BUGS
 PROGRAMMING STUFF
 -----------------
 
--adicionem coisas aqui, seus nerds programadores
+- Melhorar o sangue? (Colisão um pouco melhor)
 
 --------
 GAMEPLAY
 --------
 -alma volta pro seu corpo
--pode fazer a alma voltar instantaneamente pro corpo pra nao ter que esperar ela bater em algo (pode ser clicando de novo ou sei la)
--alma ter um limite maximo que pdoe percorrer (a decidir se faz isso ou nao)
+-alma ter um limite maximo que pode percorrer (a decidir se faz isso ou nao)
 -Acertar o fogo com sua alma tem que tirar uma porção da sua vida
 -levers que so podem ser ativas uma vez, e depois nao podem mais ser desativadas (quem sabe um novo elemento com seu proprio sprite pra nao ter dois tipos de levers)
 -balancear dano dos fogos
@@ -36,8 +35,6 @@ GAME
 				-cada capitulo podia ter um titulo e pans
 				-No começo se cada capitulo pode so dar fade in e fade out no topo da tela o nome do capitulo, nada que interrompa o jogo todo, so no começo da fase que começa o capitulo novo
 -no menu de pause poder resetar a fase
--o fadeout entre uma tela e outra precisa ser muito mais rapido
--vou mudar a animação e pans, mas por enquanto faz a animação da alma ubindo as escadas acabar com o primeiro frame das escadas vazias
 -colocar as "waves" atras da soul (precisa ver se fica bacana ai decide se fica no jogo ou nao)
 -TOTAL OVERHAUL NAS FASES
 	-Fases iniciais que ensinam cada habildiade dos personagens
@@ -102,11 +99,3 @@ COISAS FRITAS OPCIONAIS
 
 *        coisas dahoras que combinariam com o jogo, mas totalmente opcionais que podemos        *
 *pensar em fazer depois de tudo (ou quando voce tiver entediado e queira programar algo da hora)*
-
-
--Os pixels de "sangue" que voam quando alguem morre, ao tocar na lateral de uns dos tiles de parede
-	"pintam" sua superficie de vermelho, dando um efeito da hora e mais interativo da morte com o jogo
-	(imagem de referencia se nao deu pra sacar: http://bulk2.destructoid.com/ul/225536-TheyBleed-Header.jpg)
-	(se for fazer pode ser tanto programacional quanto da pra fazer facil uma versao de cada tile com uma linha de pixels vermelhos na superficie correta)
-	(TOTALMENTE APOIADO FAREI LOGO (mas isso seria mais legal se mais coisas morressem...))
-
