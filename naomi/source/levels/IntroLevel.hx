@@ -51,10 +51,10 @@ class IntroLevel extends PlayState {
 
 class Flower extends base.Enemy {
 	public function new(obj : base.Object) {
-		super(obj.x, obj.y);
-		loadGraphic("assets/images/floweranimation.png", true, false, 35, 60);
+		super(obj.x, obj.y + obj.height - 60);
+		loadGraphic("assets/images/flower_animation.png", true, false, 32, 60);
 		animation.add("still", [0]);
-		animation.add("dying", [1, 2], 2, false);
+		animation.add("dying", [1, 2], 1, false);
 		animation.play("still");
 		acceleration.y = 0;
 		jumps = 0;
