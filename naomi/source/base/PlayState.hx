@@ -215,10 +215,23 @@ class PlayState extends State {
 		/* Loading Pause Menu */
 		pauseMenu = new FlxGroup();
 		var menuObj : flixel.FlxObject = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0x77000000);
+		
 		menuObj.scrollFactor.set(0, 0);
 		pauseMenu.add(menuObj);
+		
 		menuObj = new FlxText(100, 100, 100, "PAUSED", 20);
 		menuObj.scrollFactor.set(0, 0);
+
+		pauseMenu.add(menuObj);
+
+		menuObj = new FlxText(Std.int(FlxG.width/2+100), FlxG.height-200, Std.int(FlxG.width/2-100), "Press 'R' to restart level.", 20);
+		menuObj.scrollFactor.set(0, 0);
+
+		pauseMenu.add(menuObj);
+
+		menuObj = new FlxText(Std.int(FlxG.width/2+100), FlxG.height-100, Std.int(FlxG.width/2-100), "Press 'M' to go back to the Menu.", 20);
+		menuObj.scrollFactor.set(0, 0);
+
 		pauseMenu.add(menuObj);
 	}
 
@@ -226,6 +239,15 @@ class PlayState extends State {
 		if(FlxG.keyboard.anyJustPressed(['P', 'ESCAPE']))
 			Utils.pause();
 		if(FlxG.paused) {
+
+			if(FlxG.keyboard.justPressed('R')) {
+				FlxG.resetState();
+				FlxG.paused = false;
+			} else if(FlxG.keyboard.justPressed('M')) {
+				FlxG.switchState(new MenuState());
+				FlxG.paused = false;
+			}
+
 			pauseMenu.update();
 			return;
 		}
