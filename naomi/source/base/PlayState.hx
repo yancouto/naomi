@@ -52,9 +52,7 @@ class PlayState extends State {
 		/*
 		* Adding default tiles to be drawn and updated.
 		*/
-		add(map.nonCollidableTiles);
-		add(map.collidableTiles);
-		add(map.glassTiles);
+		add(map.allTiles);
 
 		/*
 		* End of the level stuff.

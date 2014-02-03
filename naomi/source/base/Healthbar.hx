@@ -16,7 +16,12 @@ class Healthbar extends FlxSprite {
 
 	public function resetOwner() : Void {
 		var owner = Reg.player.controlled;
-		if(owner == null || !owner.canBeHurt) return;
+		if(owner == null || !owner.canBeHurt) {
+			/* Invisible Sprites */
+			makeGraphic(1, 1, 0x00000000);
+			healthSprite.makeGraphic(1, 1, 0x00000000);
+			return;
+		}
 		healthSprite.color = owner.healthColor;
 		loadGraphic("assets/images/" + Type.getClassName(Type.getClass(owner)) + "_meter.png", false);
 		x = GameClass.gameWidth/2 - width/2;

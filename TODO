@@ -5,8 +5,7 @@
 BUGS
 ----
 
--invisible mirrors
-- Simbolos misteriosos do flixel aparecendo por causa da floor
+- invisible mirrors
 
 -----------------
 PROGRAMMING STUFF
@@ -36,7 +35,6 @@ GAME
 			-Nao sei se combna muito salvar level individualmente, mas o que ficaria bacana é salvar por blocos, tipo "capitulos" que aglomeram multiplas fases
 				-cada capitulo podia ter um titulo e pans
 				-No começo se cada capitulo pode so dar fade in e fade out no topo da tela o nome do capitulo, nada que interrompa o jogo todo, so no começo da fase que começa o capitulo novo
--criar "triggers" de evento invisiveis que acontecem ao serem passados
 -no menu de pause poder resetar a fase
 -o fadeout entre uma tela e outra precisa ser muito mais rapido
 -vou mudar a animação e pans, mas por enquanto faz a animação da alma ubindo as escadas acabar com o primeiro frame das escadas vazias

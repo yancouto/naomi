@@ -17,7 +17,7 @@ class IntroLevel extends PlayState {
 		var back = new FlxSprite().loadGraphic("assets/images/skyfinal.png", false);
 		back.scrollFactor.x = .9;
 		back.scrollFactor.y = 1;
-		FlxTween.linearMotion(back, -120, 0, -120, -480, 30, true, {type: FlxTween.PERSIST});
+		FlxTween.linearMotion(back, -120, 0, -120, -480, 30, true);
 		add(back);
 		super.loadMap("intro");
 		// Set a background color
@@ -41,9 +41,25 @@ class IntroLevel extends PlayState {
 
 	override public function update() : Void {
 		super.update();
-		if(Reg.player.controlled != null && endPortal.overlaps(enemies)) {
+		var rat = enemies.members[0];
+		if(Reg.player.controlled != null && endPortal.overlaps(rat)) {
 			player.possess(null);
 			FlxG.camera.fade(0xff000000, 2.8, false, false);
+			FlxG.camera.follow(null);
+
+			/*
+			* Rat moves right
+			*/
+			rat.drag.set(0, 0);
+			rat.acceleration.set(0, 0);
+			rat.velocity.set(100, 0);
+			
+			/*
+			* Rat doesn't collide anymore
+			*/
+			enemies.clear();
+			add(rat);
+			
 			Timer.callIn(3, function() { FlxG.switchState(new SimpleLevel()); });
 		}
 	}

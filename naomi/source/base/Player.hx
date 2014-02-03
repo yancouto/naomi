@@ -161,16 +161,19 @@ private class SoulShot extends FlxSprite {
 	public function new(x : Float, y : Float) {
 		super(x, y);
 
-		loadGraphic("assets/images/soulAnim2.png", true, false, 32, 32);
-		animation.add("moving", [for(i in 0...12) i], 24);
+		loadGraphic("assets/images/soul_animation.png", true, false, 32, 32);
+		animation.add("moving", [for(i in 1...5) i], 8);
 		animation.play("moving");
 		angularVelocity = 200;
 
 		offset.set(6, 6);
 		setSize(20, 20);
+
 		velocity.set(FlxG.mouse.x - x, FlxG.mouse.y - y).normalize().mult(base_speed);
 		setPosition(x + .05*velocity.x, y + .05*velocity.y);
+
 		trail = new FlxTrail(this, null, 5, 0, .5, .1);
+		
 		var map = Reg.playState.map.objectMap;
 		mirrorUp = map.get("mirrorUp");
 		if(mirrorUp == null) mirrorUp = new TileMap.PObjectGroup();
