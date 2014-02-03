@@ -35,7 +35,7 @@
   </data>
  </layer>
  <objectgroup color="#1fa43a" name="text" width="33" height="17">
-  <object name="Text" x="404" y="386" width="552" height="156">
+  <object name="Intro Text" x="404" y="386" width="552" height="156">
    <properties>
     <property name="color" value="0xff000000"/>
     <property name="fadeOutTrigger" value="introFadeOut"/>
@@ -43,7 +43,7 @@
     <property name="text" value="You are a bodyless soul and can project yourself onto other living beings. Use the mouse to aim and click to throw your soul. Be careful, you harm them while using their bodies and you die when your host dies. Change bodies to avoid that."/>
    </properties>
   </object>
-  <object x="808" y="555" width="339" height="77">
+  <object name="WASD Text" x="808" y="555" width="339" height="77">
    <properties>
     <property name="color" value="0xff000000"/>
     <property name="size" value="30"/>

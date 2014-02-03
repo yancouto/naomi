@@ -15,6 +15,8 @@ import base.Utils;
 using base.UsingUtils;
 
 class Player extends FlxObject {
+	public static var hurtTime = 0.25;
+
 	public var controlled(default, null) : Enemy;
 	
 	private var soulShot : SoulShot;
@@ -33,8 +35,8 @@ class Player extends FlxObject {
 		soulShot = null;
 
 		decay_bar = new Healthbar();
-		decay = new Timer({timeToSet: 0.25, callback: function(self : Timer) {
-				if(controlled == null || !controlled.canBeHurt) {
+		decay = new Timer({timeToSet: hurtTime, callback: function(self : Timer) {
+				if(controlled == null || !controlled.canBeHurt || !controlled.alive) {
 					self.running = false;
 					self.reset();
 					return;
@@ -48,7 +50,13 @@ class Player extends FlxObject {
 	}
 
 	public function possess(enemy : Enemy) : Void {
+		var prevControlled = controlled;
 		controlled = enemy;
+
+		if(prevControlled != null) {
+			if(prevControlled.health <= 5 / hurtTime)
+				prevControlled.kill();
+		}
 
 		away = false;
 		decay_bar.resetOwner();
@@ -173,7 +181,7 @@ private class SoulShot extends FlxSprite {
 		setPosition(x + .05*velocity.x, y + .05*velocity.y);
 
 		trail = new FlxTrail(this, null, 5, 0, .5, .1);
-		
+
 		var map = Reg.playState.map.objectMap;
 		mirrorUp = map.get("mirrorUp");
 		if(mirrorUp == null) mirrorUp = new TileMap.PObjectGroup();

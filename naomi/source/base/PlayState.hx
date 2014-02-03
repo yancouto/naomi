@@ -6,7 +6,6 @@ import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.group.FlxGroup;
 import flixel.FlxSprite;
-import base.Utils;
 
 typedef EnemyGroup = FlxTypedGroup<Enemy>;
 
@@ -198,6 +197,10 @@ class PlayState extends State {
 			map.objectMap.remove("text");
 		}
 
+		/* Extra Stuff */
+		BloodParticle.particles = new FlxTypedGroup <BloodParticle>();
+		add(BloodParticle.particles);
+		
 		add(enemies);
 
 		/* Rogue wallgrip stuff */
@@ -218,6 +221,7 @@ class PlayState extends State {
 		menuObj = new FlxText(100, 100, 100, "PAUSED", 20);
 		menuObj.scrollFactor.set(0, 0);
 		pauseMenu.add(menuObj);
+
 	}
 
 	override public function update() : Void {
@@ -232,6 +236,8 @@ class PlayState extends State {
 		FlxG.collide(map.glassTiles, enemies);
 		FlxG.collide(Platform.platforms, enemies);
 		FlxG.overlap(BreakablePlatform.platforms, enemies, BreakablePlatform.manageCollision);
+		FlxG.overlap(BloodParticle.particles, map.collidableTiles, BloodParticle.handleOverlap);
+		FlxG.overlap(BloodParticle.particles, map.glassTiles, BloodParticle.handleOverlap);
 
 		super.update();
 	}

@@ -78,27 +78,30 @@ class Enemy extends FlxSprite {
 			jumpCount = 0;
 	}
 
+	override public function hurt(damage : Float) : Void {
+		super.hurt(damage);
+		if(health <= 5 / Player.hurtTime) {
+			var i = 5;
+			while(i-- != 0)
+				BloodParticle.particles.add(new BloodParticle(this));
+		}
+	}
+
 	private function deadParts() : Void {}
 
 	override public function kill() : Void {
 		super.kill();
 
 		if(this == Reg.player.controlled) {
-			Reg.player.possess(null);
 			Timer.callIn(3, function() { FlxG.resetState(); });
 		}
 
-		var em = new FlxEmitter();
-		em.at(this);
-		em.gravity = 300;
-		em.lifespan = 2;
-		em.xVelocity.min = -(em.xVelocity.max = 300);
-		em.yVelocity.min = -800;
-		em.yVelocity.max = -100;
-		for(i in 0...100) 
-			em.add(new FlxParticle().makeGraphic(5, 5, 0xffff0000));
-		Reg.playState.add(em);
-		em.start();
+		var i = 100;
+		while(i-- != 0) {
+			var blood = new BloodParticle(this);
+			blood.velocity.set(Math.random() * 600 - 300, -Math.random() * 600 - 200);
+			BloodParticle.particles.add(blood);
+		}
 
 		deadParts();
 	}
