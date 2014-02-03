@@ -20,6 +20,7 @@ class TileMap {
 	public var nonCollidableTiles : ObjectGroup;
 	public var collidableTiles : ObjectGroup;
 	public var glassTiles : ObjectGroup;
+	public var allTiles : ObjectGroup; // for painting in order
 	public var objectMap : Map<String, PObjectGroup>;
 	public var width : Int;
 	public var height : Int;
@@ -29,6 +30,7 @@ class TileMap {
 		nonCollidableTiles = new ObjectGroup();
 		collidableTiles = new ObjectGroup();
 		glassTiles = new ObjectGroup();
+		allTiles = new ObjectGroup();
 
 		FlxG.worldBounds.set(0, 0, tiledMap.width * tiledMap.tileWidth, tiledMap.height * tiledMap.tileHeight);
 		width = tiledMap.width;
@@ -59,6 +61,8 @@ class TileMap {
 				nonCollidableTiles.add(map);
 			else
 				collidableTiles.add(map);
+
+			allTiles.add(map);
 		}
 
 		/* Loading Object Layers */

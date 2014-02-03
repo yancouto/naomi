@@ -22,7 +22,7 @@ class End extends Interactible {
 
 		loadGraphic("assets/images/stairexitanimation.png", true, false, 128, 128);
 		animation.add("empty", [0]);
-		animation.add("going_up", [1, 2, 3, 4], 8, false);
+		animation.add("going_up", [1, 2, 3, 4, 0], 5, false);
 		animation.play("empty");
 	
 		if(!obj.properties.exists("next") && !obj.properties.exists("nextState"))
@@ -34,12 +34,12 @@ class End extends Interactible {
 	override public function interact(entity : Enemy) : Void {
 		animation.play("going_up");
 		Reg.player.possess(null);
-		FlxG.camera.fade(0xff000000, 4.8, false, false);
+		FlxG.camera.fade(0xff000000, 1.8, false, false);
 		if(next == null) {
-			Timer.callIn(5, function() { FlxG.switchState(Type.createInstance(Type.resolveClass(nextState), [])); });
+			Timer.callIn(2, function() { FlxG.switchState(Type.createInstance(Type.resolveClass(nextState), [])); });
 		} else {
 			SimpleLevel.levelName = next;
-			Timer.callIn(5, function() { FlxG.resetState(); });	
+			Timer.callIn(2, function() { FlxG.resetState(); });	
 		}
 	}
 }

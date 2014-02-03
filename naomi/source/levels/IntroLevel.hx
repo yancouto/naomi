@@ -17,7 +17,7 @@ class IntroLevel extends PlayState {
 		var back = new FlxSprite().loadGraphic("assets/images/skyfinal.png", false);
 		back.scrollFactor.x = .9;
 		back.scrollFactor.y = 1;
-		FlxTween.linearMotion(back, -120, 0, -120, -480, 30, true, {type: FlxTween.PERSIST});
+		FlxTween.linearMotion(back, -120, 0, -120, -480, 30, true);
 		add(back);
 		super.loadMap("intro");
 		// Set a background color
@@ -41,20 +41,36 @@ class IntroLevel extends PlayState {
 
 	override public function update() : Void {
 		super.update();
-		if(Reg.player.controlled != null && endPortal.overlaps(enemies)) {
+		var rat = enemies.members[0];
+		if(Reg.player.controlled != null && endPortal.overlaps(rat)) {
 			player.possess(null);
-			FlxG.camera.fade(0xff000000, 2.8, false, false);
-			Timer.callIn(3, function() { FlxG.switchState(new SimpleLevel()); });
+			FlxG.camera.fade(0xff000000, 1.8, false, false);
+			FlxG.camera.follow(null);
+
+			/*
+			* Rat moves right
+			*/
+			rat.drag.set(0, 0);
+			rat.acceleration.set(0, 0);
+			rat.velocity.set(100, 0);
+			
+			/*
+			* Rat doesn't collide anymore
+			*/
+			enemies.clear();
+			add(rat);
+			
+			Timer.callIn(2, function() { FlxG.switchState(new SimpleLevel()); });
 		}
 	}
 }
 
 class Flower extends base.Enemy {
 	public function new(obj : base.Object) {
-		super(obj.x, obj.y);
-		loadGraphic("assets/images/floweranimation.png", true, false, 35, 60);
+		super(obj.x, obj.y + obj.height - 60);
+		loadGraphic("assets/images/flower_animation.png", true, false, 32, 60);
 		animation.add("still", [0]);
-		animation.add("dying", [1, 2], 2, false);
+		animation.add("dying", [1, 2], 1, false);
 		animation.play("still");
 		acceleration.y = 0;
 		jumps = 0;
