@@ -1,11 +1,14 @@
 package levels;
 
-import base.PlayState;
 import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.effects.particles.*;
 import flixel.FlxSprite;
+
+import base.PlayState;
 import base.Timer;
+
+import menus.CreditsState;
 
 class LastLevel extends PlayState {
 	public var naomi : Naomi;

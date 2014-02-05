@@ -1,28 +1,28 @@
 package levels;
 
-import base.PlayState;
 import flixel.FlxObject;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.FlxCamera;
 import flixel.tweens.FlxTween;
+
+import base.PlayState;
 import base.Timer;
 
 class IntroLevel extends PlayState {
 	private var endPortal : FlxObject;
 	private var plant : Flower;
-	/**
-	 * Function that is called up when to state is created to set it up. 
-	 */
+
 	override public function create() : Void {
-		var back = new FlxSprite().loadGraphic("assets/images/skyfinal.png", false);
+		var back = new FlxSprite(-120, -480).loadGraphic("assets/images/skyfinal.png", false);
 		back.scrollFactor.x = .9;
 		back.scrollFactor.y = 1;
-		FlxTween.linearMotion(back, -120, 0, -120, -480, 30, true);
 		add(back);
+
 		super.loadMap("intro");
+
 		// Set a background color
-		FlxG.cameras.bgColor = 0xff0088ff;
-		FlxG.camera.fade(0xff000000, 1, true);
+		FlxG.cameras.bgColor = 0xff0b2b57;
 
 		// Show the mouse (in case it hasn't been disabled)
 		#if !FLX_NO_MOUSE
@@ -33,8 +33,11 @@ class IntroLevel extends PlayState {
 
 		plant = new Flower(map.objectMap.get("plant").members[0]);
 		add(plant);
-		player.possess(plant);
 
+		var followed = new FlxObject(plant.x + plant.width/2, FlxG.camera.y + FlxG.height/2 - 480 - 600, 0, 0);
+		FlxG.camera.follow(followed, FlxCamera.STYLE_NO_DEAD_ZONE);
+		FlxTween.linearMotion(followed, followed.x, followed.y, followed.x, plant.y + plant.height/2, 200, false, {type: FlxTween.ONESHOT, 
+			complete: function(self) { player.possess(plant); } });
 
 		Reg.playBackgroundMusic("Castles in the Underground.mp3", 3);
 	}
@@ -80,7 +83,7 @@ class Flower extends base.Enemy {
 
 	override public function update() : Void {
 		super.update();
-		if(Reg.player.controlled != this && animation.name != 'dying') 
+		if(Reg.player.controlled != null && Reg.player.controlled != this && animation.name != 'dying') 
 			animation.play("dying");
 	}
 	override public function walkLeft() {}

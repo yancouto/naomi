@@ -93,7 +93,11 @@ class Enemy extends FlxSprite {
 		super.kill();
 
 		if(this == Reg.player.controlled) {
-			Timer.callIn(3, function() { FlxG.resetState(); });
+			var controlled = this;
+			Timer.callIn(3, function() {
+				if(controlled == Reg.player.controlled) // The player might have changed bodies in the meantime 
+					FlxG.resetState(); 
+			});
 		}
 
 		var i = 100;

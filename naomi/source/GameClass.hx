@@ -4,6 +4,9 @@ import flash.Lib;
 import flixel.FlxGame;
 import flixel.FlxState;
 
+import menus.MenuState;
+import menus.SplashState;
+
 class GameClass extends FlxGame {
 	public static var gameWidth:Int = 800; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	public static var gameHeight:Int = 600; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).

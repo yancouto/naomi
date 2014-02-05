@@ -7,6 +7,8 @@ import flixel.FlxG;
 import flixel.group.FlxGroup;
 import flixel.FlxSprite;
 
+import menus.MenuState;
+
 typedef EnemyGroup = FlxTypedGroup<Enemy>;
 
 class PlayState extends State {

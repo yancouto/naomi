@@ -89,7 +89,7 @@ class Player extends FlxObject {
 			return;
 		}
 
-		if(controlled == null) return;
+		if(controlled == null || !controlled.alive) return;
 		x = controlled.x + cameraOffsetX;
 		y = controlled.y + cameraOffsetY;
 		
