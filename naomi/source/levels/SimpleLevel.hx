@@ -17,7 +17,7 @@ class SimpleLevel extends PlayState {
 
 
 	static function __init__() {
-		levelName = "level0";
+		levelName = "1";
 	}
 	/**
 	 * Function that is called up when to state is created to set it up. 

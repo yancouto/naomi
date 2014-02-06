@@ -35,24 +35,23 @@
 	"folders":
 	[
 		{
-			"follow_symlinks": true,
 			"name": "naomi",
-			"path": "C:/Users/Yan/Documents/GitHub/naomi/naomi"
+			"path": "/C/Users/Yan/Documents/GitHub/naomi/naomi"
 		},
 		{
-			"follow_symlinks": true,
 			"name": "Flixel",
-			"path": "C:/HaxeToolkit/haxe/lib/flixel/3,0,4/"
+			"path": "/C/HaxeToolkit/haxe/lib/flixel/3,0,4"
 		},
 		{
-			"follow_symlinks": true,
 			"name": "Flixel Addons",
-			"path": "C:/HaxeToolkit/haxe/lib/flixel-addons/1,0,1/"
+			"path": "/C/HaxeToolkit/haxe/lib/flixel-addons/1,0,1"
 		},
 		{
-			"follow_symlinks": true,
 			"name": "Haxe",
-			"path": "C:/HaxeToolkit/haxe/std"
+			"path": "/C/HaxeToolkit/haxe/std"
+		},
+		{
+			"path": "/C/Users/Ricardo/Documents/GitHub/naomi/naomi"
 		}
 	],
 	"settings":
