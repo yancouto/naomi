@@ -46,7 +46,7 @@ class MenuState extends base.State {
 		background.x = (GameClass.gameWidth - background.width) / 2;
 		background.y = (GameClass.gameHeight - background.height) / 2;
 		
-		selector = new Selector(background.x + 45, background.y + 520);
+		selector = new Selector(background.x + 45, background.y + 505);
 
 		selected = false;
 
@@ -101,11 +101,11 @@ class MenuState extends base.State {
 		super.update();
 		
 		if(FlxG.keyboard.anyJustPressed(['LEFT', 'A']) && selected) {
-			selector.x = 45 + background.x;
+			selector.setPosition(45 + background.x, background.y + 505);
 			selector.refresh();
 			selected = false;
 		} else if(FlxG.keyboard.anyJustPressed(['RIGHT', 'D']) && !selected) {
-			selector.x = 440 + background.x;
+			selector.setPosition(440 + background.x, background.y + 505);
 			selector.refresh();
 			selected = true;
 		} else if(FlxG.keyboard.anyJustPressed(['ENTER', 'SPACE'])) {

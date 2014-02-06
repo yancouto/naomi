@@ -9,24 +9,30 @@ import flixel.FlxState;
 import flixel.FlxG;
 
 class Selector extends FlxSprite {
-	private var mover : FlxTween;
-	private var trail : FlxTrail;
+	private var mover : flixel.tweens.motion.LinearMotion;
 
 	public function new(x : Float, y : Float) {
 		super(x, y);
 
-		loadGraphic("assets/images/soulAnim2.png", true, false, 32, 32);
-		animation.add("def", [for(i in 0...12) i], 24);
-		animation.play("def");
+		loadGraphic("assets/images/soul_animation.png", true, false, 32, 32);
+		animation.add("moving", [for(i in 1...5) i], 8);
+		animation.play("moving");
 
-		trail = new FlxTrail(this, null, 5, 0, .5, .1);
+		angularVelocity = -50;
 
-		mover = FlxTween.linearPath(this, [new FlxPoint(x, y-10),
-			new FlxPoint(x, y+10)], 20, false, {type: FlxTween.PINGPONG});
+		mover = new flixel.tweens.motion.LinearMotion(null, FlxTween.PINGPONG);
+		mover.setObject(this);
+		FlxTween.manager.add(mover);
+		refresh();
 	}
 
-	public function refresh() : Void {
-		mover = FlxTween.linearPath(this, [new FlxPoint(x, y-10),
-			new FlxPoint(x, y+10)], 20, false, {type: FlxTween.PINGPONG});
+	public function refresh() : Void
+		mover.setMotion(x, y, x, y + 20, 20, false);
+
+	override public function destroy() : Void {
+		mover.cancel();
+		mover.destroy();
+		mover = null;
+		super.destroy();
 	}
 }

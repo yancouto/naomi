@@ -78,19 +78,19 @@ class PlayState extends State {
 
 		if(map.objectMap.exists("ratSpawns")) {
 			for(rat in map.objectMap.get("ratSpawns").members)
-				enemies.add(new Rat(rat.x, rat.y));
+				enemies.add(new Rat(rat));
 			map.objectMap.remove("ratSpawns");
 		}
 
 		if(map.objectMap.exists("rogueSpawns")) {
 			for(rogue in map.objectMap.get("rogueSpawns").members)
-				enemies.add(new Rogue(rogue.x, rogue.y));
+				enemies.add(new Rogue(rogue));
 			map.objectMap.remove("rogueSpawns");
 		}
 
 		if(map.objectMap.exists("heavySpawns")) {
 			for(heavy in map.objectMap.get("heavySpawns").members)
-				enemies.add(new Heavy(heavy.x, heavy.y));
+				enemies.add(new Heavy(heavy));
 			map.objectMap.remove("heavySpawns");
 		}
 

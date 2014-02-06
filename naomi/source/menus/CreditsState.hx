@@ -7,21 +7,29 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 
 class CreditsState extends base.State {
-	private var back : FlxText;
+	private var back : MenuButton;
 	private var selector : Selector;
 
 	override public function create() : Void {
-		FlxG.cameras.bgColor = 0xff0f113a;
+		FlxG.cameras.bgColor = 0xff0b2b57;
 
 		#if !FLX_NO_MOUSE
 			FlxG.mouse.show();
 		#end
 
-		back = new FlxText(GameClass.gameWidth/2-100, GameClass.gameHeight-100,
-			100, "Back", 20);
-		selector = new Selector(back.x - 50, back.y);
+		var backText = new FlxText(0, 0, 300, "Back", 40);
+		back = new MenuButton(GameClass.gameWidth / 2 - 100, GameClass.gameHeight - 100);
+		back.makeGraphic(Std.int(backText.width), Std.int(backText.height), 0x00000000);
+		back.stamp(backText, 0, 0);
+		back.onClick = function(self) { FlxG.switchState(new MenuState()); };
+		
+		backText.destroy();
+		backText = null;
 
 		add(back);
+		
+		selector = new Selector(back.x - 50, back.y);
+
 		add(new FlxText(250, 200, 500, 
 			"Renato Lui Geh\n\nRicardo Lira da Fonseca\n\nYan Soares Couto", 20));
 
@@ -32,7 +40,7 @@ class CreditsState extends base.State {
 
 	override public function update() : Void {
 		if(FlxG.keyboard.anyJustPressed(['ENTER', 'SPACE']))
-			FlxG.switchState(new MenuState());
+			back.onClick(back);
 		super.update();
 	}
 }

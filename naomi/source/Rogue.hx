@@ -10,8 +10,8 @@ import flixel.group.FlxTypedGroup;
 class Rogue extends Enemy {
 	public static var wallGrip : TileMap.PObjectGroup;
 
-	public function new(x : Float, y : Float) {
-		super(x, y);
+	public function new(obj : base.Object) {
+		super(obj.x, obj.y + obj.height - 84);
 
 		loadGraphic("assets/images/rogueeanimation.png", true, true, 42, 84);
 		animation.add("idle", [0]);

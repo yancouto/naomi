@@ -6,8 +6,8 @@ import base.Timer;
 import base.Enemy;
 
 class Heavy extends Enemy {
-	public function new(x : Float, y : Float) {
-		super(x, y);
+	public function new(obj : base.Object) {
+		super(obj.x, obj.y + obj.height - 128);
 
 		loadGraphic("assets/images/heavyanimation.png", true, true, 95, 128);
 		animation.add("idle", [0]);

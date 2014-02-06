@@ -6,9 +6,10 @@ import flixel.FlxG;
 class MenuButton extends FlxSprite {
 	public var onClick : MenuButton -> Void;
 
-	public function new(x : Float, y : Float, fileName : String) {
+	public function new(x : Float, y : Float, ?fileName : String) {
 		super(x, y);
-		loadGraphic("assets/images/" + fileName, false, false);
+		if(fileName != null)
+			loadGraphic("assets/images/" + fileName, false, false);
 		onClick = null;
 	}
 

@@ -8,8 +8,8 @@ import base.Timer;
 class Rat extends Enemy {
 	private static inline var tailSize = 18;
 
-	public function new(x : Float, y : Float) {
-		super(x, y);
+	public function new(obj : base.Object) {
+		super(obj.x, obj.y + obj.height - 32);
 		loadGraphic("assets/images/rat_animation.png", true, true, 64, 32);
 
 		offset.set(tailSize, 0);
