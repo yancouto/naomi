@@ -12,7 +12,7 @@ class Beginning extends FlxSprite {
 		animation.play("exiting");
 
 		var enemy : base.Enemy = Type.createInstance(Type.resolveClass(
-			playerSpawn.properties.get("type")), [playerSpawn.x, playerSpawn.y]);
+			playerSpawn.properties.get("type")), [new base.Object(playerSpawn.x, playerSpawn.y, 0, 0, new Map <String, String>())]);
 		enemy.y  = enemy.y + height - enemy.height;
 		enemy.x += width/2 - enemy.width/2;
 		Reg.playState.enemies.add(enemy);
