@@ -19,7 +19,11 @@ class Rogue extends Enemy {
 		animation.add("fallin", [3]);
 		animation.add("jumping", [4]);
 		animation.play("idle");
-		facing = FlxObject.RIGHT;
+
+		if(obj.properties.get("facing") == "left")
+			facing = FlxObject.LEFT;
+		else
+			facing = FlxObject.RIGHT;
 
 		health = 100;
 
@@ -39,6 +43,7 @@ class Rogue extends Enemy {
 	private static function filter(_, __) : Bool
 		return !collided;
 
+	private static var pt = new FlxPoint(0, 0);
 	private static function doWallGrip(r : Rogue, w : FlxObject) : Void {
 		collided = true;
 		if(r.velocity.y == 8) return;
@@ -46,15 +51,15 @@ class Rogue extends Enemy {
 			r.maxVelocity.y = 40;
 		if(r == Reg.player.controlled && FlxG.keyboard.anyJustPressed(['W', 'SPACE']) && r.velocity.y != 8) {
 			if((r.y + r.height) - w.y < r.height/4) return;
-			var left : Bool = w.overlapsPoint(new FlxPoint(r.x, r.y)) || w.overlapsPoint(new FlxPoint(r.x, r.y + r.height));
+			var left : Bool = w.overlapsPoint(pt.set(r.x, r.y)) || w.overlapsPoint(pt.set(r.x, r.y + r.height));
 			r.maxVelocity.y = 1000000;
 			r.velocity.y = -1.5 * r.base_speed;
 			if(left) {
 				r.x += 2;
-				r.velocity.x = 2*r.base_speed;
+				r.velocity.x = r.onFloor? r.base_speed/2 : 2 * r.base_speed;
 			} else {
 				r.x -= 2;
-				r.velocity.x = -2*r.base_speed;
+				r.velocity.x = r.onFloor? -r.base_speed/2 : -2 * r.base_speed;
 			}
 		}
 	}

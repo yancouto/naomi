@@ -13,7 +13,11 @@ class Heavy extends Enemy {
 		animation.add("idle", [0]);
 		animation.add("walking", [0,1,2,1], 6);
 		animation.play("idle");
-		facing = FlxObject.RIGHT;
+		
+		if(obj.properties.get("facing") == "left")
+			facing = FlxObject.LEFT;
+		else
+			facing = FlxObject.RIGHT;
 
 		health = 200;
 	

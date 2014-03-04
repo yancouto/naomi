@@ -21,7 +21,9 @@ class FireTrap extends Trap {
 		var delay = obj.properties.exists("delay")? Std.parseFloat(obj.properties.get("delay")) : 0;
 		var rWidth = 37, rHeight = 281;
 		var side = obj.properties.exists("side")? obj.properties.get("side") : "down";
+
 		origin.set(0, 0);
+		
 		if(side == "down") {
 			offset.set(12, 18);
 		} else if(side == 'up') {

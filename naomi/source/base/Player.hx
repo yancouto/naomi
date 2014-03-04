@@ -55,7 +55,7 @@ class Player extends FlxObject {
 
 		if(prevControlled != null) {
 			if(prevControlled.health <= 5 / hurtTime)
-				prevControlled.kill();
+				prevControlled.hurt(10000);
 		}
 
 		away = false;
@@ -90,8 +90,6 @@ class Player extends FlxObject {
 		}
 
 		if(controlled == null || !controlled.alive) return;
-		x = controlled.x + cameraOffsetX;
-		y = controlled.y + cameraOffsetY;
 		
 		if(FlxG.keyboard.pressed('A'))
 			controlled.walkLeft();
@@ -105,6 +103,8 @@ class Player extends FlxObject {
 			FlxG.overlap(Reg.playState.interactibles, controlled, Interactible.doInteraction);
 
 		manageCameraScroll();
+		x = controlled.x + cameraOffsetX;
+		y = controlled.y + cameraOffsetY;
 
 		if(FlxG.mouse.justPressed) {
 			soulShot = new SoulShot(controlled.x, controlled.y);
@@ -180,7 +180,7 @@ private class SoulShot extends FlxSprite {
 		setSize(20, 20);
 
 		velocity.set(FlxG.mouse.x - x, FlxG.mouse.y - y).normalize().mult(base_speed);
-		setPosition(x + .05*velocity.x, y + .05*velocity.y);
+		setPosition(x + .05 * velocity.x, y + .05 * velocity.y);
 
 		trail = new FlxTrail(this, null, 5, 0, .5, .1);
 

@@ -4,7 +4,7 @@
   <image source="../tilesets/brick_tiles.png" width="576" height="512"/>
  </tileset>
  <tileset firstgid="73" name="brick_combo" tilewidth="64" tileheight="64">
-  <image source="../tilesets/brick_combo.png" width="192" height="192"/>
+  <image source="../tilesets/brick_combo.png" width="192" height="320"/>
  </tileset>
  <layer name="Main Tiles" width="33" height="17">
   <properties>
@@ -24,7 +24,9 @@
  <objectgroup color="#ff5500" name="endPortal" width="33" height="17">
   <object name="End" x="1472" y="669" width="64" height="35"/>
  </objectgroup>
- <objectgroup name="floor" width="33" height="17"/>
+ <objectgroup color="#ffff00" name="floor" width="33" height="17">
+  <object x="700" y="693" width="839" height="19"/>
+ </objectgroup>
  <layer name="visual" width="33" height="17">
   <properties>
    <property name="nocollides" value="true"/>

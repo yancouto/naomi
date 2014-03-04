@@ -29,9 +29,9 @@
  </objectgroup>
  <objectgroup color="#ffffff" name="floor" width="68" height="32">
   <object x="491" y="1150" height="1"/>
-  <object x="887" y="505" width="205" height="13"/>
-  <object x="1399" y="1210" width="209" height="13"/>
-  <object x="2098" y="701" width="206" height="13"/>
+  <object x="878" y="505" width="224" height="16"/>
+  <object x="1393" y="1212" width="223" height="15"/>
+  <object x="2088" y="700" width="232" height="16"/>
   <object x="321" y="1145" width="326" height="15"/>
   <object x="2297" y="1267" width="391" height="20"/>
   <object x="2688" y="1207" width="68" height="13"/>

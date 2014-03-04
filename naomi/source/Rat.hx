@@ -18,14 +18,18 @@ class Rat extends Enemy {
 		animation.add("idle", [0]);
 		animation.add("walking", [0, 1], 4);
 		animation.play("idle");
-		facing = FlxObject.RIGHT;
-		base_speed = 200;
+
+		if(obj.properties.get("facing") == "left")
+			facing = FlxObject.LEFT;
+		else
+			facing = FlxObject.RIGHT;	
+				
+		base_speed = 400;
 		jumps = 0;
 
 		health = 50;
 	
 		mass = 1;
-		maxVelocity.x = 200;
 
 		healthColor = 0xff999999;
 	}

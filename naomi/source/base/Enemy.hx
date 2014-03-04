@@ -39,14 +39,14 @@ class Enemy extends FlxSprite {
 
 	/* Override the following: */
 	public function walkRight() : Void {
-		acceleration.x += drag.x;
+		acceleration.x += onFloor? drag.x : drag.x/2;
 		animation.play("walking");
 		idle = false;
 		facing = FlxObject.RIGHT;
 	}
 
 	public function walkLeft() : Void {
-		acceleration.x -= drag.x;
+		acceleration.x -= onFloor? drag.x : drag.x/2;
 		animation.play("walking");
 		idle = false;
 		facing = FlxObject.LEFT;
@@ -63,7 +63,7 @@ class Enemy extends FlxSprite {
 	override public function update() : Void {
 		super.update();
 		onFloor = overlaps(Reg.floor) || overlaps(Platform.platforms) || overlaps(BreakablePlatform.platforms);
-		maxVelocity.x = onFloor? base_speed : 2*base_speed;
+		maxVelocity.x = base_speed;
 
 		acceleration.x = 0;
 		if(!idle && velocity.x == 0) {
@@ -81,7 +81,7 @@ class Enemy extends FlxSprite {
 	override public function hurt(damage : Float) : Void {
 		super.hurt(damage);
 		if(health <= 5 / Player.hurtTime) {
-			var i = 5;
+			var i = Math.min(Std.int(damage * 5), 20);
 			while(i-- != 0)
 				BloodParticle.particles.add(new BloodParticle(this));
 		}

@@ -12,78 +12,79 @@ PROGRAMMING STUFF
 -----------------
 
 - Melhorar o sangue? (Colisão um pouco melhor)
+- Tweekar o wallclimbing do rogue
 
 --------
 GAMEPLAY
 --------
--alma volta pro seu corpo
--alma ter um limite maximo que pode percorrer (a decidir se faz isso ou nao)
--Acertar o fogo com sua alma tem que tirar uma porção da sua vida
--levers que so podem ser ativas uma vez, e depois nao podem mais ser desativadas (quem sabe um novo elemento com seu proprio sprite pra nao ter dois tipos de levers)
--balancear dano dos fogos
+- alma volta pro seu corpo
+- alma ter um limite maximo que pode percorrer (a decidir se faz isso ou nao)
+- Acertar o fogo com sua alma tem que tirar uma porção da sua vida
+- levers que so podem ser ativas uma vez, e depois nao podem mais ser desativadas (quem sabe um novo elemento com seu proprio sprite pra nao ter dois tipos de levers)
+- balancear dano dos fogos
 
 ----
 GAME
 ----
--SAVING STUFF
-	-Pensar em como vamos dar manage nas coisas pra salvar
-		-Salvar o estado de mute ou não
-		-Level select?
-			-Fazemos um level select?
-			-Salvamos ate onde a pessoa chegou?
-			-Nao sei se combna muito salvar level individualmente, mas o que ficaria bacana é salvar por blocos, tipo "capitulos" que aglomeram multiplas fases
-				-cada capitulo podia ter um titulo e pans
-				-No começo se cada capitulo pode so dar fade in e fade out no topo da tela o nome do capitulo, nada que interrompa o jogo todo, so no começo da fase que começa o capitulo novo
--colocar as "waves" atras da soul (precisa ver se fica bacana ai decide se fica no jogo ou nao)
--TOTAL OVERHAUL NAS FASES
-	-Fases iniciais que ensinam cada habildiade dos personagens
-	-Textos curtos ou sem texto, com a mecanica de morrer com tempo nao cabe ter muitos textos no jogo
-	-Mais Fases!
--Soul sair do centro do personagem (nao é intuitivo sair da cabeça do rogue por exemplo) (fode o rato)
--better credits, apesar de o atual ser mega indie
+- SAVING STUFF
+	- Pensar em como vamos dar manage nas coisas pra salvar
+		- Salvar o estado de mute ou não
+		- Level select?
+			- Fazemos um level select?
+			- Salvamos ate onde a pessoa chegou?
+			- Nao sei se combna muito salvar level individualmente, mas o que ficaria bacana é salvar por blocos, tipo "capitulos" que aglomeram multiplas fases
+				- cada capitulo podia ter um titulo e pans
+				- No começo se cada capitulo pode so dar fade in e fade out no topo da tela o nome do capitulo, nada que interrompa o jogo todo, so no começo da fase que começa o capitulo novo
+- colocar as "waves" atras da soul (precisa ver se fica bacana ai decide se fica no jogo ou nao)
+- TOTAL OVERHAUL NAS FASES
+	- Fases iniciais que ensinam cada habildiade dos personagens
+	- Textos curtos ou sem texto, com a mecanica de morrer com tempo nao cabe ter muitos textos no jogo
+	- Mais Fases!
+- Soul sair do centro do personagem (nao é intuitivo sair da cabeça do rogue por exemplo) (fode o rato)
+- better credits, apesar de o atual ser mega indie
 - Arrumar os créditos (mudar a cor pra cor certo e criar a imagem do botão separada)
--OUTRO
-	-o fim quem sabe muda, mas deixa um pouco mais tempo no jogo depois da naomi explodir
--INTRO
-	-depois de um tempo o texto grande inicial(o que antes começava com "welcome to naomi") da fade in
-	-n segundos passam
-	-rato aparece
-	-ao entrar no rato aparece o texto do wasd
-	-???
-	-profit
-	-primeira fase (quem sabe a ultima) tem que começar com o rato cehgando pelo tunelzinho, e nao pela escada
--"WE DONT SEE THING AS THEY ARE, WE SEE THEM AS WE ARE"
-	-Pensar e fazer(quando todo o resto da tiver mais ou menos bem feito):
-		-um efeito que mude seu arredor dependendo do personagem que voce esta usando, aka "como ele ve o mundo"
-		-ideias possiveis:
-			-tudo distorcido (rogue quem sabe?)
-			-tudo sangrento (heavy quem sabe?)
-			-tudo cinzento ou mal definido (como se o jogo inteiro já nao é cinzento e mal definido o suficiente...) (rato quem sabe)
+- OUTRO
+	- o fim quem sabe muda, mas deixa um pouco mais tempo no jogo depois da naomi explodir
+- INTRO
+	- depois de um tempo o texto grande inicial(o que antes começava com "welcome to naomi") da fade in
+	- n segundos passam
+	- rato aparece
+	- ao entrar no rato aparece o texto do wasd
+	- ???
+	- profit
+	- primeira fase (quem sabe a ultima) tem que começar com o rato cehgando pelo tunelzinho, e nao pela escada
+- "WE DONT SEE THING AS THEY ARE, WE SEE THEM AS WE ARE"
+	 -Pensar e fazer(quando todo o resto da tiver mais ou menos bem feito):
+		- um efeito que mude seu arredor dependendo do personagem que voce esta usando, aka "como ele ve o mundo"
+		- ideias possiveis:
+			- tudo distorcido (rogue quem sabe?)
+			- tudo sangrento (heavy quem sabe?)
+			- tudo cinzento ou mal definido (como se o jogo inteiro já nao é cinzento e mal definido o suficiente...) (rato quem sabe)
 
 
 ----
 ARTE
 ----
 
--TOTAL OVERHAUL NA ARTE
- -todo:
- 	-everything so far
--fazer um cursor
+- TOTAL OVERHAUL NA ARTE
+ - todo:
+ 	- everything so far
+- fazer um cursor
 
 ------
 MUSICA
 ------
 
--efeitos sonoros
+- efeitos sonoros
 
--no futuro fazer uma musica a mais
+- no futuro fazer uma musica a mais
 
 ---------------
 FILES AND STUFF
 ---------------
 
--aumentar readme
--DOCUMENTAÇÃO
+- aumentar readme
+- DOCUMENTAÇÃO
 
 
 -----------------------

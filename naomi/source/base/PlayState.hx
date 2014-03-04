@@ -174,10 +174,23 @@ class PlayState extends State {
 
 		/* [/Platforms] */
 
+		/* Boulders */
+		Boulder.boulders = new FlxTypedGroup <Boulder>();
+		if(map.objectMap.exists("boulders")) {
+			for(obj in map.objectMap.get("boulders").members) {
+				Boulder.boulders.add(new Boulder(obj));
+			}
+			map.objectMap.remove("boulders");
+		}
+		add(Boulder.boulders);
+
 		/* Doors */
 		if(map.objectMap.exists("doors")) {
-			for(obj in map.objectMap.get("doors").members)
-				map.collidableTiles.add(new Door(obj));
+			for(obj in map.objectMap.get("doors").members) {
+				var d = new Door(obj);
+				map.collidableTiles.add(d);
+				add(d);
+			}
 			map.objectMap.remove("doors");
 		}
 
@@ -259,9 +272,14 @@ class PlayState extends State {
 		FlxG.collide(map.collidableTiles, enemies);
 		FlxG.collide(map.glassTiles, enemies);
 		FlxG.collide(Platform.platforms, enemies);
+
+		FlxG.collide(Boulder.boulders, map.collidableTiles);
+		FlxG.collide(Boulder.boulders, map.glassTiles);
+
 		FlxG.overlap(BreakablePlatform.platforms, enemies, BreakablePlatform.manageCollision);
 		FlxG.overlap(BloodParticle.particles, map.collidableTiles, BloodParticle.handleOverlap);
 		FlxG.overlap(BloodParticle.particles, map.glassTiles, BloodParticle.handleOverlap);
+		FlxG.overlap(Boulder.boulders, enemies, Boulder.manageCollision);
 
 		super.update();
 	}
