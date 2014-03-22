@@ -28,17 +28,19 @@ class Reg {
 	
 	static private var backgroungMusicName : String = "";
 	static public function playBackgroundMusic(fileName : String, fadeTime : Float = 2) : Void {
-		if(fileName == backgroungMusicName) return;
-		backgroungMusicName = fileName;
-		var doFadeOut = fadeTime > 0 && FlxG.sound.music != null && FlxG.sound.music.active;
-		if(doFadeOut)
-			FlxG.sound.music.fadeOut(fadeTime);
-		Timer.callIn(doFadeOut? fadeTime : 0, function() {
-			FlxG.sound.playMusic("assets/music/" + fileName);
-			if(fadeTime > 0) {
-				FlxG.sound.music.pause();
-				FlxG.sound.music.fadeIn(fadeTime);
-			}
-		});
+		#if !NEKO
+			if(fileName == backgroungMusicName) return;
+			backgroungMusicName = fileName;
+			var doFadeOut = fadeTime > 0 && FlxG.sound.music != null && FlxG.sound.music.active;
+			if(doFadeOut)
+				FlxG.sound.music.fadeOut(fadeTime);
+			Timer.callIn(doFadeOut? fadeTime : 0, function() {
+				FlxG.sound.playMusic("assets/music/" + fileName);
+				if(fadeTime > 0) {
+					FlxG.sound.music.pause();
+					FlxG.sound.music.fadeIn(fadeTime);
+				}
+			});
+		#end
 	}
 }

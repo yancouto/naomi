@@ -50,7 +50,9 @@ class IntroText extends State {
 
 			Timer.callIn(3, function() { FlxG.switchState(new IntroLevel()); });
 
-			FlxG.sound.music.fadeOut(2.9);
+			#if !NEKO
+				FlxG.sound.music.fadeOut(2.9);
+			#end
 			self.delete = true;
 		}});
 	}
@@ -61,7 +63,9 @@ class IntroText extends State {
 			if(!changingState)
 				fadeTimer.callback(fadeTimer);
 			else {
-				FlxG.sound.music.stop();
+				#if !NEKO
+					FlxG.sound.music.stop();
+				#end
 				FlxG.switchState(new IntroLevel());
 			}
 		}
