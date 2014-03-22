@@ -106,14 +106,14 @@
     <property name="text" value="Rats can't jump"/>
    </properties>
   </object>
-  <object name="camera" x="2566" y="852" width="113" height="101">
-   <properties>
-    <property name="text" value="Use the arrow keys to move the camera"/>
-   </properties>
-  </object>
   <object name="end" x="5532" y="1198" width="154" height="112">
    <properties>
     <property name="text" value="Press E in front of the stairs to advance to the next level"/>
+   </properties>
+  </object>
+  <object name="camera" x="2561" y="1056" width="98" height="102">
+   <properties>
+    <property name="text" value="Use the arrow keys to move the camera"/>
    </properties>
   </object>
  </objectgroup>
