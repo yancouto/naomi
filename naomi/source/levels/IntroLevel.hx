@@ -63,7 +63,7 @@ class IntroLevel extends PlayState {
 			enemies.clear();
 			add(rat);
 			
-			Timer.callIn(2, function() { FlxG.switchState(new SimpleLevel()); });
+			Timer.callIn(2, function() { FlxG.switchState(new FirstLevel()); });
 		}
 	}
 }

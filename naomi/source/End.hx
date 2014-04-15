@@ -39,7 +39,7 @@ class End extends Interactible {
 			Timer.callIn(2, function() { FlxG.switchState(Type.createInstance(Type.resolveClass(nextState), [])); });
 		} else {
 			SimpleLevel.levelName = next;
-			Timer.callIn(2, function() { FlxG.resetState(); });	
+			Timer.callIn(2, function() { FlxG.switchState(new SimpleLevel()); });	
 		}
 	}
 }

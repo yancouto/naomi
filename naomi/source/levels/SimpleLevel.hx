@@ -15,10 +15,6 @@ import base.Interactible;
 class SimpleLevel extends PlayState {
 	public static var levelName : String;
 
-
-	static function __init__() {
-		levelName = "1";
-	}
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
