@@ -253,16 +253,16 @@ class PlayState extends State {
 	}
 
 	override public function update() : Void {
-		if(FlxG.keyboard.anyJustPressed(['P', 'ESCAPE']))
+		if(FlxG.keys.anyJustPressed(['P', 'ESCAPE']))
 			Utils.pause();
-		if(FlxG.paused) {
+		if(Reg.paused) {
 
-			if(FlxG.keyboard.justPressed('R')) {
+			if(FlxG.keys.justPressed.R) {
 				FlxG.resetState();
-				FlxG.paused = false;
-			} else if(FlxG.keyboard.justPressed('M')) {
+				Reg.paused = false;
+			} else if(FlxG.keys.justPressed.M) {
 				FlxG.switchState(new MenuState());
-				FlxG.paused = false;
+				Reg.paused = false;
 			}
 
 			pauseMenu.update();
@@ -286,7 +286,7 @@ class PlayState extends State {
 
 	override public function draw() : Void {
 		super.draw();
-		if(FlxG.paused)
+		if(Reg.paused)
 			pauseMenu.draw();
 	}
 }

@@ -29,7 +29,7 @@ class IntroText extends State {
 		FlxG.cameras.bgColor = 0xff0b2b57;
 
 		#if !FLX_NO_MOUSE
-		FlxG.mouse.hide();
+		FlxG.mouse.visible = false;
 		#end
 
 		Reg.playBackgroundMusic("Stars Beneath the Roof.mp3");
@@ -46,7 +46,7 @@ class IntroText extends State {
 			FlxG.camera.follow(followed, FlxCamera.STYLE_NO_DEAD_ZONE);
 			FlxTween.linearMotion(followed, followed.x, followed.y, followed.x, followed.y + 600, 3, true);
 
-			FlxTween.color(2, text.color, text.color, 1, 0, text);
+			FlxTween.color(text, 2, text.color, text.color, 1, 0);
 
 			Timer.callIn(3, function() { FlxG.switchState(new IntroLevel()); });
 
@@ -59,7 +59,7 @@ class IntroText extends State {
 
 	override public function update() : Void {
 		super.update();
-		if(FlxG.mouse.justPressed || FlxG.keyboard.anyJustPressed(['SPACE', 'ENTER', 'ESCAPE'])) {
+		if(FlxG.mouse.justPressed || FlxG.keys.anyJustPressed(['SPACE', 'ENTER', 'ESCAPE'])) {
 			if(!changingState)
 				fadeTimer.callback(fadeTimer);
 			else {

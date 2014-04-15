@@ -4,7 +4,7 @@ import flixel.FlxSprite;
 import flixel.util.FlxPoint;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
-import flixel.effects.FlxTrail;
+import flixel.addons.effects.FlxTrail;
 import flixel.FlxState;
 import flixel.FlxG;
 

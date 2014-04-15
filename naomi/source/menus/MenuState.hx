@@ -12,7 +12,7 @@ import flixel.util.FlxPoint;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import flixel.tweens.misc.VarTween;
-import flixel.effects.FlxTrail;
+import flixel.addons.effects.FlxTrail;
 
 import base.Timer;
 
@@ -35,7 +35,7 @@ class MenuState extends base.State {
 		FlxG.cameras.bgColor = 0xff0b2b57;
 
 		#if !FLX_NO_MOUSE
-			FlxG.mouse.show();
+			FlxG.mouse.visible = true;
 		#end
 		
 		Reg.playBackgroundMusic("Stars Beneath the Roof.mp3", 0);
@@ -72,12 +72,12 @@ class MenuState extends base.State {
 
 		playButton.onClick = creditsButton.onClick = null;
 		
-		FlxTween.color(2, playButton.color, playButton.color, 1, 0, playButton);
-		FlxTween.color(2, creditsButton.color, creditsButton.color, 1, 0, creditsButton);
-		FlxTween.color(2, selector.color, selector.color, 1, 0, selector);
+		FlxTween.color(playButton, 2, playButton.color, playButton.color, 1, 0);
+		FlxTween.color(creditsButton, 2, creditsButton.color, creditsButton.color, 1, 0);
+		FlxTween.color(selector, 2, selector.color, selector.color, 1, 0);
 
 		var text = new FlxText(15, 600 + 15, 785, IntroText.introText, 30);
-		FlxTween.color(3, text.color, text.color, 0, 1, text);
+		FlxTween.color(text, 3, text.color, text.color, 0, 1);
 		add(text);
 
 		var followed = new FlxObject(FlxG.camera.x + FlxG.width/2, FlxG.camera.y + FlxG.height/2, 0, 0);
@@ -92,7 +92,7 @@ class MenuState extends base.State {
 
 	override public function update() : Void {
 		if(changingState) {
-			if(FlxG.mouse.justPressed || FlxG.keyboard.anyJustPressed(['SPACE', 'ENTER', 'ESCAPE']))
+			if(FlxG.mouse.justPressed || FlxG.keys.anyJustPressed(['SPACE', 'ENTER', 'ESCAPE']))
 				changeStateTimer.callback(changeStateTimer);
 			super.update();
 			return;
@@ -100,15 +100,15 @@ class MenuState extends base.State {
 
 		super.update();
 		
-		if(FlxG.keyboard.anyJustPressed(['LEFT', 'A']) && selected) {
+		if(FlxG.keys.anyJustPressed(['LEFT', 'A']) && selected) {
 			selector.setPosition(45 + background.x, background.y + 505);
 			selector.refresh();
 			selected = false;
-		} else if(FlxG.keyboard.anyJustPressed(['RIGHT', 'D']) && !selected) {
+		} else if(FlxG.keys.anyJustPressed(['RIGHT', 'D']) && !selected) {
 			selector.setPosition(440 + background.x, background.y + 505);
 			selector.refresh();
 			selected = true;
-		} else if(FlxG.keyboard.anyJustPressed(['ENTER', 'SPACE'])) {
+		} else if(FlxG.keys.anyJustPressed(['ENTER', 'SPACE'])) {
 			if(!selected)
 				startGame();
 			else

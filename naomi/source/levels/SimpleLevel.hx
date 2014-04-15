@@ -29,7 +29,7 @@ class SimpleLevel extends PlayState {
 
 		// Show the mouse (in case it hasn't been disabled)
 		#if !FLX_NO_MOUSE
-		FlxG.mouse.show();
+		FlxG.mouse.visible = true;
 		#end
 
 		Reg.playBackgroundMusic("Castles in the Underground.mp3");

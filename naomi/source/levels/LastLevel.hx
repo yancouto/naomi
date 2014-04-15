@@ -19,7 +19,7 @@ class LastLevel extends PlayState {
 		FlxG.cameras.bgColor = 0xff000000;
 
 		#if !FLX_NO_MOUSE
-		FlxG.mouse.show();
+		FlxG.mouse.visible = true;
 		#end
 
 		Reg.playBackgroundMusic("Castles in the Undergroung.mp3");

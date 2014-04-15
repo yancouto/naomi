@@ -27,11 +27,11 @@ class Text extends FlxText {
 		if(fadeInTrigger != null) {
 			if(fadeInTrigger.state) {
 				fadeInTrigger = null;
-				FlxTween.color(2, color, color, 0, 1, this);
+				FlxTween.color(this, 2, color, color, 0, 1);
 			}
 		} else if(fadeOutTrigger != null && fadeOutTrigger.state) {
 			fadeOutTrigger = null;
-			FlxTween.color(2, color, color, 1, 0, this);
+			FlxTween.color(this, 2, color, color, 1, 0);
 		}
 	}
 }

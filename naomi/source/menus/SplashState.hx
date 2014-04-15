@@ -27,7 +27,7 @@ class SplashState extends State {
 		FlxG.cameras.bgColor = 0xffbbbbbb;
 
 		#if !FLX_NO_MOUSE
-		FlxG.mouse.hide();
+		FlxG.mouse.visible = false;
 		#end
 
 		splash = new FlxSprite(20, 20);

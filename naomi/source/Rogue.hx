@@ -49,7 +49,7 @@ class Rogue extends Enemy {
 		if(r.velocity.y == 8) return;
 		if(r.velocity.y > 0)
 			r.maxVelocity.y = 40;
-		if(r == Reg.player.controlled && FlxG.keyboard.anyJustPressed(['W', 'SPACE']) && r.velocity.y != 8) {
+		if(r == Reg.player.controlled && FlxG.keys.anyJustPressed(['W', 'SPACE']) && r.velocity.y != 8) {
 			if((r.y + r.height) - w.y < r.height/4) return;
 			var left : Bool = w.overlapsPoint(pt.set(r.x, r.y)) || w.overlapsPoint(pt.set(r.x, r.y + r.height));
 			r.maxVelocity.y = 1000000;

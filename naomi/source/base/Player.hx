@@ -7,7 +7,7 @@ import flixel.FlxCamera;
 import flixel.util.FlxSpriteUtil;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
-import flixel.effects.FlxTrail;
+import flixel.addons.effects.FlxTrail;
 import base.Timer;
 import base.Healthbar;
 import base.Utils;
@@ -91,15 +91,15 @@ class Player extends FlxObject {
 
 		if(controlled == null || !controlled.alive) return;
 		
-		if(FlxG.keyboard.pressed('A'))
+		if(FlxG.keys.pressed.A)
 			controlled.walkLeft();
-		else if(FlxG.keyboard.pressed('D'))
+		else if(FlxG.keys.pressed.D)
 			controlled.walkRight();
 		
-		if(FlxG.keyboard.anyJustPressed(['W', 'SPACE']))
+		if(FlxG.keys.anyJustPressed(['W', 'SPACE']))
 			controlled.jump();
 
-		if(FlxG.keyboard.justPressed('E'))
+		if(FlxG.keys.justPressed.E)
 			FlxG.overlap(Reg.playState.interactibles, controlled, Interactible.doInteraction);
 
 		manageCameraScroll();
@@ -122,10 +122,10 @@ class Player extends FlxObject {
 		var prevY = cameraOffsetY;
 		var dt = FlxG.elapsed;
 
-		if(FlxG.keyboard.pressed('UP')) cameraOffsetY -= speed * dt;
-		if(FlxG.keyboard.pressed('DOWN')) cameraOffsetY += speed * dt;
-		if(FlxG.keyboard.pressed('LEFT')) cameraOffsetX -= speed * dt;
-		if(FlxG.keyboard.pressed('RIGHT')) cameraOffsetX += speed * dt;
+		if(FlxG.keys.pressed.UP) cameraOffsetY -= speed * dt;
+		if(FlxG.keys.pressed.DOWN) cameraOffsetY += speed * dt;
+		if(FlxG.keys.pressed.LEFT) cameraOffsetX -= speed * dt;
+		if(FlxG.keys.pressed.RIGHT) cameraOffsetX += speed * dt;
 
 		var diff = speed * dt/2;
 		if(diff >= Math.abs(cameraOffsetX)) cameraOffsetX = 0;

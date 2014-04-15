@@ -19,6 +19,7 @@ class Reg {
 	static public var floor : TileMap.PObjectGroup;
 	static public var player : Player;
 	static public var circuitryComponents : Map<String, Circuitry>;
+	static public var paused : Bool;
 
 	static public function getTrigger(name : String) : Circuitry {
 		if(name == null) throw "Invalid trigger name [[null]]";

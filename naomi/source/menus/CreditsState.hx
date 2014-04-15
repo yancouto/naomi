@@ -14,7 +14,7 @@ class CreditsState extends base.State {
 		FlxG.cameras.bgColor = 0xff0b2b57;
 
 		#if !FLX_NO_MOUSE
-			FlxG.mouse.show();
+			FlxG.mouse.visible = true;
 		#end
 
 		var backText = new FlxText(0, 0, 300, "Back", 40);
@@ -39,7 +39,7 @@ class CreditsState extends base.State {
 	}
 
 	override public function update() : Void {
-		if(FlxG.keyboard.anyJustPressed(['ENTER', 'SPACE']))
+		if(FlxG.keys.anyJustPressed(['ENTER', 'SPACE']))
 			back.onClick(back);
 		super.update();
 	}

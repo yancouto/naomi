@@ -7,7 +7,7 @@ class Utils {
 		return x == 0? 0 : x > 0? 1 : -1;
 
 	public static function pause() : Void {
-		FlxG.paused = !FlxG.paused;
+		Reg.paused = !Reg.paused;
 		Platform.pause();
 	}
 }
