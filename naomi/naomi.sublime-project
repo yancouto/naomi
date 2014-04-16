@@ -36,7 +36,7 @@
 	[
 		{
 			"name": "naomi",
-			"path": "/C/Users/Yan/Documents/GitHub/naomi/naomi"
+			"path": "."
 		},
 		{
 			"name": "Flixel",
@@ -49,9 +49,6 @@
 		{
 			"name": "Haxe",
 			"path": "/C/HaxeToolkit/haxe/std"
-		},
-		{
-			"path": "/C/Users/Ricardo/Documents/GitHub/naomi/naomi"
 		}
 	],
 	"settings":
