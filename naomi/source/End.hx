@@ -29,17 +29,31 @@ class End extends Interactible {
 			throw "Ends should have field \"next\" or \"nextState\".";
 		next = obj.properties.get("next");
 		nextState = obj.properties.get("nextState");
+
+		trace("Initial: " + next + "\t" + nextState);
+	}
+
+	public function activate() : Void {
+		if(next == null)
+			FlxG.switchState(Type.createInstance(Type.resolveClass(nextState), []));
+		else {
+			SimpleLevel.levelName = next;
+			FlxG.switchState(new SimpleLevel());
+		}
 	}
 
 	override public function interact(entity : Enemy) : Void {
 		animation.play("going_up");
 		Reg.player.possess(null);
 		FlxG.camera.fade(0xff000000, 1.8, false, false);
-		if(next == null) {
+		if(next == null)
 			Timer.callIn(2, function() { FlxG.switchState(Type.createInstance(Type.resolveClass(nextState), [])); });
-		} else {
+		else {
 			SimpleLevel.levelName = next;
 			Timer.callIn(2, function() { FlxG.switchState(new SimpleLevel()); });	
 		}
 	}
+
+	public function getNext()
+		return next == null ? nextState : next;
 }

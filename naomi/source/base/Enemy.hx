@@ -62,7 +62,7 @@ class Enemy extends FlxSprite {
 
 	override public function update() : Void {
 		super.update();
-		onFloor = overlaps(Reg.floor) || overlaps(Platform.platforms) || overlaps(BreakablePlatform.platforms);
+		onFloor = overlaps(Reg.floor) || overlaps(Platform.platforms) || overlaps(BreakableObject.platforms);
 		maxVelocity.x = base_speed;
 
 		acceleration.x = 0;

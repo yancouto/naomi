@@ -40,7 +40,11 @@
   <object name="Heavy" x="1465" y="699" width="132" height="192"/>
  </objectgroup>
  <objectgroup color="#ffff00" name="breakables" width="47" height="29">
-  <object name="Breakable" x="384" y="896" width="128" height="64"/>
+  <object name="Breakable" x="384" y="896" width="128" height="64">
+   <properties>
+    <property name="type" value="Platform"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#ffff00" name="spikeTraps" width="47" height="29">
   <object name="Spike" x="1600" y="1216" width="64" height="64"/>

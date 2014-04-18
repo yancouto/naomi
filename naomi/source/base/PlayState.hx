@@ -7,6 +7,7 @@ import flixel.FlxG;
 import flixel.group.FlxGroup;
 import flixel.FlxSprite;
 
+import BreakablePlatform;
 import menus.MenuState;
 
 typedef EnemyGroup = FlxTypedGroup<Enemy>;
@@ -18,6 +19,7 @@ class PlayState extends State {
 	public var interactibles : FlxTypedGroup<Interactible>;
 	public var paused : Bool;
 	public var pauseMenu : FlxGroup;
+	public var mapName : String;
 
 	public function loadMap(tileMapName : String) : Void {
 		super.create();
@@ -30,6 +32,10 @@ class PlayState extends State {
 		interactibles = new FlxTypedGroup <Interactible>();
 
 		map = new TileMap("assets/data/" + tileMapName + ".tmx");
+		mapName = tileMapName;
+
+		if(Reg.levels  == null)
+			Reg.levels = new List<String>();
 
 		/* Object Layer of rectangles that collide with the player.objectMap
 		*  Useful for half-tiles
@@ -164,13 +170,16 @@ class PlayState extends State {
 		}
 		add(Platform.platforms);
 
-		BreakablePlatform.platforms = new FlxTypedGroup <BreakablePlatform>();
+		BreakableObject.platforms = new FlxTypedGroup <BreakableObject>();
 		if(map.objectMap.exists("breakables")) {
-			for(obj in map.objectMap.get("breakables").members)
-				BreakablePlatform.platforms.add(new BreakablePlatform(obj));
+			for(obj in map.objectMap.get("breakables").members) {
+				BreakableObject.platforms.add(
+					Type.createInstance(Type.resolveClass(
+						"Breakable" + obj.properties.get("type")), [obj]));
+			}
 			map.objectMap.remove("breakables");
 		}
-		add(BreakablePlatform.platforms);
+		add(BreakableObject.platforms);
 
 		/* [/Platforms] */
 
@@ -255,6 +264,11 @@ class PlayState extends State {
 	override public function update() : Void {
 		if(FlxG.keys.anyJustPressed(['P', 'ESCAPE']))
 			Utils.pause();
+		else if(FlxG.keys.justPressed.RBRACKET)
+			Reg.nextLevel();
+		else if (FlxG.keys.justPressed.LBRACKET)
+			Reg.prevLevel();
+			
 		if(Reg.paused) {
 
 			if(FlxG.keys.justPressed.R) {
@@ -276,7 +290,7 @@ class PlayState extends State {
 		FlxG.collide(Boulder.boulders, map.collidableTiles);
 		FlxG.collide(Boulder.boulders, map.glassTiles);
 
-		FlxG.overlap(BreakablePlatform.platforms, enemies, BreakablePlatform.manageCollision);
+		FlxG.overlap(BreakableObject.platforms, enemies, BreakableObject.manageCollision);
 		FlxG.overlap(BloodParticle.particles, map.collidableTiles, BloodParticle.handleOverlap);
 		FlxG.overlap(BloodParticle.particles, map.glassTiles, BloodParticle.handleOverlap);
 		FlxG.overlap(Boulder.boulders, enemies, Boulder.manageCollision);

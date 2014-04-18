@@ -2,11 +2,14 @@ package;
 
 import flixel.util.FlxSave;
 import flixel.FlxG;
+import flixel.FlxState;
 
 import base.PlayState;
 import base.Player;
 import base.Timer;
 import base.Circuitry;
+
+import levels.*;
 
 /**
  * Handy, pre-built Registry class that can be used to store 
@@ -20,6 +23,41 @@ class Reg {
 	static public var player : Player;
 	static public var circuitryComponents : Map<String, Circuitry>;
 	static public var paused : Bool;
+
+	/* 
+	* Stack of levels. This is used for easier level handling.
+	* This is for debug only, since if you end up switching to
+	* a level which is not adjacent to the previous one, it will
+	* cause the stack not to recognize the current one in the 
+	* stack. Forwarding a level in this situation will cause
+	* the list to search for the previous' next state, and not
+	* the current's.
+	* 
+	* We also suppose that all levels are 'simple'.
+	*/
+	static public var levels : List<String>;
+
+	static private function resolveSwitch(state : String) {
+		if(state == null) return;
+		SimpleLevel.levelName = state;
+		FlxG.switchState(new SimpleLevel());
+	}
+
+	static public function nextLevel() {
+		for(e in playState.interactibles.iterator()) {
+			if(Type.getClassName(Type.getClass(e)) == "End") {
+				var end = cast(e, End);
+				trace(playState.mapName);
+				levels.push(playState.mapName);
+				end.activate();
+				return;
+			}
+		}
+	}
+
+	static public function prevLevel() {
+		resolveSwitch(levels.pop());
+	}
 
 	static public function getTrigger(name : String) : Circuitry {
 		if(name == null) throw "Invalid trigger name [[null]]";
