@@ -80,11 +80,11 @@ class Rogue extends Enemy {
 		var img = new FlxSprite().loadGraphic("assets/images/ROGUEPARTS.png", false);
 		for(i in 0...n) {
 			var temp = new FlxSprite().makeGraphic(size, height, 0x00000000);
-			temp.stamp(img, -i*size, 0);
+			temp.stamp(img, -i * size, 0);
 			temp.velocity.set(Math.random() * 600 - 300, -Math.random() * 600);
-			temp.setPosition(x + Math.random()*width, y + Math.random()*height);
+			temp.setPosition(x + Math.random() * width, y + Math.random() * height);
 			temp.acceleration.y = 420;
-			temp.angularVelocity = Math.random()*100;
+			temp.angularVelocity = Math.random() * 200 - 100;
 			Reg.playState.add(temp);
 		}
 	}

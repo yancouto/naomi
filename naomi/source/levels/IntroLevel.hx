@@ -37,7 +37,7 @@ class IntroLevel extends PlayState {
 		var followed = new FlxObject(plant.x + plant.width/2, FlxG.camera.y + FlxG.height/2 - 480 - 600, 0, 0);
 		FlxG.camera.follow(followed, FlxCamera.STYLE_NO_DEAD_ZONE);
 		FlxTween.linearMotion(followed, followed.x, followed.y, followed.x, plant.y + plant.height/2, 200, false, {type: FlxTween.ONESHOT, 
-			complete: function(self) { player.possess(plant); } });
+			complete: function(self) { player.possess(plant); followed.destroy(); } });
 
 		Reg.playBackgroundMusic("Castles in the Underground.mp3", 3);
 	}

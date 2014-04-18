@@ -56,6 +56,7 @@ class Rat extends Enemy {
 			temp.setPosition(x + Math.random()*width, y + Math.random()*height);
 			temp.acceleration.y = 420;
 			Reg.playState.add(temp);
+			temp.angularVelocity = Math.random() * 200 - 100;
 			i += size;
 			Timer.callIn(Math.random()*2 + 3, function() { temp.destroy(); });
 		}
