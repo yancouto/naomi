@@ -67,6 +67,14 @@ class Player extends FlxObject {
 		if(controlled != null) {
 			width = controlled.width;
 			height = controlled.height;
+
+			// Focus camera -- doesn't fucking work properly
+			FlxG.camera.follow(this, FlxCamera.STYLE_LOCKON, 5);
+			cameraOffsetX = cameraOffsetY = 0;
+			Timer.callIn(1, function() {
+					if(!away)
+						FlxG.camera.follow(this, FlxCamera.STYLE_PLATFORMER, 5);
+				});
 		}
 	}
 
@@ -117,15 +125,17 @@ class Player extends FlxObject {
 
 	private static inline var speed : Float = 200;
 	private static inline var maxTranslate : Float = 100;
+	private static inline var minimumOffset : Float = 75;
 	private function manageCameraScroll() : Void {
 		var prevX = cameraOffsetX;
 		var prevY = cameraOffsetY;
 		var dt = FlxG.elapsed;
+		var mouseX = FlxG.mouse.screenX, mouseY = FlxG.mouse.screenY;
 
-		if(FlxG.keys.pressed.UP) cameraOffsetY -= speed * dt;
-		if(FlxG.keys.pressed.DOWN) cameraOffsetY += speed * dt;
-		if(FlxG.keys.pressed.LEFT) cameraOffsetX -= speed * dt;
-		if(FlxG.keys.pressed.RIGHT) cameraOffsetX += speed * dt;
+		if(mouseY <= minimumOffset) cameraOffsetY -= speed * dt;
+		if(mouseY >= FlxG.height - minimumOffset) cameraOffsetY += speed * dt;
+		if(mouseX <= minimumOffset) cameraOffsetX -= speed * dt;
+		if(mouseX >= FlxG.width - minimumOffset) cameraOffsetX += speed * dt;
 
 		var diff = speed * dt/2;
 		if(diff >= Math.abs(cameraOffsetX)) cameraOffsetX = 0;

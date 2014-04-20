@@ -17,8 +17,10 @@ class Heavy extends Enemy {
 		setSize(40, 112);
 		offset.set(28, 24);
 		
-		if(obj.properties.get("facing") == "left")
+		if(obj.properties.get("facing") == "left") {
 			facing = FlxObject.LEFT;
+			offset.set(120 - 68, 24);
+		}
 		else
 			facing = FlxObject.RIGHT;
 

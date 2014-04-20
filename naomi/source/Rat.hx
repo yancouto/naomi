@@ -19,8 +19,10 @@ class Rat extends Enemy {
 		animation.add("walking", [0, 1], 4);
 		animation.play("idle");
 
-		if(obj.properties.get("facing") == "left")
+		if(obj.properties.get("facing") == "left") {
 			facing = FlxObject.LEFT;
+			offset.set(0, 0);
+		}
 		else
 			facing = FlxObject.RIGHT;	
 				
