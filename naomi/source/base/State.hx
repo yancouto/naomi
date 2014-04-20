@@ -23,7 +23,7 @@ class State extends FlxState {
 		Timer.updateTimers(FlxG.elapsed);
 
 		if(FlxG.keys.justPressed.M)
-			FlxG.sound.muted = !FlxG.sound.muted;
+			Reg.toggleMuted();
 
 		super.update();
 	}

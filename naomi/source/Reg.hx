@@ -24,6 +24,24 @@ class Reg {
 	static public var circuitryComponents : Map<String, Circuitry>;
 	static public var paused : Bool;
 
+	static public var save : FlxSave;
+
+	static function __init__() {
+		save = new FlxSave();
+		save.bind("config");
+
+		if(save.data.muted != null)
+			FlxG.sound.muted = save.data.muted;
+		else
+			save.data.muted = FlxG.sound.muted;
+	}
+
+	static public function toggleMuted() {
+		FlxG.sound.muted = !FlxG.sound.muted;
+		save.data.muted = FlxG.sound.muted;
+		save.flush(); //probably move this somewhere else
+	}
+
 	/* 
 	* Stack of levels. This is used for easier level handling.
 	* This is for debug only, since if you end up switching to
