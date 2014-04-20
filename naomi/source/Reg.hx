@@ -65,7 +65,6 @@ class Reg {
 		for(e in playState.interactibles.iterator()) {
 			if(Type.getClassName(Type.getClass(e)) == "End") {
 				var end = cast(e, End);
-				trace(playState.mapName);
 				levels.push(playState.mapName);
 				end.activate();
 				return;

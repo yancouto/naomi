@@ -178,6 +178,8 @@ private class SoulShot extends FlxSprite {
 	private var mirrorDown : TileMap.PObjectGroup;
 	private var trail : FlxTrail;
 
+	public var returning : Bool;
+
 	public function new(x : Float, y : Float) {
 		super(x, y);
 
@@ -203,6 +205,8 @@ private class SoulShot extends FlxSprite {
 		if(mirrorRight == null) mirrorRight = new TileMap.PObjectGroup();
 		mirrorDown = map.get("mirrorDown");
 		if(mirrorDown == null) mirrorDown = new TileMap.PObjectGroup();
+
+		returning = false;
 	}
 
 	override public function draw() : Void {
@@ -213,8 +217,23 @@ private class SoulShot extends FlxSprite {
 	override public function update() : Void {
 		super.update();
 		trail.update();
-		if(overlaps(Reg.playState.map.collidableTiles) || overlaps(Platform.platforms) || overlaps(Trap.traps))
-			destroy();
+
+		if(returning) {
+			velocity.set(Reg.playState.player.controlled.x - x, 
+				Reg.playState.player.controlled.y - y).normalize().mult(2*base_speed);
+
+			if(overlaps(Reg.playState.player.controlled))
+				destroy();
+
+			return;
+		}
+
+		if(overlaps(Reg.playState.map.collidableTiles) || overlaps(Platform.platforms) || overlaps(Trap.traps)) {
+			alpha = 0.1;
+			returning = true;	
+			return;
+		}
+
 		FlxG.overlap(this, Reg.playState.enemies, function(a, b) { possiblePossession(b); });
 		if(!exists) return;
 		if(overlaps(mirrorUp))

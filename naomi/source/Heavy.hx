@@ -29,7 +29,7 @@ class Heavy extends Enemy {
 		jumps = 1;
 		jumpSpeed = 300;
 
-		base_speed = 80;
+		base_speed = 150;
 
 		mass = 100;
 

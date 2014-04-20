@@ -219,6 +219,15 @@ class PlayState extends State {
 			map.objectMap.remove("text");
 		}
 
+		/* Tokens */
+		IdleToken.tokens = new FlxTypedGroup<IdleToken>();
+		/*if(map.objectMap.exists("tokens")) {
+			for(obj in map.objectMap.get("tokens").members)
+				IdleToken.tokens.add(new IdleToken(obj));
+			map.objectMap.remove("tokens");
+		}
+		add(IdleToken.tokens);*/
+
 		/* Extra Stuff */
 		BloodParticle.particles = new FlxTypedGroup <BloodParticle>();
 		add(BloodParticle.particles);
@@ -294,6 +303,7 @@ class PlayState extends State {
 		FlxG.overlap(BloodParticle.particles, map.collidableTiles, BloodParticle.handleOverlap);
 		FlxG.overlap(BloodParticle.particles, map.glassTiles, BloodParticle.handleOverlap);
 		FlxG.overlap(Boulder.boulders, enemies, Boulder.manageCollision);
+		FlxG.overlap(IdleToken.tokens, enemies);
 
 		super.update();
 	}

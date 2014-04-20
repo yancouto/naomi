@@ -29,8 +29,6 @@ class End extends Interactible {
 			throw "Ends should have field \"next\" or \"nextState\".";
 		next = obj.properties.get("next");
 		nextState = obj.properties.get("nextState");
-
-		trace("Initial: " + next + "\t" + nextState);
 	}
 
 	public function activate() : Void {

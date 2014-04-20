@@ -30,7 +30,7 @@ class Rogue extends Enemy {
 		jumps = 1;
 		jumpSpeed = 370;
 
-		base_speed = 250;
+		base_speed = 200;
 		drag.x = 700;
 	
 		mass = 40;

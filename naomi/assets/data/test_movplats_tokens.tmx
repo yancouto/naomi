@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="brick_tiles" tilewidth="64" tileheight="64">
+  <image source="../tilesets/brick_tiles.png" width="576" height="512"/>
+ </tileset>
+ <layer name="background" width="100" height="100">
+  <properties>
+   <property name="nocollides" value="true"/>
+   <property name="tileset" value="brick_tiles"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2D0OgCAMBlBGDqSJi97/WDobRZAO/rzhBdKmXxhJp5TSBEC4fHIC1Bo2Y2CvNNP6jn3tbvabzJslsFeaaX3HvnY3GwCAY1//7+bGe89sTeYV/12A96jZK0Vk9vb+omavFJHZ2wMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4ihWGTom9
+  </data>
+ </layer>
+ <layer name="foreground" width="100" height="100">
+  <properties>
+   <property name="tileset" value="brick_tiles"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt08sNwkAQRMHNxGGQf2acLWGwPLO0PzVS3UCGfrCMMRag1Z0uvaUe60tvqcf60ltetcesz5Pe8so9Xh/okTk99LiKxOmhB99t9aj8htLfqUPl/tlqz38oveUZenSfHsdPDz2e3OPXa7feX3l25TOnt5zZY89rZ/SoXHrLWT2q++mRa1fZpfvS++hx7Ll30b1L96X3AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeLI3K+tlTw==
+  </data>
+ </layer>
+ <objectgroup color="#0ea40e" name="playerSpawn" width="100" height="100">
+  <object name="Player Spawn" x="993" y="518" width="126" height="181">
+   <properties>
+    <property name="type" value="Rogue"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="tokens" width="100" height="100">
+  <object x="1428" y="640" width="30" height="62"/>
+  <object x="1839" y="639" width="20" height="63"/>
+  <object x="2049" y="645" width="18" height="57"/>
+  <object x="2566" y="646" width="21" height="56"/>
+  <object x="2746" y="255" width="23" height="64"/>
+  <object x="2964" y="254" width="21" height="66"/>
+  <object x="3171" y="245" width="28" height="71"/>
+  <object x="3450" y="657" width="19" height="46"/>
+  <object x="3746" y="648" width="27" height="54"/>
+  <object x="2237" y="963" width="25" height="57"/>
+  <object x="2553" y="965" width="19" height="56"/>
+  <object x="2844" y="962" width="32" height="58"/>
+  <object x="2948" y="1349" width="27" height="55"/>
+  <object x="4031" y="1351" width="22" height="55"/>
+  <object x="1620" y="1354" width="24" height="52"/>
+  <object x="2174" y="1347" width="34" height="58"/>
+  <object x="1560" y="952" width="34" height="70"/>
+  <object x="1333" y="962" width="28" height="60"/>
+ </objectgroup>
+ <objectgroup name="rogueSpawns" width="100" height="100">
+  <object x="1632" y="603" width="50" height="98"/>
+  <object x="2280" y="620" width="67" height="81"/>
+  <object x="2837" y="226" width="62" height="78"/>
+  <object x="3039" y="234" width="57" height="64"/>
+  <object x="3286" y="614" width="62" height="77"/>
+  <object x="3606" y="615" width="55" height="72"/>
+  <object x="3486" y="1262" width="50" height="86"/>
+  <object x="2658" y="920" width="77" height="71"/>
+  <object x="2345" y="938" width="83" height="63"/>
+  <object x="1859" y="1293" width="63" height="105"/>
+  <object x="1443" y="935" width="47" height="78"/>
+ </objectgroup>
+ <objectgroup color="#a40002" name="end" width="100" height="100">
+  <object name="end" x="984" y="1080" width="105" height="127">
+   <properties>
+    <property name="next" value="level0"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="floor" width="100" height="100">
+  <object x="895" y="704" width="1858" height="14"/>
+  <object x="2751" y="317" width="450" height="10"/>
+  <object x="3199" y="701" width="576" height="17"/>
+  <object x="2878" y="1408" width="1286" height="18"/>
+  <object x="2239" y="1024" width="641" height="10"/>
+  <object x="1600" y="1407" width="640" height="13"/>
+  <object x="1345" y="1025" width="258" height="16"/>
+  <object x="1280" y="1088" width="65" height="11"/>
+  <object x="1215" y="1154" width="66" height="12"/>
+  <object x="895" y="1216" width="318" height="12"/>
+ </objectgroup>
+ <objectgroup name="wallGrip" width="100" height="100">
+  <object x="2751" y="316" width="9" height="401"/>
+  <object x="3189" y="318" width="11" height="390"/>
+  <object x="3762" y="702" width="15" height="386"/>
+  <object x="4158" y="129" width="13" height="1300"/>
+  <object x="2866" y="1022" width="15" height="406"/>
+  <object x="2236" y="1021" width="18" height="394"/>
+  <object x="1590" y="1023" width="11" height="392"/>
+  <object x="886" y="127" width="10" height="578"/>
+  <object x="1851" y="767" width="11" height="387"/>
+  <object x="1911" y="824" width="11" height="329"/>
+ </objectgroup>
+</map>

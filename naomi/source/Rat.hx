@@ -26,7 +26,7 @@ class Rat extends Enemy {
 		else
 			facing = FlxObject.RIGHT;	
 				
-		base_speed = 400;
+		base_speed = 500;
 		jumps = 0;
 
 		health = 50;

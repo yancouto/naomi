@@ -60,6 +60,18 @@ class Enemy extends FlxSprite {
 		}
 	}
 
+	public function idleRight() : Void {
+		velocity.x = base_speed/10;
+		animation.play("walking");
+		facing = FlxObject.RIGHT;
+	}
+
+	public function idleLeft() : Void {
+		velocity.x = -base_speed/10;
+		animation.play("walking");
+		facing = FlxObject.LEFT;
+	}
+
 	override public function update() : Void {
 		super.update();
 		onFloor = overlaps(Reg.floor) || overlaps(Platform.platforms) || overlaps(BreakableObject.platforms);
