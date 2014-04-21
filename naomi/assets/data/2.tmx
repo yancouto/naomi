@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="80" height="40" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="brick_combo" tilewidth="64" tileheight="64">
+  <image source="../tilesets/brick_combo.png" width="192" height="320"/>
+ </tileset>
+ <tileset firstgid="16" name="brick_tiles" tilewidth="64" tileheight="64">
+  <image source="../tilesets/brick_tiles.png" width="576" height="512"/>
+ </tileset>
+ <layer name="fundo" width="80" height="40">
+  <properties>
+   <property name="nocollides" value="true"/>
+   <property name="tileset" value="brick_combo"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAMBKGb37/g2ugACaumqqqqqqqqqqqqqqrq2wfjKn0B
+  </data>
+ </layer>
+ <layer name="Main Tiles" width="80" height="40">
+  <properties>
+   <property name="tileset" value="brick_combo"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztl9EOgyAMRX0A//+TF96MocBs6W31nuRGo5u0R9Jl5TiOEjjRQfuhP/qLnOig/dAf/UVOdL7Yc8Oq9q/660F/OuhPRzR/0j3piCaDv1M4eu9xq+d6+3vbjNjZWx2kCNfob33d3bV6kMlfRHbOqJHb+3nv/j/vBPU+NPuq95m6uG69nV/XkH6TZ30gsPK36m1Wx6yu0fcRaOea1lvjut+e1KWdxRq8598sp3Fdu0H7kvqlP6w/L9C+en0//U9Mf3Z1jZ5jCdoX/dEf0lOjdq7R37o/T+hPx1v8IWMJuhf6yxdL0L3QX75Ygu6F/vLFEnQv9JcvlvwApjUbwA==
+  </data>
+ </layer>
+ <objectgroup name="playerSpawn" width="80" height="40">
+  <object name="Player Spawn" x="768" y="1216" width="128" height="128">
+   <properties>
+    <property name="type" value="Rat"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="end" width="80" height="40">
+  <object name="The End" x="4160" y="640" width="128" height="128">
+   <properties>
+    <property name="nextState" value="three_trials"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="ratSpawns" width="80" height="40">
+  <object name="rat" x="1472" y="1293" width="102" height="49">
+   <properties>
+    <property name="facing" value="right"/>
+   </properties>
+  </object>
+  <object name="rat" x="1997" y="1024" width="109" height="61"/>
+  <object name="rat" x="1798" y="1029" width="117" height="55"/>
+  <object name="rat" x="1344" y="634" width="128" height="66"/>
+  <object name="Boulder 1" x="1920" y="1856" width="128" height="128">
+   <properties>
+    <property name="source" value="boulderTrigger"/>
+    <property name="speed" value="560"/>
+   </properties>
+  </object>
+  <object name="Boudler trigger" x="2321" y="1873" width="114" height="105">
+   <properties>
+    <property name="id" value="boulderTrigger"/>
+   </properties>
+  </object>
+  <object name="Rat" x="2519" y="1027" width="160" height="61"/>
+ </objectgroup>
+ <objectgroup name="boulders" width="80" height="40"/>
+ <objectgroup name="spikeTraps" width="80" height="40">
+  <object name="spikes" x="1792" y="736" width="64" height="64"/>
+  <object name="spikes" x="1920" y="736" width="64" height="64"/>
+  <object name="spikes" x="2048" y="736" width="64" height="64"/>
+ </objectgroup>
+ <layer name="glass" width="80" height="40">
+  <properties>
+   <property name="tileset" value="brick_tiles"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1qENwDAMBMAsV1pFId1/kwYGhAW4r95J5k/edmsAAAD8VZ8zqkMAhLqqA4R7qgN81Hqb3ek93TtzVwcIZ3cBkMpvCbn0FwAAgNUL4pgEsQ==
+  </data>
+ </layer>
+ <objectgroup name="triggers" width="80" height="40"/>
+</map>
